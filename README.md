@@ -12,7 +12,7 @@ NTUST Webpages Development
 
 # environment
 python 3.6+
-```bash
+```shell
 # create virtual python environment 
 $ python3 -m venv venv
 $ .\venv\Scripts\activate
@@ -20,7 +20,7 @@ $ pip install -r requirements.txt
 ```
 
 if you pip install any module, please update the requirements.txt via the command below
-```bash
+```shell
 $ pip freeze > requirements.txt
 ```
 
