@@ -1,0 +1,34 @@
+.akslider-module .uk-dotnav {
+    font-size: 0;
+    text-align: center !important;
+    display: block;
+}
+
+.akslider-module .uk-dotnav > li {
+    display: inline-block;
+    float: none;
+}
+
+.akslider-module .uk-dotnav > li > a {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    opacity: 0.5;
+    position: relative;
+     transition:400ms all; -webkit-transition:400ms all ;
+}
+
+.akslider-module .uk-dotnav > li:hover > a {
+    opacity: 1;
+    background: #ffc722;
+}
+
+.akslider-module .uk-dotnav > li.uk-active > a {
+    opacity: 1;
+    background: #ffc722;
+}
+
+
+
+
+
