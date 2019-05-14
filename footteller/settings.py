@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'ahyt3*1^c+yet_v&1ilnva*s63oa15su70j#t1^8zg5ep#k(hs'
 
-DEBUG = os.getenv("DEBUG", False)
+DEBUG = os.getenv("DEBUG", False) == "True"
 
 ALLOWED_HOSTS = ['*']
 
@@ -18,6 +18,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_extensions",
+    "main",
+    "analysis"
 ]
 
 MIDDLEWARE = [
@@ -86,4 +89,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

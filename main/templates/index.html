@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <link href="{% static "slider.css" %}" rel="stylesheet" type="text/css"> <!-- 下面黃色三顆球 -->
+    <link href="{% static "theme.css" %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static "jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "uikit.js" %}"></script>
+    <script type="text/javascript" src="{% static "slideshow.js" %}"></script>
+{% endblock %}
+{% block body %}
+    <div class="tm-top-a-box tm-full-width  ">
+        <div class="uk-container uk-container-center">
+            <section id="tm-top-a" class="tm-top-a uk-grid uk-grid-collapse"
+                     data-uk-grid-match="{target:&#39;&gt; div &gt; .uk-panel&#39;}" data-uk-grid-margin="">
+                <div class="uk-width-1-1 uk-row-first">
+                    <div class="uk-panel">
+                        <div class="akslider-module ">
+                            <div class="uk-slidenav-position"
+                                 data-uk-slideshow="{height: &#39;auto&#39;, animation: &#39;swipe&#39;, duration: &#39;500&#39;, autoplay: false, autoplayInterval: &#39;7000&#39;, videoautoplay: true, videomute: true, kenburns: false}">
+                                <ul class="uk-slideshow uk-overlay-active" style="height: 600px;">
+                                    <li aria-hidden="false" class="uk-height-viewport uk-active"
+                                        style="animation-duration: 500ms; height: 600px;">
+                                        <div class="uk-cover-background uk-position-cover"
+                                             style="background-image: url({% static "main-slider-img.jpg" %});"></div>
+                                        <div style="background-image: url({% static "main-slider-img1.jpg" %});"
+                                             class="uk-cover-background uk-position-cover"></div>
+                                        <img style="width: 100%; height: auto; opacity: 0;" class="uk-invisible"
+                                             src="{% static "main-slider-img1.jpg" %}" alt="">
+                                        <div class="uk-position-cover uk-flex-middle">
+                                            <div class="uk-container uk-container-center uk-position-cover">
+                                                <div class="va-promo-text uk-width-6-10 uk-push-4-10">
+                                                    <h3>Data is <span>power</span></h3>
+                                                    <div class="promo-sub">We see. We analyze.<span>We predict</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li aria-hidden="true" class="uk-height-viewport"
+                                        style="animation-duration: 500ms; height: 600px;">
+                                        <div class="uk-cover-background uk-position-cover"
+                                             style="background-image: url({% static "main-slider-img1.jpg" %});"></div>
+                                        <div style="background-image: url({% static "main-slider-img.jpg" %});"
+                                             class="uk-cover-background uk-position-cover"></div>
+                                        <img style="width: 100%; height: auto; opacity: 0;" class="uk-invisible"
+                                             src="{% static "main-slider-img.jpg" %}" alt="">
+                                        <div class="uk-position-cover uk-flex-middle">
+                                            <div class="uk-container uk-container-center uk-position-cover">
+                                                <div class="va-promo-text uk-width-6-10 uk-push-4-10">
+                                                    <h3>Just play.<span>Have fun.</span></h3>
+                                                    <div class="promo-sub">Life is <span>about timing</span> Enjoy the
+                                                        game
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li aria-hidden="true" class="uk-height-viewport"
+                                        style="animation-duration: 500ms; height: 600px;">
+                                        <div class="uk-cover-background uk-position-cover"
+                                             style="background-image: url({% static "main-slider-img2.jpg" %});"></div>
+                                        <div style="background-image: url({% static "main-slider-img2.jpg" %});"
+                                             class="uk-cover-background uk-position-cover"></div>
+                                        <img style="width: 100%; height: auto; opacity: 0;" class="uk-invisible"
+                                             src="{% static "main-slider-img2.jpg" %}" alt="">
+                                        <div class="uk-position-cover uk-flex-middle">
+                                            <div class="uk-container uk-container-center uk-position-cover">
+                                                <div class="va-promo-text uk-width-6-10 uk-push-4-10">
+                                                    <h3>Life is <span>about Timing</span></h3>
+                                                    <div class="promo-sub">Just predict. <span>Have fun.</span> Enjoy
+                                                        the game
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-text-center">
+                                    <li class="uk-active" data-uk-slideshow-item="0"><a href="">0</a>
+                                    </li>
+                                    <li data-uk-slideshow-item="1" class=""><a href="">1</a>
+                                    </li>
+                                    <li data-uk-slideshow-item="2" class=""><a href="">2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}
