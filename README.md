@@ -24,3 +24,20 @@ if you pip install any module, please update the requirements.txt via the comman
 $ pip freeze > requirements.txt
 ```
 
+# Project Setup
+1. 在settings.py的同目錄下新增local_settings.py
+2. 貼上下列程式碼
+    ```python
+    import os
+
+    DEBUG = True
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+    ```
+

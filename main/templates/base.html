@@ -3,6 +3,7 @@
 <html lang="zh-Hant">
 <head>
     <title>{% block title %}FOOTTELLER{% endblock %}</title>
+    <link href="{% static "theme.css" %}" rel="stylesheet" type="text/css">
     {% block head %}{% endblock %}
 </head>
 
@@ -47,9 +48,7 @@
                             <li><a href="{% url "index" %}">Donate</a>
                             </li>
                         </ul>
-
                     </div>
-
                 </nav>
             </div>
         </div>

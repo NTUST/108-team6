@@ -89,3 +89,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+
+try:
+    from .local_settings import *
+except:
+    pass
