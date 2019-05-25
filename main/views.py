@@ -1,4 +1,6 @@
-from django.contrib.auth.decorators import login_required, user_passes_test
+import threading
+
+from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -24,5 +26,6 @@ def players(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def refresh_data(request):
-    parse()
+    thread = threading.Thread(target=parse)
+    thread.start()
     return HttpResponse(status=200)
