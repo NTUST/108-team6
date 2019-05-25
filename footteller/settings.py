@@ -20,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django_extensions",
     "main",
-    "analysis"
+    "analysis",
+    "mathfilters",
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+
+LOGIN_URL = "/admin/login/"
 
 try:
     from .local_settings import *
