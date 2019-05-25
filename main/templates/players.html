@@ -1,5 +1,189 @@
 {% extends "footteller_header_template.html" %}
 {% load static %}
-    {% block content %}
-    
-    {% endblock %}
+{% load mathfilters %}
+{% block head %}
+    <style>
+        td {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        td:nth-child(n+5) {
+            text-align: center
+        }
+
+        .table td:nth-child(2) {
+            padding: .25rem
+        }
+
+        a {
+            color: white !important;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: #ffc722 !important;
+            text-decoration: underline;
+        }
+
+        #wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        button {
+            background: #ffc722;
+            color: #fff;
+            border: none;
+            position: relative;
+            height: 60px;
+            font-size: 1.6em;
+            padding: 0 2em;
+            cursor: pointer;
+            transition: 800ms ease all;
+            outline: none;
+            height: 40px;
+            width: 40%;
+        }
+
+        button:hover {
+            background: #fff;
+            color: #ffc722;
+        }
+
+        button:before,
+        button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 2px;
+            width: 0;
+            background: #ffc722;
+            transition: 400ms ease all;
+        }
+
+        button:after {
+            right: inherit;
+            top: inherit;
+            left: 0;
+            bottom: 0;
+        }
+
+        button:hover:before,
+        button:hover:after {
+            width: 100%;
+            transition: 800ms ease all;
+        }
+
+        #b1 {
+            border-bottom-left-radius: 23px
+        }
+
+        #b2 {
+            border-bottom-right-radius: 23px
+        }
+
+        .dot {
+            height: 30px;
+            width: 30px;
+            background-color: #ffc722;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 0.2cm;
+            margin-right: 0.2cm;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link href="{% static "players.css" %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+
+    <!-- main player table -->
+    <table class="table table-striped table-hover table-dark text-nowrap" style="width: 80%;
+            margin: auto;
+            text-overflow: ellipsis;
+            table-layout: fixed;
+            border-top-left-radius: 23px;
+            border-top-right-radius: 23px;
+            ">
+        <thead>
+        <tr style="color:rgba(255, 199, 34, 1.0);">
+            <th scope="col" style="width: 5%;text-align: center; border-top-color: white"></th>
+            <th scope="col" style="width: 5%;text-align: center; border-top-color: white"></th>
+            <th scope="col" style="width: 15%;text-align: center; border-top-color: white">Name</th>
+            <th scope="col" style="width: 15%;text-align: center; border-top-color: white">Team</th>
+            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">Age</th>
+            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">Rating</th>
+            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">Potential</th>
+            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">Value</th>
+            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">Wage</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for player in player_list %}
+            <tr>
+                <th scope="row">{{ start|add:forloop.counter }}</th>
+                <td style="padding-bottom: 5px">
+                    <img src="{{ player.photo }}" width="33px" height="33px">
+                </td>
+                <td><a href="#">{{ player.name }}</a></td>
+                <td>{{ player.club }}</td>
+                <td>{{ player.age }}</td>
+                <td>{{ player.overall }}</td>
+                <td>{{ player.potential }}</td>
+                <td>€
+                    {% if player.value > 1000 %}
+                        {{ player.value|div:1000 }}M
+                    {% else %}
+                        {{ player.value }}K
+                    {% endif %}
+                </td>
+                <td>€
+                    {% if player.wage > 1000 %}
+                        {{ player.wage|div:1000 }}M
+                    {% else %}
+                        {{ player.wage }}K
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- 2 buttons -->
+    <div id="wrapper">
+        <button type="button" id="b1" onclick="window.location.href='{% url "players" %}?page={{ page|add:-1 }}'">Last
+            Page
+        </button>
+        <button type="button" id="b2" onclick="window.location.href='{% url "players" %}?page={{ page|add:1 }}'">Next
+            Page
+        </button>
+    </div>
+
+    <!-- page number -->
+    <div style="text-align:right">
+        <span class="dot">{{ page }}</span>
+    </div>
+{% endblock %}
+
