@@ -1,0 +1,511 @@
+{% extends "footteller_header_template.html" %}
+{% load static %}
+    {% block content %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div></div>
+<form  method="post" class="form-horizontal">
+    {% csrf_token %}
+
+    
+<script>
+function showDiv() {
+   document.getElementById('result_panel').style.display = "block";
+}
+
+var arr_list = ['Age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance', 'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy', 'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy', 'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning', 'Reactions', 'Short Passing', 'Shot Power', 'Sliding Tackle', 'Sprint Speed', 'Stamina', 'Standing Tackle', 'Strength', 'Vision', 'Volleys']
+$(document).ready(function(){
+        
+      $("#submit").click(function(){
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+        console.log("click!")
+        var inputs = {};
+        for (i=0;i<arr_list.length;i++){
+                var query='*[name="'+arr_list[i]+'"]'
+                var value = $(query).val();
+                // var obj = {};
+                inputs[arr_list[i]] = value;
+                // inputs.push(obj)
+        }
+        var query='*[name="prefer"]'
+        var value = $(query).val();
+        inputs['prefer'] = value;
+        console.log(inputs)
+        
+        $.ajax({
+                 type:"POST",
+                 url:"/analysis_form/",
+                 data: inputs,
+                 success: function(data){
+                        for (var i in data) {
+                                $('#result').html( i + " : " + data[i] + "<br>");
+                                
+                        }
+                 }
+            });
+        });
+});
+
+
+</script>
+                <div id="result_panel" style="display:none;font-size:20px;  margin-left: 1000px;margin-right: 1000px;">
+                <div class="panel panel-primary" style="border-radius: 23px" style="font-size:20px;  margin-left: 300px;margin-right: 300px;">
+                <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Predict Result</div>
+                <div class="panel-body">
+                <h1 align="center" font size="10">
+                                
+                                <div id="result">
+                                
+
+                          </h1>
+                        </div></div>
+                </div>         
+  <style>
+
+  #submit {
+        background: #ffc722;
+        color: #fff;
+        border: none;
+        position: relative;
+        height: 60px;
+        font-size: 3em;
+        padding: 0 0em;
+        cursor: pointer;
+        transition: 800ms ease all;
+        outline: none;
+        height: 100px;
+        width: 1700px;
+    }
+    #submit:hover {
+        background: #fff;
+        color: #ffc722;
+    }
+    #submit:before,
+    #submit:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #ffc722;
+        transition: 400ms ease all;
+    }
+    #submit:after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+    }
+    #submit:hover:before,
+    #submit:hover:after {
+        width: 100%;
+        transition: 800ms ease all;
+    }
+</style>
+  <div style="font-size:20px;  margin-left: 300px;margin-right: 300px;">
+  <div class="form-group">
+        <div class="col-sm-3" >
+                <div class="panel panel-primary" style="border-radius: 23px">
+
+                
+                <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Attacking</div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label">Crossing</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Crossing" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label">Finishing</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Finishing" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Heading Accuracy</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Heading Accuracy" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label">Short Passing</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Short Passing" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Volleys</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Volleys" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                </div>
+        </div>
+
+        
+                        <div class="col-sm-3">
+                                <div class="panel panel-primary" style="border-radius: 23px">
+                
+                                
+                                <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Skill</div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label"> Dribbling</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Dribbling" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Curve</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Curve" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label">FK Accuracy</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="FK Accuracy" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Long Passing</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Long Passing" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                                <label class="col-sm-6 control-label">Ball Control</label>
+                                                                <div class="col-sm-6">
+                                                                        <input class="form-control" type="number" name="Ball Control" min="0" max="100" value="80">
+                                                                </div>
+                                                        </div>
+                                </div>
+                        </div>
+                
+        <div class="col-sm-3">
+                <div class="panel panel-primary" style="border-radius: 23px">
+
+                
+                <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Movement</div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label"> Acceleration</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Acceleration" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label">Sprint Speed</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Sprint Speed" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Agility</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Agility" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                        <div class="panel-body">
+                                <label class="col-sm-6 control-label">Reactions</label>
+                                <div class="col-sm-6">
+                                        <input class="form-control" type="number" name="Reactions" min="0" max="100" value="80">
+                                </div>
+                        </div>
+                        <div class="panel-body">
+                                        <label class="col-sm-6 control-label"> Balance</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Balance" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                </div>
+        </div>
+
+        
+                        <div class="col-sm-3">
+                                <div class="panel panel-primary" style="border-radius: 23px">
+                
+                                
+                                <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Power</div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Shot Power</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Shot Power" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Jumping</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Jumping" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Stamina</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Stamina" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                        <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Strength</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Strength" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                                <label class="col-sm-6 control-label">Long Shots</label>
+                                                                <div class="col-sm-6">
+                                                                        <input class="form-control" type="number" name="Long Shots" min="0" max="100" value="80">
+                                                                </div>
+                                                        </div>
+                                </div>
+                        </div>
+                
+
+
+</div>
+<div class="form-group">
+                <div class="col-sm-3">
+                        <div class="panel panel-primary" style="border-radius: 23px">
+        
+                        
+                        <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Mentality</div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Aggression</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Aggression" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Interceptions</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Interceptions" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Positioning</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Positioning" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">Vision</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="Vision" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Penalties</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Penalties" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                <div class="panel-body">
+                                                <label class="col-sm-6 control-label">Composure</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="Composure" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                        </div>
+                </div>
+        
+                
+                                <div class="col-sm-3">
+                                        <div class="panel panel-primary" style="border-radius: 23px">
+                        
+                                        
+                                        <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Defending</div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Marking</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Marking" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Standing Tackle</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Standing Tackle" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Sliding Tackle</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Sliding Tackle" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                
+
+                                        </div>
+                                </div>
+                        
+                <div class="col-sm-3">
+                        <div class="panel panel-primary" style="border-radius: 23px">
+        
+                        
+                        <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Goalkeeping</div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">GK Diving</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="GK Diving" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">GK Handling</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="GK Handling" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                                <label class="col-sm-6 control-label">GK Kicking</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="GK Kicking" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                                <div class="panel-body">
+                                        <label class="col-sm-6 control-label">GK Positioning</label>
+                                        <div class="col-sm-6">
+                                                <input class="form-control" type="number" name="GK Positioning" min="0" max="100" value="80">
+                                        </div>
+                                </div>
+                                <div class="panel-body">
+                                                <label class="col-sm-6 control-label"> GK Reflexes</label>
+                                                <div class="col-sm-6">
+                                                        <input class="form-control" type="number" name="GK Reflexes" min="0" max="100" value="80">
+                                                </div>
+                                        </div>
+                        </div>
+                </div>
+        
+                
+                                <div class="col-sm-3">
+                                        <div class="panel panel-primary" style="border-radius: 23px">
+                        
+                                        
+                                        <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Other</div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Overall Rating</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Overall" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Potential</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Potential" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Age</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Age" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Special</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Special" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                        <label class="col-sm-6 control-label">Free Kick Accuracy</label>
+                                                        <div class="col-sm-6">
+                                                                <input class="form-control" type="number" name="Free Kick Accuracy" min="0" max="100" value="80">
+                                                        </div>
+                                                </div>
+                                                
+                                        </div>
+                                </div>
+                        
+ 
+<div style="  margin-left: 400px;margin-right: 500px;">
+<div class="panel panel-primary" style="border-radius: 23px">
+
+                
+<div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Prefer Position</div>  
+<div class="form-group" >
+  <label class="col-sm-2 control-label">CAM</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="CAM">
+  </div>
+  <label class="col-sm-1 control-label">CB</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="CB">
+  </div>
+  <label class="col-sm-1 control-label">CDM</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="CDM">
+  </div>
+  <label class="col-sm-1 control-label">CF</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="CF">
+  </div>
+  <label class="col-sm-1 control-label">CM</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="CM">
+  </div>
+
+</div>
+<div class="form-group">
+  <label class="col-sm-2 control-label">GK</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="GK">
+  </div>
+  <label class="col-sm-1 control-label">LB</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="LB">
+  </div>
+  <label class="col-sm-1 control-label">LM</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="LM">
+  </div>
+  <label class="col-sm-1 control-label">LW</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="LW">
+  </div>
+  <label class="col-sm-1 control-label">RB</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="RB">
+  </div>
+
+</div>
+<div class="form-group">
+  <label class="col-sm-2 control-label">RM</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="RM">
+  </div>
+  <label class="col-sm-1 control-label">RW</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="RW">
+  </div>
+  <label class="col-sm-1 control-label">RWB</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="RWB">
+  </div>
+  <label class="col-sm-1 control-label">ST</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="ST">
+  </div>
+  <label class="col-sm-1 control-label">LWB</label>
+  <div class="col-sm-1">
+          <input class="form-control" type="checkbox" name="prefer" value="LWB">
+  </div>
+</div>
+</div>
+<br><br>
+</div>
+        <input class="btn btn-default" id="submit" onclick="showDiv()" type = 'button' value = 'submit'  style="border-radius: 23px">
+
+</div>
+
+
+   
+</form>    
+</div>
+    
+    {% endblock %}

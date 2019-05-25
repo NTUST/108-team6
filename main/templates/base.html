@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <title>{% block title %}FOOTTELLER{% endblock %}</title>
+    <link href="{% static "theme.css" %}" rel="stylesheet" type="text/css">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+<div class="over-wrap">
+    <div class="tm-menu-box">
+        <div style="height: 70px;" class="uk-sticky-placeholder">
+            <div class="uk-sticky-placeholder" style="height: 70px; margin: 0px;">
+                <nav style="margin: 0px;" class="tm-navbar uk-navbar" data-uk-sticky="">
+                    <div class="uk-container uk-container-center">
+                        <a class="tm-logo uk-float-left" href="index.html">
+                            <img src="{% static "soccerlogo.png" %}" alt="logo" title="logo">
+                            <span>FOOT<em>TELLER</em></span>
+                        </a>
+
+                        <ul class="uk-navbar-nav uk-hidden-small">
+                            <li class="uk-parent"><a href="{% url "index" %}">Home</a>
+                            </li>
+
+                            {# TODO player url #}
+                            <li data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}" aria-haspopup="true"
+                                aria-expanded="false" class=""><a href="{% url "index" %}">Players</a></li>
+                            {# TODO predict url #}
+                            <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
+                                aria-haspopup="true" aria-expanded="false"><a href="">Predict</a>
+                                <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+                                    <div class="uk-grid uk-dropdown-grid">
+                                        <div class="uk-width-1-1">
+                                            <ul class="uk-nav uk-nav-navbar">
+                                                <li><a href="#">Predict1</a>
+                                                </li>
+                                                <li><a href="#">Predict2</a>
+                                                </li>
+                                                <li><a href="#">Predict3</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {# TODO donate url #}
+                            <li><a href="{% url "index" %}">Donate</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    {% block body %}
+    {% endblock %}
+</div>
+</body>
+</html>
