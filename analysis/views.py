@@ -68,4 +68,3 @@ def predict_result(request):
     wage = int(model.predict(np.expand_dims(inputs, 0))[0][0])
 
     return HttpResponse(json.dumps({'wage':wage}), content_type='application/json')
-
