@@ -14,7 +14,12 @@
 <div></div>
 <form  method="post" class="form-horizontal">
     {% csrf_token %}
-
+  <!-- <h1 align="center" font size="10">
+        Predict Result <br>
+        Wage : {{wage}} <br>
+        Value : {{value}}
+        <br><br>
+  </h1> -->
     
 <script>
 function showDiv() {
@@ -26,19 +31,23 @@ $(document).ready(function(){
         
       $("#submit").click(function(){
         $('html, body').animate({ scrollTop: 0 }, 'slow');
-        console.log("click!")
         var inputs = {};
         for (i=0;i<arr_list.length;i++){
                 var query='*[name="'+arr_list[i]+'"]'
                 var value = $(query).val();
-                // var obj = {};
                 inputs[arr_list[i]] = value;
-                // inputs.push(obj)
         }
-        var query='*[name="prefer"]'
-        var value = $(query).val();
-        inputs['prefer'] = value;
+        var prefer_list = []
+        $("[name=prefer]:checkbox:checked").each(function(){
+                prefer_list.push($(this).val());
+        });        
+
+        inputs['prefer'] = prefer_list;
+
         console.log(inputs)
+
+        
+        
         
         $.ajax({
                  type:"POST",
@@ -422,7 +431,12 @@ $(document).ready(function(){
                                         </div>
                                 </div>
                         
- 
+
+        
+        </div>
+
+     
+
 <div style="  margin-left: 400px;margin-right: 500px;">
 <div class="panel panel-primary" style="border-radius: 23px">
 
@@ -499,13 +513,15 @@ $(document).ready(function(){
 </div>
 <br><br>
 </div>
+
         <input class="btn btn-default" id="submit" onclick="showDiv()" type = 'button' value = 'submit'  style="border-radius: 23px">
 
 </div>
 
 
-   
+ 
 </form>    
 </div>
+
     
     {% endblock %}
