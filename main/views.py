@@ -29,3 +29,7 @@ def refresh_data(request):
     thread = threading.Thread(target=parse)
     thread.start()
     return HttpResponse(status=200)
+
+
+def player(request):
+    return render(request, "player.html", locals())
