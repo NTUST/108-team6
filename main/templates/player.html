@@ -85,26 +85,32 @@
             <div class="col-10 offset-1">
                 <div class="row py-4">
                     <div class="col-4 text-center">
-                        <img alt="photo" src="https://cdn.sofifa.org/players/10/19/232862@2x.png">
+                        <img alt="photo" src="{{ player.photo }}">
                     </div>
                     <div class="col-8">
                         <div class="row">
                             <div class="col-12 meta">
                                 <ul>
-                                    <li><span class="p" style="font-size: 2.7rem">CHRISTOPHER HERRERA</span></li>
+                                    <li>
+                                        <span class="p" style="font-size: 2.7rem">{{ player.name }}</span>
+                                        <img alt="flag" src="{{ player.nationality_flag }}">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col meta">
                                 <ul>
-                                    <li><span class="p">ID</span> 948794</li>
-                                    <li><span class="p">AGE</span> 26</li>
+                                    <li><span class="p">ID</span>{{ player.number }}</li>
+                                    <li><span class="p">AGE</span>{{ player.age }}</li>
                                 </ul>
                             </div>
                             <div class="col meta">
                                 <ul>
-                                    <li><span class="p">Team</span> SL Benfica</li>
-                                    <li><span class="p">Position</span> RS</li>
-                                    <li><span class="p">Jersey Number</span> 79</li>
+                                    <li>
+                                        <span class="p">Team</span>{{ player.club }}
+                                        <img alt="club_logo" src="{{ player.club_logo }}">
+                                    </li>
+                                    <li><span class="p">Position</span>{{ player.position }}</li>
+                                    <li><span class="p">Jersey Number</span>{{ player.jersey_number }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -112,16 +118,16 @@
                 </div>
                 <div class="row py-4 text-center" style="font-size: large">
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Rating</span> 80
+                        <span class="p">Rating</span> {{ player.overall }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Potential</span> 90
+                        <span class="p">Potential</span> {{ player.potential }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Value</span> 12333333
+                        <span class="p">Value</span> {{ player.value }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Wage</span> 123333
+                        <span class="p">Wage</span> {{ player.wage }}
                     </div>
                 </div>
                 <div class="row py-4">
@@ -131,17 +137,17 @@
                             <div class="col pr-1"></div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LS<br> 82+2
+                                    LS<br> {{ player.ls }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    ST<br> 82+4
+                                    ST<br> {{ player.st }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RS<br> 82+2
+                                    RS<br> {{ player.rs }}
                                 </div>
                             </div>
                             <div class="col pl-1"></div>
@@ -149,27 +155,27 @@
                         <div class="row mt-3">
                             <div class="col pr-1">
                                 <div class="bg-success">
-                                    LW<br> 30
+                                    LW<br> {{ player.lw }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LF<br> 59
+                                    LF<br> {{ player.lf }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    CF<br> 60
+                                    CF<br> {{ player.cf }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RF<br> 84
+                                    RF<br> {{ player.rf }}
                                 </div>
                             </div>
                             <div class="col pl-1">
                                 <div class="bg-success">
-                                    RW<br> 75+6
+                                    RW<br> {{ player.rw }}
                                 </div>
                             </div>
                         </div>
@@ -177,17 +183,17 @@
                             <div class="col pr-1"></div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LF<br> 59
+                                    LAM<br> {{ player.lam }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    CF<br> 60
+                                    CAM<br> {{ player.cam }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RF<br> 84
+                                    RAM<br> {{ player.ram }}
                                 </div>
                             </div>
                             <div class="col pl-1"></div>
@@ -195,81 +201,81 @@
                         <div class="row mt-3">
                             <div class="col pr-1">
                                 <div class="bg-success">
-                                    LW<br> 30
+                                    LM<br> {{ player.lm }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LF<br> 59
+                                    LCM<br> {{ player.lcm }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    CF<br> 60
+                                    CM<br> {{ player.cm }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RF<br> 84
+                                    RCM<br> {{ player.rcm }}
                                 </div>
                             </div>
                             <div class="col pl-1">
                                 <div class="bg-success">
-                                    RW<br> 75+6
+                                    RM<br> {{ player.rm }}
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col pr-1">
                                 <div class="bg-success">
-                                    LW<br> 30
+                                    LWB<br> {{ player.lwb }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LF<br> 59
+                                    LDM<br> {{ player.ldm }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    CF<br> 60
+                                    CDM<br> {{ player.cdm }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RF<br> 84
+                                    RDM<br> {{ player.rdm }}
                                 </div>
                             </div>
                             <div class="col pl-1">
                                 <div class="bg-success">
-                                    RW<br> 75+6
+                                    RWB<br> {{ player.rwb }}
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col pr-1">
                                 <div class="bg-success">
-                                    LW<br> 30
+                                    LB<br> {{ player.lb }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    LF<br> 59
+                                    LCB<br> {{ player.lcb }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    CF<br> 60
+                                    CB<br> {{ player.cb }}
                                 </div>
                             </div>
                             <div class="col px-1">
                                 <div class="bg-success">
-                                    RF<br> 84
+                                    RCB<br> {{ player.rcb }}
                                 </div>
                             </div>
                             <div class="col pl-1">
                                 <div class="bg-success">
-                                    RW<br> 75+6
+                                    RB<br> {{ player.rb }}
                                 </div>
                             </div>
                         </div>
@@ -324,23 +330,23 @@
                                 <h4>Attacking</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p66">66</span>
+                                        <span class="label p p66">{{ player.crossing }}</span>
                                         <span>Crossing</span>
                                     </li>
                                     <li>
-                                        <span class="label p p73">73</span>
+                                        <span class="label p p73">{{ player.finishing }}</span>
                                         <span>Finishing</span>
                                     </li>
                                     <li>
-                                        <span class="label p p40">40</span>
+                                        <span class="label p p40">{{ player.heading_accuracy }}</span>
                                         <span>Heading Accuracy</span>
                                     </li>
                                     <li>
-                                        <span class="label p p75">75</span>
+                                        <span class="label p p75">{{ player.short_passing }}</span>
                                         <span>Short Passing</span>
                                     </li>
                                     <li>
-                                        <span class="label p p76">76</span>
+                                        <span class="label p p76">{{ player.volleys }}</span>
                                         <span>Volleys</span>
                                     </li>
                                 </ul>
@@ -351,23 +357,23 @@
                                 <h4>Skill</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p83">83</span>
+                                        <span class="label p p83">{{ player.dribbling }}</span>
                                         <span>Dribbling</span>
                                     </li>
                                     <li>
-                                        <span class="label p p80">80</span>
+                                        <span class="label p p80">{{ player.curve }}</span>
                                         <span>Curve</span>
                                     </li>
                                     <li>
-                                        <span class="label p p64">64</span>
+                                        <span class="label p p64">{{ player.fk_accuracy }}</span>
                                         <span>FK Accuracy</span>
                                     </li>
                                     <li>
-                                        <span class="label p p68">68</span>
+                                        <span class="label p p68">{{ player.long_passing }}</span>
                                         <span>Long Passing</span>
                                     </li>
                                     <li>
-                                        <span class="label p p78">78</span>
+                                        <span class="label p p78">{{ player.ball_control }}</span>
                                         <span>Ball Control</span>
                                     </li>
                                 </ul>
@@ -378,23 +384,23 @@
                                 <h4>Movement</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p93">93</span>
+                                        <span class="label p p93">{{ player.acceleration }}</span>
                                         <span>Acceleration</span>
                                     </li>
                                     <li>
-                                        <span class="label p p91">91</span>
+                                        <span class="label p p91">{{ player.sprint_speed }}</span>
                                         <span>Sprint Speed</span>
                                     </li>
                                     <li>
-                                        <span class="label p p94">94</span>
+                                        <span class="label p p94">{{ player.agility }}</span>
                                         <span>Agility</span>
                                     </li>
                                     <li>
-                                        <span class="label p p77">77</span>
+                                        <span class="label p p77">{{ player.reactions }}</span>
                                         <span>Reactions</span>
                                     </li>
                                     <li>
-                                        <span class="label p p95">95</span>
+                                        <span class="label p p95">{{ player.balance }}</span>
                                         <span>Balance</span>
                                     </li>
                                 </ul>
@@ -405,23 +411,23 @@
                                 <h4>Power</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p77">77</span>
+                                        <span class="label p p77">{{ player.shot_power }}</span>
                                         <span>Shot Power</span>
                                     </li>
                                     <li>
-                                        <span class="label p p70">70</span>
+                                        <span class="label p p70">{{ player.jumping }}</span>
                                         <span>Jumping</span>
                                     </li>
                                     <li>
-                                        <span class="label p p88">88</span>
+                                        <span class="label p p88">{{ player.stamina }}</span>
                                         <span>Stamina</span>
                                     </li>
                                     <li>
-                                        <span class="label p p34">34</span>
+                                        <span class="label p p34">{{ player.strength }}</span>
                                         <span>Strength</span>
                                     </li>
                                     <li>
-                                        <span class="label p p71">71</span>
+                                        <span class="label p p71">{{ player.long_shots }}</span>
                                         <span>Long Shots</span>
                                     </li>
                                 </ul>
@@ -434,27 +440,27 @@
                                 <h4>Mentality</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p55">55</span>
+                                        <span class="label p p55">{{ player.aggression }}</span>
                                         <span>Aggression</span>
                                     </li>
                                     <li>
-                                        <span class="label p p43">43</span>
+                                        <span class="label p p43">{{ player.interceptions }}</span>
                                         <span>Interceptions</span>
                                     </li>
                                     <li>
-                                        <span class="label p p75">75</span>
+                                        <span class="label p p75">{{ player.positioning }}</span>
                                         <span>Positioning</span>
                                     </li>
                                     <li>
-                                        <span class="label p p75">75</span>
+                                        <span class="label p p75">{{ player.vision }}</span>
                                         <span>Vision</span>
                                     </li>
                                     <li>
-                                        <span class="label p p64">64</span>
+                                        <span class="label p p64">{{ player.penalties }}</span>
                                         <span>Penalties</span>
                                     </li>
                                     <li>
-                                        <span class="label p p81">81</span>
+                                        <span class="label p p81">{{ player.composure }}</span>
                                         Composure
                                     </li>
                                 </ul>
@@ -465,15 +471,15 @@
                                 <h4>Defending</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p28">28</span>
+                                        <span class="label p p28">{{ player.marking }}</span>
                                         <span>Marking</span>
                                     </li>
                                     <li>
-                                        <span class="label p p41">41</span>
+                                        <span class="label p p41">{{ player.standing_tackle }}</span>
                                         <span>Standing Tackle</span>
                                     </li>
                                     <li>
-                                        <span class="label p p36">36</span>
+                                        <span class="label p p36">{{ player.sliding_tackle }}</span>
                                         <span>Sliding Tackle</span>
                                     </li>
                                 </ul>
@@ -484,23 +490,23 @@
                                 <h4>Goalkeeping</h4>
                                 <ul class="pl">
                                     <li>
-                                        <span class="label p p7">7</span>
+                                        <span class="label p p7">{{ player.gk_diving }}</span>
                                         GK Diving
                                     </li>
                                     <li>
-                                        <span class="label p p10">10</span>
+                                        <span class="label p p10">{{ player.gk_handling }}</span>
                                         GK Handling
                                     </li>
                                     <li>
-                                        <span class="label p p10">10</span>
+                                        <span class="label p p10">{{ player.gk_kicking }}</span>
                                         GK Kicking
                                     </li>
                                     <li>
-                                        <span class="label p p8">18</span>
+                                        <span class="label p p8">{{ player.gk_positioning }}</span>
                                         GK Positioning
                                     </li>
                                     <li>
-                                        <span class="label p p6">16</span>
+                                        <span class="label p p6">{{ player.gk_reflexes }}</span>
                                         GK Reflexes
                                     </li>
                                 </ul>

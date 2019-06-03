@@ -31,5 +31,11 @@ def refresh_data(request):
     return HttpResponse(status=200)
 
 
-def player(request):
+def get_player(request, player_name):
+    try:
+        player = Player.objects.get(name=player_name)
+        player.photo = player.photo[0:len(player.photo)] + '@2x.png'
+    except Player.DoesNotExist:
+        player = None
+
     return render(request, "player.html", locals())
