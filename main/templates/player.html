@@ -1,5 +1,6 @@
 {% extends "footteller_header_template.html" %}
 {% load static %}
+{% load mathfilters %}
 {% block head %}
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -124,10 +125,20 @@
                         <span class="p">Potential</span> {{ player.potential }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Value</span> {{ player.value }}
+                        <span class="p">Value</span> €
+                        {% if player.value > 1000 %}
+                            {{ player.value|div:1000 }}M
+                        {% else %}
+                            {{ player.value }}K
+                        {% endif %}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Wage</span> {{ player.wage }}
+                        <span class="p">Wage</span> €
+                        {% if player.wage > 1000 %}
+                            {{ player.wage|div:1000 }}M
+                        {% else %}
+                            {{ player.wage }}K
+                        {% endif %}
                     </div>
                 </div>
                 <div class="row py-4">
@@ -317,7 +328,12 @@
                             </li>
                             <li>
                                 <label>Release Clause</label>
-                                <span>€32.2M</span>
+                                <span>€
+                                    {% if player.release_clause > 1000 %}
+                                        {{ player.release_clause|div:1000 }}M
+                                    {% else %}
+                                        {{ player.release_clause }}K
+                                    {% endif %}</span>
                             </li>
                         </ul>
                     </div>

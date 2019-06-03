@@ -34,7 +34,6 @@ def refresh_data(request):
 def get_player(request, player_name):
     try:
         player = Player.objects.get(name=player_name)
-        player.photo = player.photo[0:len(player.photo)] + '@2x.png'
     except Player.DoesNotExist:
         player = None
 
