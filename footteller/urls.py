@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from analysis.views import predict,predict_result
-from main.views import index, players, refresh_data, get_player
 
+from analysis.views import predict, predict_result
+from main.views import index, players, refresh_data, get_player, get_team, edit_team
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,4 +12,6 @@ urlpatterns = [
     path('players', players, name="players"),
     path('players/<str:player_name>', get_player, name="player"),
     path('refresh_data', refresh_data, name="refresh_data"),
+    path('team', get_team, name="team"),
+    path('team/edit', edit_team, name="edit-team"),
 ]
