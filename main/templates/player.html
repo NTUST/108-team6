@@ -101,24 +101,28 @@
                             <div class="col-12 meta">
                                 <ul>
                                     <li>
-                                        <span class="p" style="font-size: 2.7rem">{{ player.name }}</span>
+                                        <span class="p" style="font-size: 2rem">{{ player.name }}</span>
                                         <img alt="flag" src="{{ player.nationality_flag }}">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 meta">
+                                <ul>
+                                    <li>
+                                        <span class="p" style="font-size: 1.8rem; color: white">{{ player.club }}</span>
+                                        <img alt="club_logo" src="{{ player.club_logo }}">
                                     </li>
                                 </ul>
                             </div>
                             <div class="col meta">
                                 <ul>
                                     <li><span class="p">ID</span>{{ player.number }}</li>
-                                    <li><span class="p">AGE</span>{{ player.age }}</li>
-                                    <li><span class="p">Position</span>{{ player.position }}</li>
+                                    <li><span class="p">Age</span>{{ player.age }}</li>
                                 </ul>
                             </div>
                             <div class="col meta">
                                 <ul>
-                                    <li>
-                                        <span class="p">Team</span>{{ player.club }}
-                                        <div><img class="club_logo" alt="club_logo" src="{{ player.club_logo }}"></div>
-                                    </li>
+                                    <li><span class="p">Position</span>{{ player.position }}</li>
                                     <li><span class="p">Jersey Number</span>{{ player.jersey_number }}</li>
                                 </ul>
                             </div>
