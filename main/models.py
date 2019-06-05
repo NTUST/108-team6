@@ -86,3 +86,6 @@ class Player(models.Model):
     gk_positioning = models.IntegerField()
     gk_reflexes = models.IntegerField()
     release_clause = models.IntegerField()
+
+    class Meta:
+        ordering = ["-value", "-wage"]
