@@ -89,11 +89,12 @@
 {% endblock %}
 {% block content %}
     <div class="container" style="color: white">
-        <div class="row" style="background: gray;">
+        <div class="row" style="background: gray;margin-bottom: 1cm;border-radius: 33px">
             <div class="col-10 offset-1">
                 <div class="row py-4">
                     <div class="col-4 text-center">
-                        <img class="avatar" alt="photo" src="{{ player.photo }}"  onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                        <img class="avatar" alt="photo" src="{{ player.photo }}"
+                             onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -552,7 +553,10 @@
                     backgroundColor: 'rgba(253, 189, 0, 0.05)',
                     borderColor: '#fdbd00',
                     datalabels: {
-                        color: '#100BFB',
+                        font: {
+                            weight: 'bold',
+                        },
+                        color: '#4F240D',
                         align: 'start',
                     },
                     data: data,
