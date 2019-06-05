@@ -7,7 +7,6 @@ from main.views import index, players, refresh_data, get_player
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('players', players, name="base"),
     path('predict/', predict, name="predict"),
     path('analysis_form/', predict_result),
     path('players', players, name="players"),

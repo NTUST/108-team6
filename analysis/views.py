@@ -1,18 +1,17 @@
-from django.shortcuts import render
-from keras import optimizers
-from keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
-from keras.layers import Activation, BatchNormalization, Conv1D, CuDNNGRU, Dense, Dropout, Embedding, Flatten, Input, MaxPooling1D, LeakyReLU
-from keras.models import Sequential
-from sklearn import preprocessing
-import pandas as pd
-from keras import losses
-import numpy as np
-import random
-from keras import regularizers
-from django.views.decorators.csrf import csrf_exempt 
-import os
-from django.http import HttpResponse
 import json
+import os
+
+import numpy as np
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+from keras import losses
+from keras import optimizers
+from keras import regularizers
+from keras.layers import BatchNormalization, Dense, LeakyReLU
+from keras.models import Sequential
+
+
 # Create your views here.
 
 def Model(attribute_num):
@@ -50,29 +49,22 @@ def predict_result(request):
     inputs = []
     for arr in arr_list:
         inputs.append(int(request.POST.get(arr)))
-        print(arr, request.POST.get(arr))
 
-    print('prefer : ', request.POST.get('prefer[]'))
     prefers = [] if request.POST.getlist('prefer[]') is None else request.POST.getlist('prefer[]')
     for prefer in prefer_list:
         if prefer in prefers:
             inputs.append(1)
-            print(prefer,1)
         else:
             inputs.append(0)
-            print(prefer,0)
     # import os
-    print(os.path.abspath(__file__))
     save_model_path =os.path.dirname(os.path.abspath(__file__)) + '/model.h5'
-    print(save_model_path)
     inputs = np.array(inputs)
 
     model =  Model(inputs.shape[0])
     model.load_weights(save_model_path)
     wage = int(model.predict(np.expand_dims(inputs, 0))[0][0])
-    
-    import psutil
-    process = psutil.Process(os.getpid())
-    print(process.memory_info().rss/786/1000000,' Mb')  # in bytes 
+
+    # process = psutil.Process(os.getpid())
+    # print(process.memory_info().rss/786/1000000,' Mb')  # in bytes
     return HttpResponse(json.dumps({'wage':wage}), content_type='application/json')
 
