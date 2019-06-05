@@ -165,14 +165,16 @@
 {% endblock %}
 {% block content %}
 
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="Find a player">
-            <button type="submit" class="searchButton">
-                <i class="fas fa-search"></i>
-            </button>
+    <form action="{% url "players" %}">
+        <div class="wrap">
+            <div class="search">
+                <input id="name" name="search" type="text" class="searchTerm" placeholder="Find a player">
+                <button type="submit" class="searchButton">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </div>
-    </div>
+    </form>
 
     <!-- main player table -->
     <table class="table table-striped table-hover table-dark text-nowrap" style="width: 80%;
@@ -273,11 +275,11 @@
 
     <div id="wrapper">
         <button type="button" id="b1"
-                onclick="window.location.href='{% url "players" %}?{{ query_string }}page={{ page|add:-1 }}'">Last
+                onclick="window.location.href='{% url "players" %}{{ query_string }}page={{ page|add:-1 }}'">Last
             Page
         </button>
         <button type="button" id="b2"
-                onclick="window.location.href='{% url "players" %}?{{ query_string }}page={{ page|add:1 }}'">Next
+                onclick="window.location.href='{% url "players" %}{{ query_string }}page={{ page|add:1 }}'">Next
             Page
         </button>
     </div>
