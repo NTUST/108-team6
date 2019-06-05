@@ -29,3 +29,34 @@ def refresh_data(request):
     thread = threading.Thread(target=parse)
     thread.start()
     return HttpResponse(status=200)
+
+
+def get_player(request, player_name):
+    try:
+        player = Player.objects.get(name=player_name)
+    except Player.DoesNotExist:
+        player = None
+
+    if player is not None:
+        atk = round(
+            (player.crossing + player.finishing + player.heading_accuracy +
+             player.short_passing + player.volleys) / 5)
+        skill = round(
+            (player.dribbling + player.curve + player.fk_accuracy + player.long_passing + player.ball_control) / 5)
+        move = round(
+            (player.acceleration + player.sprint_speed + player.agility +
+             player.reactions + player.balance) / 5)
+        power = round((player.shot_power + player.jumping + player.stamina +
+                       player.strength + player.long_shots) / 5)
+        mental = round(
+            (player.aggression + player.interceptions + player.positioning +
+             player.vision + player.penalties) / 5)
+        defend = round(
+            (player.marking + player.standing_tackle + player.sliding_tackle) / 3)
+        goal = round(
+            (player.gk_diving + player.gk_handling + player.gk_kicking +
+             player.gk_positioning + player.gk_reflexes) / 5)
+
+        data = [atk, skill, move, power, mental, defend, goal]
+
+    return render(request, "player.html", locals())

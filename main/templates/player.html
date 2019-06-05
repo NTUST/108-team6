@@ -1,0 +1,584 @@
+{% extends "footteller_header_template.html" %}
+{% load static %}
+{% load mathfilters %}
+{% block head %}
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous">
+    <style>
+        .avatar {
+            height: 17rem;
+            width: 17rem;
+        }
+
+        .meta {
+            padding-top: .5rem;
+        }
+
+        .meta ul li {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta ul li .p {
+            color: #fdbd00;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .club_logo {
+            height: 3rem;
+            width: 3rem;
+            margin-top: .5rem;
+            margin-left: 5rem;
+        }
+
+        .fa-star,
+        .fa-star-half-alt {
+            color: #fdbd00;
+        }
+
+        .stats {
+            font-size: 22px;
+        }
+
+        .stats .p {
+            color: #fdbd00;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 17px;
+            margin-top: .5rem;
+        }
+
+        ul li label {
+            padding-right: .5rem;
+            color: #fdbd00;
+            font-weight: bold;
+        }
+
+        .rating {
+            text-align: center;
+        }
+
+        .rating h5 {
+            color: #fdbd00;
+        }
+
+        .attr h4 {
+            color: #fdbd00;
+        }
+
+        .pl li .p {
+            margin-right: .5rem;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+{% endblock %}
+{% block content %}
+    <div class="container" style="color: white">
+        <div class="row" style="background: gray;">
+            <div class="col-10 offset-1">
+                <div class="row py-4">
+                    <div class="col-4 text-center">
+                        <img class="avatar" alt="photo" src="{{ player.photo }}">
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-12 meta">
+                                <ul>
+                                    <li>
+                                        <span class="p" style="font-size: 2.7rem">{{ player.name }}</span>
+                                        <img alt="flag" src="{{ player.nationality_flag }}">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li><span class="p">ID</span>{{ player.number }}</li>
+                                    <li><span class="p">AGE</span>{{ player.age }}</li>
+                                    <li><span class="p">Position</span>{{ player.position }}</li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li>
+                                        <span class="p">Team</span>{{ player.club }}
+                                        <div><img class="club_logo" alt="club_logo" src="{{ player.club_logo }}"></div>
+                                    </li>
+                                    <li><span class="p">Jersey Number</span>{{ player.jersey_number }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 text-center" style="font-size: large">
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p">Rating</span> {{ player.overall }}
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p">Potential</span> {{ player.potential }}
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p">Value</span> €
+                        {% if player.value > 1000 %}
+                            {{ player.value|div:1000 }}M
+                        {% else %}
+                            {{ player.value }}K
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p">Wage</span> €
+                        {% if player.wage > 1000 %}
+                            {{ player.wage|div:1000 }}M
+                        {% else %}
+                            {{ player.wage }}K
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row py-4">
+                    <div class="col-4 border py-3 rating">
+                        <h5>Real Overall Rating</h5>
+                        <div class="row mt-3">
+                            <div class="col pr-1"></div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LS<br> {{ player.ls }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    ST<br> {{ player.st }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RS<br> {{ player.rs }}
+                                </div>
+                            </div>
+                            <div class="col pl-1"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LW<br> {{ player.lw }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LF<br> {{ player.lf }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CF<br> {{ player.cf }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RF<br> {{ player.rf }}
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RW<br> {{ player.rw }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1"></div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LAM<br> {{ player.lam }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CAM<br> {{ player.cam }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RAM<br> {{ player.ram }}
+                                </div>
+                            </div>
+                            <div class="col pl-1"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LM<br> {{ player.lm }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LCM<br> {{ player.lcm }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CM<br> {{ player.cm }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RCM<br> {{ player.rcm }}
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RM<br> {{ player.rm }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LWB<br> {{ player.lwb }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LDM<br> {{ player.ldm }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CDM<br> {{ player.cdm }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RDM<br> {{ player.rdm }}
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RWB<br> {{ player.rwb }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LB<br> {{ player.lb }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LCB<br> {{ player.lcb }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CB<br> {{ player.cb }}
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RCB<br> {{ player.rcb }}
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RB<br> {{ player.rb }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 border py-3">
+                        <canvas id="radar" height="300px"></canvas>
+                    </div>
+                    <div class="col-4 border py-3" style="font-size: medium">
+                        <ul>
+                            <li>
+                                <label>Preferred Foot</label>
+                                {{ player.preferred_foot }}
+                            </li>
+                            <li>
+                                <label>International Reputation</label>
+                                {{ player.international_reputation }}
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li>
+                                <label>Weak Foot</label>
+                                {{ player.weak_foot }} <i class="fas fa-star"></i>
+                            </li>
+                            <li>
+                                <label>Skill Moves</label>
+                                {{ player.skill_moves }} <i class="fas fa-star"></i>
+                            </li>
+                            <li>
+                                <label>Work Rate</label>
+                                <span>{{ player.work_rate }}</span>
+                            </li>
+                            <li>
+                                <label>Body Type</label>
+                                <span>{{ player.body_type }}</span>
+                            </li>
+                            <li>
+                                <label>Release Clause</label>
+                                <span>€
+                                    {% if player.release_clause > 1000 %}
+                                        {{ player.release_clause|div:1000 }}M
+                                    {% else %}
+                                        {{ player.release_clause }}K
+                                    {% endif %}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="attr">
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h4>Attacking</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p66">{{ player.crossing }}</span>
+                                        <span>Crossing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p73">{{ player.finishing }}</span>
+                                        <span>Finishing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p40">{{ player.heading_accuracy }}</span>
+                                        <span>Heading Accuracy</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75">{{ player.short_passing }}</span>
+                                        <span>Short Passing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p76">{{ player.volleys }}</span>
+                                        <span>Volleys</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Skill</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p83">{{ player.dribbling }}</span>
+                                        <span>Dribbling</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p80">{{ player.curve }}</span>
+                                        <span>Curve</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p64">{{ player.fk_accuracy }}</span>
+                                        <span>FK Accuracy</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p68">{{ player.long_passing }}</span>
+                                        <span>Long Passing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p78">{{ player.ball_control }}</span>
+                                        <span>Ball Control</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Movement</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p93">{{ player.acceleration }}</span>
+                                        <span>Acceleration</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p91">{{ player.sprint_speed }}</span>
+                                        <span>Sprint Speed</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p94">{{ player.agility }}</span>
+                                        <span>Agility</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p77">{{ player.reactions }}</span>
+                                        <span>Reactions</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p95">{{ player.balance }}</span>
+                                        <span>Balance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Power</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p77">{{ player.shot_power }}</span>
+                                        <span>Shot Power</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p70">{{ player.jumping }}</span>
+                                        <span>Jumping</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p88">{{ player.stamina }}</span>
+                                        <span>Stamina</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p34">{{ player.strength }}</span>
+                                        <span>Strength</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p71">{{ player.long_shots }}</span>
+                                        <span>Long Shots</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h4>Mentality</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p55">{{ player.aggression }}</span>
+                                        <span>Aggression</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p43">{{ player.interceptions }}</span>
+                                        <span>Interceptions</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75">{{ player.positioning }}</span>
+                                        <span>Positioning</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75">{{ player.vision }}</span>
+                                        <span>Vision</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p64">{{ player.penalties }}</span>
+                                        <span>Penalties</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p81">{{ player.composure }}</span>
+                                        Composure
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Defending</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p28">{{ player.marking }}</span>
+                                        <span>Marking</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p41">{{ player.standing_tackle }}</span>
+                                        <span>Standing Tackle</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p36">{{ player.sliding_tackle }}</span>
+                                        <span>Sliding Tackle</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Goalkeeping</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p7">{{ player.gk_diving }}</span>
+                                        GK Diving
+                                    </li>
+                                    <li>
+                                        <span class="label p p10">{{ player.gk_handling }}</span>
+                                        GK Handling
+                                    </li>
+                                    <li>
+                                        <span class="label p p10">{{ player.gk_kicking }}</span>
+                                        GK Kicking
+                                    </li>
+                                    <li>
+                                        <span class="label p p8">{{ player.gk_positioning }}</span>
+                                        GK Positioning
+                                    </li>
+                                    <li>
+                                        <span class="label p p6">{{ player.gk_reflexes }}</span>
+                                        GK Reflexes
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        data = {{ data }};
+
+        let ctx = document.getElementById('radar').getContext('2d');
+        Chart.defaults.global.defaultFontColor = 'white';
+        Chart.defaults.global.legend.display = false;
+        let chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['ATK', 'SKI', 'MOV', 'POW', 'MNT', 'DEF', 'GOL'],
+                datasets: [{
+                    backgroundColor: 'rgba(253, 189, 0, 0.05)',
+                    borderColor: '#fdbd00',
+                    datalabels: {
+                        color: '#100BFB',
+                        align: 'start',
+                    },
+                    data: data,
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scale: {
+                    angleLines: {
+                        color: 'white'
+                    },
+                    gridLines: {
+                        color: 'white'
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
+                        display: false,
+                    },
+                },
+            }
+        });
+    </script>
+{% endblock %}
+
+
+
