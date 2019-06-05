@@ -3,7 +3,9 @@
 {% load mathfilters %}
 {% block head %}
     <style>
-        a { color: inherit; }
+        a {
+            color: inherit;
+        }
 
         td {
             white-space: nowrap;
@@ -43,9 +45,7 @@
             color: #fff;
             border: none;
             position: relative;
-            height: 60px;
             font-size: 1.6em;
-            padding: 0 2em;
             cursor: pointer;
             transition: 800ms ease all;
             outline: none;
@@ -104,6 +104,49 @@
             line-height: 30px;
         }
 
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid #ffc722;
+            border-right: none;
+            padding: 5px;
+
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus {
+            color: #ffc722;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #ffc722;
+            background: #ffc722;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0.5cm
+        }
+
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -116,10 +159,20 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/e0d3d831a1.js"></script>
     <link href="{% static "players.css" %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
 {% block content %}
+
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="Find a player">
+            <button type="submit" class="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- main player table -->
     <table class="table table-striped table-hover table-dark text-nowrap" style="width: 80%;
@@ -128,6 +181,7 @@
             table-layout: fixed;
             border-top-left-radius: 23px;
             border-top-right-radius: 23px;
+            margin-top: 1.5cm;
             ">
         <thead>
         <tr style="color:rgba(255, 199, 34, 1.0);">
@@ -190,7 +244,8 @@
             <tr>
                 <th scope="row">{{ start|add:forloop.counter }}</th>
                 <td style="padding-bottom: 5px">
-                    <img src="{{ player.photo }}" width="33px" height="33px" onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                    <img src="{{ player.photo }}" width="33px" height="33px"
+                         onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
                 </td>
                 <td><a href="{% url "player" player_name=player.id %}">{{ player.name }}</a></td>
                 <td>{{ player.club }}</td>
