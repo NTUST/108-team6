@@ -1,35 +1,19 @@
-<!DOCTYPE HTML>
-<html lang="en">
-    <!-- Special for "Joomla YooTheme Template Design from HTML/CSS" -->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <base href="http://j-sportak.torbara.com/pages/players.html"/>
-        <title>Player list</title>
-        <script src="/media/jui/js/jquery.min.js" type="text/javascript"></script>
-        <script src="/media/jui/js/jquery-noconflict.js" type="text/javascript"></script>
-        <script src="/media/jui/js/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="/media/jui/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/templates/sport.ak/js/isotope.pkgd.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="/templates/sport.ak/css/bootstrap.css">
-        <link rel="stylesheet" href="/templates/sport.ak/css/theme.css">
-        <link rel="stylesheet" href="/templates/sport.ak/warp/vendor/highlight/highlight.css">
-        <link rel="stylesheet" href="/templates/sport.ak/css/custom.css">
-        <script src="/templates/sport.ak/warp/vendor/uikit/js/uikit.js"></script>
-        <script src="/templates/sport.ak/js/theme.js"></script>
-        <style>
-            .photo {
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body class="tm-noblog tt-players-page">
-        <div class="preloader">
-            <div class="loader"></div>
-        </div>
-        <div class="over-wrap">
+{% extends "footteller_header_template.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        .photo {
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
 
+    <div class="tm-noblog tt-players-page">
+        <div class="over-wrap">
             <div class="uk-container uk-container-center">
                 <div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
                     <div class="tm-main uk-width-medium-1-1">
@@ -38,7 +22,7 @@
                             <section id="cobalt-section-1">
                                 <!-- --------------  Show category index ---------------------- -->
                                 <script>
-                                    jQuery(window).load(function() {
+                                    jQuery(window).load(function () {
                                         colWidth = jQuery('.grid').width();
 
                                         $grid = jQuery('.grid');
@@ -53,7 +37,7 @@
 
                                         });
 
-                                        jQuery('.filter-button-group').on('click', 'button', function() {
+                                        jQuery('.filter-button-group').on('click', 'button', function () {
                                             $grid.isotope({
                                                 // options
                                                 itemSelector: '.player-item',
@@ -82,22 +66,25 @@
                                 </div>
                                 <!-- END: Modules Anywhere -->
                                 <div class="list-players-wrapper">
-                                    <div class="button-group filter-button-group" data-uk-sticky="{top:70, boundary: true}">
+                                    <div class="button-group filter-button-group"
+                                         data-uk-sticky="{top:70, boundary: true}">
                                         <div class="uk-container uk-container-center">
                                             <div class="label-menu">OUR team</div>
                                             <button class="active" data-filter="*">all</button>
-                                            <button data-filter=".tt_2a195f12da9f3f36da06e6097be7e451">DEFENDER</button>
-                                            <button data-filter=".tt_22c19cd174143e3b4c7ef40ae23c5d1a">STRIKER</button>
-                                            <button data-filter=".tt_81747b4426a9882884c1f83eda78844f">goalkeeper</button>
-                                            <button data-filter=".tt_4d957768dcc72908ab3b9e28dc867052">MIDFIELDER</button>
+                                            <button data-filter="1">DEFENDER</button>
+                                            <button data-filter="2">STRIKER</button>
+                                            <button data-filter="3">goalkeeper
+                                            </button>
+                                            <button data-filter="4">MIDFIELDER
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="list-players-wrap" id='boundary'>
                                         <div class="left-player">
-                                            <img src="/templates/sport.ak/images/left-player-bg.png" alt=""/>
+                                            <img src="{% static "/images/left-player-bg.png" %}" alt=""/>
                                         </div>
                                         <div class="right-player">
-                                            <img src="/templates/sport.ak/images/right-player-bg.png" alt=""/>
+                                            <img src="{% static "/images/right-player-bg.png" %}" alt=""/>
                                         </div>
                                         <div class="uk-container uk-container-center alt">
                                             <div class="uk-grid grid players-list">
@@ -110,11 +97,12 @@
                                                                 </div>
                                                                 <div class="bio">
                                                                     <span>
-                                                                        <a href="/pages/players/item/51-johnny-thompson.html">go</a>
+                                                                        <a href="">X</a>
                                                                     </span>
                                                                 </div>
-                                                                <img src="https://cdn.sofifa.org/players/4/19/20801@3x.png" class="img-polaroid photo" alt="photo"
-                                                                    onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                                                                <img src="https://cdn.sofifa.org/players/4/19/20801@3x.png"
+                                                                     class="img-polaroid photo" alt="photo"
+                                                                     onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
                                                             </div>
                                                             <div class="info">
                                                                 <div class="name">
@@ -122,7 +110,7 @@
                                                                         <a href="">Johnny Thompson</a>
                                                                     </h3>
                                                                 </div>
-                                                                <div class="position">goalkeeper </div>
+                                                                <div class="position">goalkeeper</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -136,15 +124,17 @@
                                                                 </div>
                                                                 <div class="bio">
                                                                     <span>
-                                                                        <a href="/pages/players/item/50-benjamin-mendoza.html">Add</a>
+                                                                        <a href="">Add</a>
                                                                     </span>
                                                                 </div>
-                                                                <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png" class="img-polaroid" alt="Benjamin Mendoza" title="Benjamin Mendoza">
+                                                                <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
+                                                                     class="img-polaroid" alt="Benjamin Mendoza"
+                                                                     title="Benjamin Mendoza">
                                                             </div>
                                                             <div class="info">
                                                                 <div class="name">
                                                                     <h3>
-                                                                        <a href="/pages/players/item/50-benjamin-mendoza.html">Add New Player</a>
+                                                                        <a href="">Add New Player</a>
                                                                     </h3>
                                                                     <div class="position">???</div>
                                                                 </div>
@@ -164,21 +154,23 @@
 
             <div class="tm-bottom-e-box tm-full-width">
                 <div class="uk-container uk-container-center">
-                    <section id="tm-bottom-e" class="tm-bottom-e uk-grid" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                    <section id="tm-bottom-e" class="tm-bottom-e uk-grid"
+                             data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
                         <div class="uk-width-1-1">
                             <div class="uk-panel">
-                                <div class="all-statistics-wrap uk-cover-background" style="background-image: url('/images/all-stat-bg.jpg');">
+                                <div class="all-statistics-wrap uk-cover-background"
+                                     style="background-image: url('{% static "/images/all-stat-bg.jpg" %}');">
                                     <div class="uk-container uk-container-center alt">
                                         <div class="uk-grid">
                                             <div class="uk-width-1-1">
                                                 <h3 class="title">
-                                                    All <span>Statisctics</span>
+                                                    All <span>Statistics</span>
                                                 </h3>
                                             </div>
                                             <div class="uk-width-medium-1-4 uk-width-small-1-2">
                                                 <div class="item">
                                                     <div class="icon">
-                                                       <img src="/images/stat-icon.png" alt=""/>
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
                                                         <div class="number">35</div>
@@ -189,7 +181,7 @@
                                             <div class="uk-width-medium-1-4 uk-width-small-1-2">
                                                 <div class="item">
                                                     <div class="icon">
-                                                        <img src="/images/stat-icon.png" alt=""/>
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
                                                         <div class="number">12</div>
@@ -200,7 +192,7 @@
                                             <div class="uk-width-medium-1-4 uk-width-small-1-2">
                                                 <div class="item">
                                                     <div class="icon">
-                                                        <img src="/images/stat-icon.png" alt=""/>
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
                                                         <div class="number">13</div>
@@ -211,7 +203,7 @@
                                             <div class="uk-width-medium-1-4 uk-width-small-1-2">
                                                 <div class="item">
                                                     <div class="icon">
-                                                        <img src="/images/stat-icon.png" alt=""/>
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
                                                         <div class="number">8</div>
@@ -231,19 +223,20 @@
             <div class="bottom-wrapper">
                 <div class="tm-bottom-f-box  ">
                     <div class="uk-container uk-container-center">
-                        <section id="tm-bottom-f" class="tm-bottom-f uk-grid" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                        <section id="tm-bottom-f" class="tm-bottom-f uk-grid"
+                                 data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
                             <div class="uk-width-1-1">
                                 <div class="uk-panel">
                                     <div class='footer-logo'>
                                         <a href="/">
-                                            <img src="/images/footer-logo-img.png" alt=""/>
+                                            <img src="{% static "/images/footer-logo-img.png" %}" alt="footer-logo"/>
                                             <span>Sport</span>
                                             .ak
                                         </a>
                                     </div>
                                     <div class='clear'></div>
                                     <p class='footer-about-text'>123456
-</p>
+                                    </p>
                                 </div>
                             </div>
                         </section>
@@ -251,22 +244,28 @@
                 </div>
                 <div class="tm-bottom-g-box">
                     <div class="uk-container uk-container-center">
-                        <section id="tm-bottom-g" class="tm-bottom-f uk-grid" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                        <section id="tm-bottom-g" class="tm-bottom-f uk-grid"
+                                 data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
                             <div class="uk-width-1-1 uk-width-medium-1-2">
                                 <div class="uk-panel">
-                                    <div class="acymailing_module" >
+                                    <div class="acymailing_module">
                                         <div class="acymailing_fulldiv">
                                             <form>
                                                 <div class="acymailing_module_form">
                                                     <div class="mail-title">Newsletters</div>
-                                                    <div class="acymailing_introtext">Suspendisse sodales, magna at dignissim cursus, velit ex porttitor eros.</div>
+                                                    <div class="acymailing_introtext">Suspendisse sodales, magna at
+                                                        dignissim cursus, velit ex porttitor eros.
+                                                    </div>
                                                     <div class="clear"></div>
                                                     <div class="space"></div>
                                                     <table class="acymailing_form">
                                                         <tr>
                                                             <td class="acyfield_email acy_requiredField">
                                                                 <span class="mail-wrap">
-                                                                    <input class="inputbox" type="text" name="user[email]" style="width:80%" placeholder="Enter your email" title="Enter your email"/>
+                                                                    <input class="inputbox" type="text"
+                                                                           name="user[email]" style="width:80%"
+                                                                           placeholder="Enter your email"
+                                                                           title="Enter your email"/>
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -274,7 +273,9 @@
                                                             <td class="acysubbuttons">
                                                                 <span class="submit-wrap">
                                                                     <span class="submit-wrapper">
-                                                                        <input class="button subbutton btn btn-primary" type="submit" value="Subscribe" name="Submit"/>
+                                                                        <input class="button subbutton btn btn-primary"
+                                                                               type="submit" value="Subscribe"
+                                                                               name="Submit"/>
                                                                     </span>
                                                                 </span>
                                                             </td>
@@ -299,26 +300,26 @@
                                             <!-- START: Modules Anywhere -->
                                             <ul class="nav menu">
                                                 <li class="item-165">
-                                                    <a href="/about.html">About</a>
+                                                    <a href="">About</a>
                                                 </li>
                                                 <li class="item-166 current active">
-                                                    <a href="/pages/players.html">Players</a>
+                                                    <a href="">Players</a>
                                                 </li>
                                                 <li class="item-167">
-                                                    <a href="/match.html">Match</a>
+                                                    <a href="">Match</a>
                                                 </li>
                                                 <li class="item-168">
-                                                    <a href="/component/cobalt/category-items/3-match-list-view/13-results.html?Itemid=119">Results</a>
+                                                    <a href="">Results</a>
                                                 </li>
                                                 <li class="item-169">
-                                                    <a href="/news.html">News</a>
+                                                    <a href="">News</a>
                                                 </li>
                                             </ul>
                                             <!-- END: Modules Anywhere -->
                                         </div>
                                         <div class='copyrights'>
-                                            Copyright © 2015 <a href="/">Spartak Team</a>
-                                            . All Rights Reserved.
+                                            Copyright © 2019 <a href="/">55688</a>
+                                            . All Rights Not Reserved.
                                         </div>
                                         <div class='clear'></div>
                                     </div>
@@ -328,6 +329,7 @@
                     </div>
                 </footer>
             </div>
-            </div>
-    </body>
-</html>
+        </div>
+    </div>
+{% endblock %}
+

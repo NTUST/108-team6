@@ -3,7 +3,13 @@
 <html lang="zh-Hant">
 <head>
     <title>{% block title %}FOOTTELLER{% endblock %}</title>
-    <link href="{% static "theme.css" %}" rel="stylesheet" type="text/css">
+    <script src="{% static "/js/jquery.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/jquery-noconflict.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/jquery-migrate.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/bootstrap.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/isotope.pkgd.min.js" %}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{% static "/css/theme.css" %}">
+    <script src="{% static "/js/theme.js" %}"></script>
     {% block head %}{% endblock %}
 </head>
 
@@ -27,9 +33,9 @@
                             <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
                                 aria-haspopup="true" aria-expanded="false"><a href="{% url "predict" %}">Predict</a>
                             </li>
-                            {# TODO donate url #}
                             <li><a href="{% url "team" %}">Team</a>
                             </li>
+                            {# TODO donate url #}
                         </ul>
                     </div>
                 </nav>
