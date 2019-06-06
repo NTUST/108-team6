@@ -40,7 +40,7 @@ def Model(attribute_num):
     return model
 
 def predict(request):
-    return render(request, "analysis.html")
+    return render(request, "analysis.html",{'title':'Analysis'})
 
 @csrf_exempt
 def predict_result(request):
@@ -74,5 +74,5 @@ def predict_result(request):
     import psutil
     process = psutil.Process(os.getpid())
     print(process.memory_info().rss/786/1000000,' Mb')  # in bytes 
-    return HttpResponse(json.dumps({'wage':wage}), content_type='application/json')
+    return HttpResponse(json.dumps({'wage':wage,'title':'Analysis'}), content_type='application/json')
 
