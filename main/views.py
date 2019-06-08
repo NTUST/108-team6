@@ -39,6 +39,7 @@ def players(request):
         player_list = player_list.order_by(order_column)
     player_list = player_list.all()[start:start + limit]
     query_string = parse_query_string(parameter=parameter)
+    title = 'Players'
     return render(request, "players.html", locals())
 
 
@@ -81,7 +82,7 @@ def get_player(request, player_name):
              player.gk_positioning + player.gk_reflexes) / 5)
 
         data = [atk, skill, move, power, mental, defend, goal]
-
+    title = 'Players'
     return render(request, "player.html", locals())
 
 
