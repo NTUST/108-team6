@@ -87,6 +87,7 @@ def get_player(request, player_name):
 
 
 def get_team(request):
+    clubs = list(Player.objects.values_list("club", flat=True).order_by("club").distinct("club"))
     team_name = request.GET.get("team")
     if team_name:
         player_list = Player.objects.filter(club=team_name)
@@ -145,4 +146,3 @@ def edit_team(request):
         else:
             TeamPlayer.objects.filter(user_id=request.user.id, player_id=player_id).delete()
         return JsonResponse(data={}, status=200)
-
