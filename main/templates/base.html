@@ -22,30 +22,13 @@
                         <ul class="uk-navbar-nav uk-hidden-small">
                             <li class="uk-parent"><a href="{% url "index" %}">Home</a>
                             </li>
-
-                            {# TODO player url #}
                             <li data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}" aria-haspopup="true"
                                 aria-expanded="false" class=""><a href="{% url "players" %}">Players</a></li>
-                            {# TODO predict url #}
                             <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
-                                aria-haspopup="true" aria-expanded="false"><a href="">Predict</a>
-                                <div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
-                                    <div class="uk-grid uk-dropdown-grid">
-                                        <div class="uk-width-1-1">
-                                            <ul class="uk-nav uk-nav-navbar">
-                                                <li><a href="#">Predict1</a>
-                                                </li>
-                                                <li><a href="#">Predict2</a>
-                                                </li>
-                                                <li><a href="#">Predict3</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                aria-haspopup="true" aria-expanded="false"><a href="{% url "predict" %}">Predict</a>
                             </li>
                             {# TODO donate url #}
-                            <li><a href="{% url "index" %}">Donate</a>
+                            <li><a href="{% url "index" %}">Team</a>
                             </li>
                         </ul>
                     </div>

@@ -16,11 +16,11 @@
         }
 
         .meta {
-            padding-top: .5rem;
+            padding-top: .4rem;
         }
 
         .meta ul li {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
@@ -38,9 +38,6 @@
         }
 
         .fa-star,
-        .fa-star-half-alt {
-            color: #fdbd00;
-        }
 
         .stats {
             font-size: 22px;
@@ -59,7 +56,7 @@
 
         ul li {
             font-size: 17px;
-            margin-top: .5rem;
+
         }
 
         ul li label {
@@ -83,13 +80,17 @@
         .pl li .p {
             margin-right: .5rem;
         }
+        hr.new1 {
+            border-top: 4px solid #fdbd00;
+            border-radius: 1.5px;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 {% endblock %}
 {% block content %}
-    <div class="container" style="color: white">
-        <div class="row" style="background: gray;margin-bottom: 1cm;border-radius: 33px">
+    <div class="container" style="color: black">
+        <div class="row" style="margin-bottom: 1cm;border-radius: 33px; padding-top: 0.7cm;border-color: black; border-style: solid; border-width: 4px">
             <div class="col-10 offset-1">
                 <div class="row py-4">
                     <div class="col-4 text-center">
@@ -101,39 +102,47 @@
                             <div class="col-12 meta">
                                 <ul>
                                     <li>
-                                        <span class="p" style="font-size: 2.7rem">{{ player.name }}</span>
-                                        <img alt="flag" src="{{ player.nationality_flag }}">
+                                        <span class="p" style="font-size: 2rem">{{ player.name }}</span>
+                                        <img alt="flag" src="{{ player.nationality_flag }}" style="height: 25px; width: 40px">
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col meta">
-                                <ul>
-                                    <li><span class="p">ID</span>{{ player.number }}</li>
-                                    <li><span class="p">AGE</span>{{ player.age }}</li>
-                                    <li><span class="p">Position</span>{{ player.position }}</li>
-                                </ul>
-                            </div>
-                            <div class="col meta">
+                            <div class="col-12 meta">
                                 <ul>
                                     <li>
-                                        <span class="p">Team</span>{{ player.club }}
-                                        <div><img class="club_logo" alt="club_logo" src="{{ player.club_logo }}"></div>
+                                        <span class="p"> Team</span>
+                                        <span class="p" style="font-size: 1.3rem; color: black;font-weight: normal;">{{ player.club }}</span>
+                                        <img alt="club_logo" src="{{ player.club_logo }}" style="height: 30px; width: 30px">
                                     </li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li><span class="p" style="padding-left: 3px">ID</span>{{ player.number }}</li>
+                                    <li><span class="p" style="padding-left: 3px">Age</span>{{ player.age }}</li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li><span class="p">Position</span>{{ player.position }}</li>
                                     <li><span class="p">Jersey Number</span>{{ player.jersey_number }}</li>
                                 </ul>
+                            </div>
+                            <div class="col-12 meta" style="padding-top: .2px">
+                                <hr class="new1">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row py-4 text-center" style="font-size: large">
+                <div class="row py-4 text-center" style="font-size: large; background-color: #fdbd00; border-radius: 25px; padding:5px !important;">
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Rating</span> {{ player.overall }}
+                        <span class="p" style="color: white">Rating</span> {{ player.overall }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Potential</span> {{ player.potential }}
+                        <span class="p" style="color: white">Potential</span> {{ player.potential }}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Value</span> €
+                        <span class="p" style="color: white">Value</span> €
                         {% if player.value > 1000 %}
                             {{ player.value|div:1000 }}M
                         {% else %}
@@ -141,7 +150,7 @@
                         {% endif %}
                     </div>
                     <div class="col-md-3 py-md-2 stats">
-                        <span class="p">Wage</span> €
+                        <span class="p" style="color: white">Wage</span> €
                         {% if player.wage > 1000 %}
                             {{ player.wage|div:1000 }}M
                         {% else %}
@@ -303,33 +312,33 @@
                         <canvas id="radar" height="300px"></canvas>
                     </div>
                     <div class="col-4 border py-3" style="font-size: medium">
-                        <ul>
-                            <li>
+                        <ul >
+                            <li style="margin-top: .7rem;">
                                 <label>Preferred Foot</label>
                                 {{ player.preferred_foot }}
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>International Reputation</label>
                                 {{ player.international_reputation }}
                                 <i class="fas fa-star"></i>
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>Weak Foot</label>
                                 {{ player.weak_foot }} <i class="fas fa-star"></i>
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>Skill Moves</label>
                                 {{ player.skill_moves }} <i class="fas fa-star"></i>
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>Work Rate</label>
                                 <span>{{ player.work_rate }}</span>
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>Body Type</label>
                                 <span>{{ player.body_type }}</span>
                             </li>
-                            <li>
+                            <li style="margin-top: .7rem;">
                                 <label>Release Clause</label>
                                 <span>€
                                     {% if player.release_clause > 1000 %}
@@ -543,7 +552,7 @@
         data = {{ data }};
 
         let ctx = document.getElementById('radar').getContext('2d');
-        Chart.defaults.global.defaultFontColor = 'white';
+        Chart.defaults.global.defaultFontColor = 'black';
         Chart.defaults.global.legend.display = false;
         let chart = new Chart(ctx, {
             type: 'radar',
@@ -556,7 +565,7 @@
                         font: {
                             weight: 'bold',
                         },
-                        color: '#4F240D',
+                        color: 'green',
                         align: 'start',
                     },
                     data: data,
@@ -566,10 +575,10 @@
             options: {
                 scale: {
                     angleLines: {
-                        color: 'white'
+                        color: 'black'
                     },
                     gridLines: {
-                        color: 'white'
+                        color: 'black'
                     },
                     ticks: {
                         beginAtZero: true,

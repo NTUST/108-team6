@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -87,5 +88,18 @@ class Player(models.Model):
     gk_reflexes = models.IntegerField()
     release_clause = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         ordering = ["-value", "-wage"]
+
+
+class TeamPlayer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('user', 'player')
