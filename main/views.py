@@ -5,10 +5,14 @@ from django.db.models import Case, When, Value, BooleanField
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
-
+from django.contrib.auth import authenticate
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect
 from main.models import Player, TeamPlayer
 from main.utils import parse
-
+from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, "index.html")
@@ -146,3 +150,49 @@ def edit_team(request):
         else:
             TeamPlayer.objects.filter(user_id=request.user.id, player_id=player_id).delete()
         return JsonResponse(data={}, status=200)
+
+def login(request):
+    return render(request, "login.html")
+
+def register(request):
+	return render(request, "register.html")
+
+def register_form(request):
+	username = request.POST['username']
+	email = request.POST['email']
+	password = request.POST['password']
+
+	user = User.objects.create_user(username,email,password)
+	if user:
+		return redirect('/',locals())
+	else:
+		return redirect('/signup',locals())
+
+def login_form(request):
+
+	if request.user.is_authenticated:
+		return redirect('/')
+	if request.method == 'POST':
+		login_name=request.POST['username'].strip()
+		login_password=request.POST['password']
+		print(login_name, login_password)
+		user = authenticate(username=login_name, password=login_password)
+		if user is not None:
+			if user.is_active:
+				auth.login(request, user)
+				messages.add_message(request, messages.SUCCESS, '成功登入了')
+				# print('ya')
+				return redirect('../index/')
+			else:
+				messages.add_message(request, messages.WARNING, '帳號尚未啟用')
+		else:
+			messages.add_message(request, messages.WARNING, '登入失敗')
+	else:
+		messages.add_message(request, messages.INFO,'請檢查輸入的欄位內容')
+
+	return render(request, "login.tml")
+
+def logout(request):
+    auth.logout(request)
+    messages.add_message(request, messages.INFO, "成功登出了")
+    return redirect('index/')

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for("static",filename="img/icon.png") }}">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+
+    <style>
+        body {
+            height: 100%;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            padding-top: 10px;
+            margin: auto;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+            
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .form-signin img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-warning text-white">
+
+    <a class="navbar-brand" href="">FOOTTELLER</a>
+
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item">
+            <a class="nav-link p-2" href="" target="_blank" rel="noopener">
+                Home
+            </a>
+        </li>
+    </ul>
+</header>
+
+<body class="text-center">
+    <div class="container" style="color: black">
+        <div class="row"
+            style="margin-top:1.2cm; margin-bottom: 0.5cm; margin-right: 8cm; margin-left: 8cm;border-radius: 33px; padding-top: 0.5cm;border-color: gray; border-style: solid; border-width: 2px">
+            <div class="col-10 offset-1">
+                <form action='../login_form/' class="form-signin" method="POST">
+                    {% csrf_token %}
+                    <img class="mb-4" src="{{ url_for("static",filename="img/title1.png") }}" alt="">
+                    <h1 class="h1 mb-3 font-weight-normal" style="color: #fdbd00; padding-bottom: 10px">FOOTTELLER</h1>
+                    <label for="inputEmail" class="sr-only" style="margin-top: 10px">Email address</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                        required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                        required>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember" checked> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-warning btn-block text-white" type="submit">Sign in</button>
+                </form>
+                <a class="sign up" href="/register/">Sign up</a>
+                <p class="mt-5 mb-3 text-muted">&copy; Mr. Zhao</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        {% if error %}
+        alert("{{ error }}");
+        {% endif %}
+    </script>
+</body>
+
+</html>
