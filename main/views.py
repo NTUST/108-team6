@@ -87,12 +87,14 @@ def get_player(request, player_name):
 
 
 def get_team(request):
-    clubs = list(Player.objects.values_list("club", flat=True).order_by("club").distinct("club"))
+    title="Team"
+    clubs = ["MyTeam"]
+    clubs.extend(list(Player.objects.values_list("club", flat=True).order_by("club").distinct("club")))
     team_name = request.GET.get("team")
-    if team_name:
-        player_list = Player.objects.filter(club=team_name)
-    else:
+    if not team_name or team_name == "MyTeam":
         player_list = Player.objects.filter(teamplayer__user_id=request.user.id)
+    else:
+        player_list = Player.objects.filter(club=team_name)
     order = request.GET.get("order")
     order_by = request.GET.get("order_by")
     if order and order_by:

@@ -32,9 +32,9 @@
   margin-top: -45px;
   position: relative;
   background: #ffc722;">
-                <li><a href="http://h-sportak.torbara.com/yellow/index.html">Home</a>
+                <li><a href="{% url "index" %}">Home</a>
                 </li>
-                <li class="uk-active"><span>Players</span>
+                <li class="uk-active"><span>{% block title %}{{ title }}{% endblock %}</span>
                 </li>
             </ul>
         </div>

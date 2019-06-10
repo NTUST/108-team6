@@ -69,14 +69,13 @@
                                     <div class="button-group filter-button-group"
                                          data-uk-sticky="{top:70, boundary: true}">
                                         <div class="uk-container uk-container-center">
-                                            <div class="label-menu">OUR team</div>
-                                            <button class="active" data-filter="*">all</button>
-                                            <button data-filter="1">DEFENDER</button>
-                                            <button data-filter="2">STRIKER</button>
-                                            <button data-filter="3">goalkeeper
-                                            </button>
-                                            <button data-filter="4">MIDFIELDER
-                                            </button>
+                                            <form action="">
+                                                <select class="label-menu" name="team" onchange="this.form.submit()">
+                                                    {% for club in clubs %}
+                                                    <option value="{{ club }}">{{ club }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="list-players-wrap" id='boundary'>
@@ -88,33 +87,36 @@
                                         </div>
                                         <div class="uk-container uk-container-center alt">
                                             <div class="uk-grid grid players-list">
+                                                {% for player in player_list %}
                                                 <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item tt_81747b4426a9882884c1f83eda78844f">
                                                     <div class="player-article">
                                                         <div class="wrapper">
                                                             <div class="img-wrap">
                                                                 <div class="player-number">
-                                                                    <span>35</span>
+                                                                    <span>{{ player.jersey_number }}</span>
                                                                 </div>
                                                                 <div class="bio">
                                                                     <span>
-                                                                        <a href="">X</a>
+                                                                        <a href="{% url "player" player_name=player.number %}">{{ player.overall }}</a>
                                                                     </span>
                                                                 </div>
-                                                                <img src="https://cdn.sofifa.org/players/4/19/20801@3x.png"
+                                                                <img src="{{ player.photo }}"
                                                                      class="img-polaroid photo" alt="photo"
                                                                      onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
                                                             </div>
                                                             <div class="info">
                                                                 <div class="name">
                                                                     <h3>
-                                                                        <a href="">Johnny Thompson</a>
+                                                                        <a href="{% url "player" player_name=player.number %}">{{ player.name }}</a>
                                                                     </h3>
                                                                 </div>
-                                                                <div class="position">goalkeeper</div>
+                                                                <div class="position">{{ player.position }}</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {% endfor %}
+                                            {% if not team_name or team_name == "MyTeam" %}
                                                 <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item">
                                                     <div class="player-article">
                                                         <div class="wrapper">
@@ -142,6 +144,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            {% endif %}
                                             </div>
                                         </div>
                                     </div>
