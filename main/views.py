@@ -148,3 +148,8 @@ def edit_team(request):
         else:
             TeamPlayer.objects.filter(user_id=request.user.id, player_id=player_id).delete()
         return JsonResponse(data={}, status=200)
+
+
+def create_player(request):
+    title = "Create"
+    return render(request, "create_player.html", locals())

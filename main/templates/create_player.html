@@ -1,0 +1,601 @@
+{% extends "footteller_header_template.html" %}
+{% load static %}
+{% load mathfilters %}
+{% block head %}
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous">
+    <style>
+        .avatar {
+            height: 17rem;
+            width: 17rem;
+        }
+
+        .meta {
+            padding-top: .4rem;
+        }
+
+        .meta ul li {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta ul li .p {
+            color: #fdbd00;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .club_logo {
+            height: 3rem;
+            width: 3rem;
+            margin-top: .5rem;
+            margin-left: 5rem;
+        }
+
+        .fa-star,
+
+        .stats {
+            font-size: 22px;
+        }
+
+        .stats .p {
+            color: #fdbd00;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 17px;
+
+        }
+
+        ul li label {
+            padding-right: .5rem;
+            color: #fdbd00;
+            font-weight: bold;
+        }
+
+        .rating {
+            text-align: center;
+        }
+
+        .rating h5 {
+            color: #fdbd00;
+        }
+
+        .attr h4 {
+            color: #fdbd00;
+        }
+
+        .pl li .p {
+            margin-right: .5rem;
+        }
+        hr.new1 {
+            border-top: 4px solid #fdbd00;
+            border-radius: 1.5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+{% endblock %}
+{% block content %}
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <div class="container" style="color: black">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h3>Create Your Own Player</h3>
+            </div>
+        </div>
+        <div class="row mb-4" style="border-radius: 33px; padding-top: 0.7cm;border-color: black; border-style: solid; border-width: 4px">
+            <div class="col-10 offset-1">
+                <div class="row py-4">
+                    <div class="col-4 text-center">
+                        <img class="avatar" alt="photo" src=""
+                             onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-12 meta">
+                                <ul>
+                                    <li>
+                                        <span class="p" style="font-size: 2rem">name</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12 meta">
+                                <ul>
+                                    <li>
+                                        <span class="p"> Team</span>
+                                        <span class="p" style="font-size: 1.3rem; color: black;font-weight: normal;">club</span>
+                                        <img alt="club_logo" src="" style="height: 30px; width: 30px">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li><span class="p" style="padding-left: 3px">ID</span></li>
+                                    <li><span class="p" style="padding-left: 3px">Age</span></li>
+                                </ul>
+                            </div>
+                            <div class="col meta">
+                                <ul>
+                                    <li><span class="p">Position</span></li>
+                                    <li><span class="p">Jersey Number</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 meta" style="padding-top: .2px">
+                                <hr class="new1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row py-4 text-center" style="font-size: large; background-color: #fdbd00; border-radius: 25px; padding:5px !important;">
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p" style="color: white">Rating</span>
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p" style="color: white">Potential</span>
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p" style="color: white">Value</span> €
+                    </div>
+                    <div class="col-md-3 py-md-2 stats">
+                        <span class="p" style="color: white">Wage</span> €
+                    </div>
+                </div>
+                <div class="row py-4">
+                    <div class="col-4 border py-3 rating">
+                        <h5>Real Overall Rating</h5>
+                        <div class="row mt-3">
+                            <div class="col pr-1"></div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LS<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    ST<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RS<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LW<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LF<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CF<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RF<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RW<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1"></div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LAM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CAM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RAM<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LCM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RCM<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RM<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LWB<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LDM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CDM<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RDM<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RWB<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col pr-1">
+                                <div class="bg-success">
+                                    LB<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    LCB<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    CB<br>
+                                </div>
+                            </div>
+                            <div class="col px-1">
+                                <div class="bg-success">
+                                    RCB<br>
+                                </div>
+                            </div>
+                            <div class="col pl-1">
+                                <div class="bg-success">
+                                    RB<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 border py-3">
+                        <canvas id="radar" height="300px"></canvas>
+                    </div>
+                    <div class="col-4 border py-3" style="font-size: medium">
+                        <ul >
+                            <li style="margin-top: .7rem;">
+                                <label>Preferred Foot</label>
+
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>International Reputation</label>
+
+                                <i class="fas fa-star"></i>
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>Weak Foot</label>
+                                 <i class="fas fa-star"></i>
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>Skill Moves</label>
+                                 <i class="fas fa-star"></i>
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>Work Rate</label>
+                                <span></span>
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>Body Type</label>
+                                <span></span>
+                            </li>
+                            <li style="margin-top: .7rem;">
+                                <label>Release Clause</label>
+                                <span>€
+                                   </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="attr">
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h4>Attacking</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p66"></span>
+                                        <span>Crossing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p73"></span>
+                                        <span>Finishing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p40"></span>
+                                        <span>Heading Accuracy</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75"></span>
+                                        <span>Short Passing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p76"></span>
+                                        <span>Volleys</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Skill</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p83"></span>
+                                        <span>Dribbling</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p80"></span>
+                                        <span>Curve</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p64"></span>
+                                        <span>FK Accuracy</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p68"></span>
+                                        <span>Long Passing</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p78"></span>
+                                        <span>Ball Control</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Movement</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p93"></span>
+                                        <span>Acceleration</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p91"></span>
+                                        <span>Sprint Speed</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p94"></span>
+                                        <span>Agility</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p77"></span>
+                                        <span>Reactions</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p95"></span>
+                                        <span>Balance</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Power</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p77"></span>
+                                        <span>Shot Power</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p70"></span>
+                                        <span>Jumping</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p88"></span>
+                                        <span>Stamina</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p34"></span>
+                                        <span>Strength</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p71"></span>
+                                        <span>Long Shots</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <h4>Mentality</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p55"></span>
+                                        <span>Aggression</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p43"></span>
+                                        <span>Interceptions</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75"></span>
+                                        <span>Positioning</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p75"></span>
+                                        <span>Vision</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p64"></span>
+                                        <span>Penalties</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p81"></span>
+                                        Composure
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Defending</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p28"></span>
+                                        <span>Marking</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p41"></span>
+                                        <span>Standing Tackle</span>
+                                    </li>
+                                    <li>
+                                        <span class="label p p36"></span>
+                                        <span>Sliding Tackle</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <h4>Goalkeeping</h4>
+                                <ul class="pl">
+                                    <li>
+                                        <span class="label p p7"></span>
+                                        GK Diving
+                                    </li>
+                                    <li>
+                                        <span class="label p p10"></span>
+                                        GK Handling
+                                    </li>
+                                    <li>
+                                        <span class="label p p10"></span>
+                                        GK Kicking
+                                    </li>
+                                    <li>
+                                        <span class="label p p8"></span>
+                                        GK Positioning
+                                    </li>
+                                    <li>
+                                        <span class="label p p6"></span>
+                                        GK Reflexes
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col text-center">
+                <form>
+                    <input class="button btn btn-primary"
+                       style="background-color:#fdbd00; border-color: #fdbd00; color: black; font-weight: bold"
+                       type="submit" value="Create"
+                       name="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        data = [1, 2, 3, 4, 5, 6, 7];
+
+        let ctx = document.getElementById('radar').getContext('2d');
+        Chart.defaults.global.defaultFontColor = 'black';
+        Chart.defaults.global.legend.display = false;
+        let chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['ATK', 'SKI', 'MOV', 'POW', 'MNT', 'DEF', 'GOL'],
+                datasets: [{
+                    backgroundColor: 'rgba(253, 189, 0, 0.05)',
+                    borderColor: '#fdbd00',
+                    datalabels: {
+                        font: {
+                            weight: 'bold',
+                        },
+                        color: 'green',
+                        align: 'start',
+                    },
+                    data: data,
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scale: {
+                    angleLines: {
+                        color: 'black'
+                    },
+                    gridLines: {
+                        color: 'black'
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        min: 0,
+                        stepSize: 20,
+                        display: false,
+                    },
+                },
+            }
+        });
+    </script>
+{% endblock %}
+
+
+
+

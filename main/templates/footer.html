@@ -1,0 +1,113 @@
+{% extends "footteller_header_template.html" %}
+{% load static %}
+{% block footer %}
+<div class="bottom-wrapper">
+    <div class="tm-bottom-f-box">
+        <div class="uk-container uk-container-center">
+            <section id="tm-bottom-f" class="tm-bottom-f uk-grid"
+                     data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <div class="uk-panel">
+                        <div class='footer-logo'>
+                            <a href="/">
+                                <img src="{% static "/images/footer-logo-img.png" %}" alt="footer-logo"/>
+                                <span>Sport</span>
+                                .ak
+                            </a>
+                        </div>
+                        <div class='clear'></div>
+                        <p class='footer-about-text'>123456
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="tm-bottom-g-box">
+        <div class="uk-container uk-container-center">
+            <section id="tm-bottom-g" class="tm-bottom-f uk-grid"
+                     data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                <div class="uk-width-1-1 uk-width-medium-1-2">
+                    <div class="uk-panel">
+                        <div class="acymailing_module">
+                            <div class="acymailing_fulldiv">
+                                <form>
+                                    <div class="acymailing_module_form">
+                                        <div class="mail-title">Newsletters</div>
+                                        <div class="acymailing_introtext">Suspendisse sodales, magna at
+                                            dignissim cursus, velit ex porttitor eros.
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="space"></div>
+                                        <table class="acymailing_form">
+                                            <tr>
+                                                <td class="acyfield_email acy_requiredField">
+                                                    <span class="mail-wrap">
+                                                        <input class="inputbox" type="text"
+                                                               name="user[email]" style="width:80%"
+                                                               placeholder="Enter your email"
+                                                               title="Enter your email"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="acysubbuttons">
+                                                    <span class="submit-wrap">
+                                                        <span class="submit-wrapper">
+                                                            <input class="button subbutton btn btn-primary"
+                                                                   type="submit" value="Subscribe"
+                                                                   name="Submit"/>
+                                                        </span>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <footer id="tm-footer" class="tm-footer">
+        <div class="uk-panel">
+            <div class="uk-container uk-container-center">
+                <div class="uk-grid">
+                    <div class="uk-width-1-1">
+                        <div class='footer-wrap'>
+                            <div class='foot-menu-wrap'>
+                                <!-- START: Modules Anywhere -->
+                                <ul class="nav menu">
+                                    <li class="item-165">
+                                        <a href="">About</a>
+                                    </li>
+                                    <li class="item-166 current active">
+                                        <a href="">Players</a>
+                                    </li>
+                                    <li class="item-167">
+                                        <a href="">Match</a>
+                                    </li>
+                                    <li class="item-168">
+                                        <a href="">Results</a>
+                                    </li>
+                                    <li class="item-169">
+                                        <a href="">News</a>
+                                    </li>
+                                </ul>
+                                <!-- END: Modules Anywhere -->
+                            </div>
+                            <div class='copyrights'>
+                                Copyright © 2019 <a href="/">55688</a>
+                                . All Rights Not Reserved.
+                            </div>
+                            <div class='clear'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}
