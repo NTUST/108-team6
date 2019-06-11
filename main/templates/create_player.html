@@ -95,15 +95,15 @@
             </div>
         </div>
 
+        <div class="row mb-4">
+            <div class="col text-center">
+                <input class="button btn btn-primary" id="random" onclick="random_fill()"
+                       style="background-color:#fdbd00; border-color: #fdbd00; color: white; font-weight: bold;cursor: pointer"
+                       value="Random">
+            </div>
+        </div>
         <form class="form-horizontal" role="form" method="post">
             {% csrf_token %}
-            <div class="row mb-4">
-                <div class="col text-center">
-                    <input class="button btn btn-primary" id="random" onclick="random_fill()"
-                           style="background-color:#fdbd00; border-color: #fdbd00; color: white; font-weight: bold;cursor: pointer"
-                           value="Random">
-                </div>
-            </div>
             <div class="row mb-4"
                  style="border-radius: 33px; padding-top: 0.7cm;border-color: gray; border-style: solid; border-width: 4px">
                 <div class="col-10 offset-1">

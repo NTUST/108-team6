@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
-from analysis.views import predict_wage
+from analysis.views import predict_value
 from main.constants import CLUBS
 from main.models import Player, TeamPlayer
 from main.utils import parse, parse_query_string
@@ -243,7 +243,7 @@ def create_player(request):
                 inputs.append(1)
             else:
                 inputs.append(0)
-        player.release_clause = player.wage = player.value = predict_wage(numpy.array(inputs)) / 1000
+        player.release_clause = player.wage = player.value = predict_value(numpy.array(inputs)) / 1000
         player.save()
         TeamPlayer.objects.create(user_id=request.user.id, player_id=player.id)
         return redirect(to="team")

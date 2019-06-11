@@ -85,14 +85,15 @@ def predict_result(request):
         else:
             inputs.append(0)
 
-    wage = predict_wage(np.array(inputs))
+    value = predict_value(np.array(inputs))
+    value = "{:.2f}M".format(value/1000000) if value > 1000000 else "{:.2f}M".format(value/1000)
     #     import psutil
     #     process = psutil.Process(os.getpid())
     #     print(process.memory_info().rss/786/1000000,' Mb')  # in bytes
-    return HttpResponse(json.dumps({'wage': wage}), content_type='application/json')
+    return HttpResponse(json.dumps({'value': value}), content_type='application/json')
 
 
-def predict_wage(inputs):
+def predict_value(inputs):
     save_model_path = os.path.dirname(os.path.abspath(__file__)) + '/model.h5'
     model = Model(inputs.shape[0])
     model.load_weights(save_model_path)

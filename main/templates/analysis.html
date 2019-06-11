@@ -61,6 +61,13 @@
             transition: 800ms ease all;
         }
     </style>
+    <script>
+        function random_fill() {
+            $("input[type='number'][max='100']").each(function () {
+                this.value = Math.floor(Math.random() * (100 + 1))
+            });
+        }
+    </script>
 {% endblock %}
 {% block content %}
     <div class="preloader">
@@ -68,6 +75,18 @@
     </div>
 
     <div class="container">
+        <div id="warning" class="row" style="color: red; font-weight: bold;display: none;font-size: 25px">
+            <div class="text-center col-12">
+                Please fill in the value
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col text-center">
+                <input class="button btn btn-primary" id="random" onclick="random_fill()"
+                       style="background-color:#fdbd00; border-color: #fdbd00; color: white; font-weight: bold;cursor: pointer"
+                       value="Random">
+            </div>
+        </div>
         <div class="row">
             <div class="col-4 offset-4 text-center">
                 <div id="result_panel" style="display:none">
@@ -75,7 +94,7 @@
                         <div class="panel-heading"
                              style="border-top-left-radius: 23px;border-top-right-radius: 23px;
                                  background-color:#FFC722; color: black; font-weight: bold">
-                            Predict Result
+                            Predict Marketing Value
                         </div>
                         <div class="panel-body">
                             <div id="result" style="font-size: medium"></div>
@@ -103,7 +122,7 @@
                                                        style="color: black; font-weight: normal; font-size: medium">
                                                     {{ v }}</label>
                                                 <div class="col-sm-3 px-1">
-                                                    <input class="form-control" type="number" min="0" max="100"
+                                                    <input required class="form-control" type="number" min="0" max="100"
                                                            name="{{ v }}" required>
                                                 </div>
                                             </div>
@@ -127,7 +146,7 @@
                                                     {{ j }}</label>
                                                 <div class="col-sm-2 px-1">
                                                     {% if j != '' %}
-                                                        <input class="form-control" type="checkbox"
+                                                        <input required class="form-control" type="checkbox"
                                                                name="prefer" value="{{ j }}">
                                                     {% endif %}
                                                 </div>
@@ -139,9 +158,9 @@
                         </div>
                     </div>
                     <div class="col-2 offset-5 my-4">
-                        <input id="submit" type="button" class="button btn btn-primary"
+                        <input required id="submit" type="button" class="button btn btn-primary"
                                style="background-color:#fdbd00; border-color: #fdbd00; color: black; font-weight: bold"
-                               onclick="showDiv()" value="submit">
+                               value="submit">
                         <br><br>
                     </div>
                 </div>
@@ -152,10 +171,6 @@
     </form>
 
     <script>
-        function showDiv() {
-            document.getElementById('result_panel').style.display = "block";
-        }
-
         let arr_list = ['Age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance', 'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy', 'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy', 'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning', 'Reactions', 'Short Passing', 'Shot Power', 'Sliding Tackle', 'Sprint Speed', 'Stamina', 'Standing Tackle', 'Strength', 'Vision', 'Volleys'];
         $(document).ready(function () {
 
@@ -165,26 +180,27 @@
                 for (let i = 0; i < arr_list.length; i++) {
                     let query = '*[name="' + arr_list[i] + '"]';
                     let value = $(query).val();
+                    if (!value) {
+                        document.getElementById('warning').style.display = "block";
+                        document.getElementById('result_panel').style.display = "none";
+                        return
+                    }
+                    document.getElementById('warning').style.display = "none";
+                    document.getElementById('result_panel').style.display = "block";
                     inputs[arr_list[i]] = value;
                 }
                 let prefer_list = [];
                 $("[name=prefer]:checkbox:checked").each(function () {
                     prefer_list.push($(this).val());
                 });
-
                 inputs['prefer'] = prefer_list;
-
-                console.log(inputs);
 
                 $.ajax({
                     type: "POST",
                     url: "/analysis_form/",
                     data: inputs,
                     success: function (data) {
-                        for (let i in data) {
-                            $('#result').html(i + " : " + data[i] + "<br>");
-                            console.log(i)
-                        }
+                        $('#result').html("€ " + data["value"]);
                     }
                 });
             });
