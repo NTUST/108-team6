@@ -1,0 +1,189 @@
+{% extends "footteller_header_template.html" %}
+{% load static %}
+{% block head %}
+    <style>
+        .photo {
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="tm-noblog tt-players-page">
+        <div class="over-wrap">
+            <div class="uk-container uk-container-center">
+                <div id="tm-middle" class="tm-middle uk-grid" data-uk-grid-match="" data-uk-grid-margin="">
+                    <div class="tm-main uk-width-medium-1-1">
+                        <main id="tm-content" class="tm-content">
+                            <div id="system-message-container"></div>
+                            <section id="cobalt-section-1">
+                                <div class="list-players-wrapper">
+                                    <div class="button-group filter-button-group" style="padding: 10px"
+                                         data-uk-sticky="{top:70, boundary: true}">
+                                        <div class="uk-container uk-container-center">
+                                            <form action="" style="display: inline;">
+                                                <select style="text-transform: none" class="label-menu" name="team"
+                                                        onchange="this.form.submit()">
+                                                    {% for club in clubs %}
+                                                        <option style="text-transform: none" value="{{ club }}"
+                                                                {% if club == team_name %}
+                                                                selected {% endif %}>
+                                                            {{ club }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </form>
+                                            <div style="text-align: right;float: right;">
+                                                <button onclick="window.location.href='{% url 'edit-team' %}'"
+                                                        style="padding: 5px 20px 5px 20px;text-transform: none;background: #ffc722;color: black;border-radius: 20px;font-size: 15px;cursor: pointer">
+                                                    Edit MyTeam
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-players-wrap" id='boundary'>
+                                        <div class="uk-container uk-container-center alt">
+                                            <div class="uk-grid grid players-list">
+                                                {% for player in player_list %}
+                                                    <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item tt_81747b4426a9882884c1f83eda78844f">
+                                                        <div class="player-article">
+                                                            <div class="wrapper">
+                                                                <a href="{% url "player" player_number=player.number %}">
+                                                                    <div class="img-wrap">
+                                                                        <div class="player-number">
+                                                                            <span>{{ player.jersey_number }}</span>
+                                                                        </div>
+                                                                        <div class="bio">
+                                                                            <span>{{ player.overall }}</span>
+                                                                        </div>
+
+                                                                        <img src="{{ player.photo }}"
+                                                                             class="img-polaroid photo" alt="photo"
+                                                                             onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                                                                    </div>
+                                                                </a>
+                                                                <div class="info">
+                                                                    <div class="name">
+                                                                        <h3>
+                                                                            <a href="{% url "player" player_number=player.number %}">{{ player.name }}</a>
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="position">{{ player.position }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                                {% if not team_name or team_name == "MyTeam" %}
+                                                    <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item">
+                                                        <div class="player-article">
+                                                            <div class="wrapper">
+                                                                <div class="img-wrap">
+                                                                    <div class="player-number">
+                                                                        <span>???</span>
+                                                                    </div>
+                                                                    <div class="bio">
+                                                                    <span>
+                                                                        <a href="{% url "edit-team" %}">Add</a>
+                                                                    </span>
+                                                                    </div>
+                                                                    <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
+                                                                         class="img-polaroid" alt="Benjamin Mendoza"
+                                                                         title="Benjamin Mendoza">
+                                                                </div>
+                                                                <div class="info">
+                                                                    <div class="name">
+                                                                        <h3>
+                                                                            <a href="{% url "edit-team" %}">Add New
+                                                                                Player</a>
+                                                                        </h3>
+                                                                        <div class="position">???</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tm-bottom-e-box tm-full-width">
+                <div class="uk-container uk-container-center">
+                    <section id="tm-bottom-e" class="tm-bottom-e uk-grid"
+                             data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+                        <div class="uk-width-1-1">
+                            <div class="uk-panel">
+                                <div class="all-statistics-wrap uk-cover-background"
+                                     style="background-image: url('{% static "/images/all-stat-bg.jpg" %}');">
+                                    <div class="uk-container uk-container-center alt">
+                                        <div class="uk-grid">
+                                            <div class="uk-width-1-1">
+                                                <h3 class="title">
+                                                    All <span>Statistics</span>
+                                                </h3>
+                                            </div>
+                                            <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                                                <div class="item">
+                                                    <div class="icon">
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="number">35</div>
+                                                        <div class="text">Rating</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                                                <div class="item">
+                                                    <div class="icon">
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="number">12</div>
+                                                        <div class="text">Potential</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                                                <div class="item">
+                                                    <div class="icon">
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="number">13</div>
+                                                        <div class="text">Value</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uk-width-medium-1-4 uk-width-small-1-2">
+                                                <div class="item">
+                                                    <div class="icon">
+                                                        <img src="{% static "/images/stat-icon.png" %}" alt=""/>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="number">8</div>
+                                                        <div class="text">Wage</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

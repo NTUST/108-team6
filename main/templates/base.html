@@ -4,57 +4,63 @@
 
 <head>
     <title>{% block title %}FOOTTELLER{% endblock %}</title>
-    <link href="{% static "theme.css" %}" rel="stylesheet" type="text/css">
+    <script src="{% static "/js/jquery.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/jquery-noconflict.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/jquery-migrate.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/bootstrap.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "/js/isotope.pkgd.min.js" %}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{% static "/css/theme.css" %}">
+    <script src="{% static "/js/theme.js" %}"></script>
     {% block head %}{% endblock %}
 </head>
 
 <body>
-    <div class="over-wrap">
-        <div class="tm-menu-box">
-            <div style="height: 70px;" class="uk-sticky-placeholder">
-                <div class="uk-sticky-placeholder" style="height: 50px; margin: 0px;">
-                    <nav style="margin: 0px;" class="tm-navbar uk-navbar" data-uk-sticky="">
+<div class="over-wrap">
+    <div class="tm-menu-box">
+        <div style="height: 70px;" class="uk-sticky-placeholder">
+            <div class="uk-sticky-placeholder" style="height: 50px; margin: 0px;">
+                <nav style="margin: 0px;" class="tm-navbar uk-navbar" data-uk-sticky="">
 
-                        <div class="uk-container uk-container-center">
-                            <a class="tm-logo uk-float-left" href="index.html">
-                                <img src="{% static "soccerlogo.png" %}" alt="logo" title="logo">
-                                <span style="font-family: Oswald">FOOT<em>TELLER</em></span>
-                            </a>
+                    <div class="uk-container uk-container-center">
+                        <a class="tm-logo uk-float-left" href="index.html">
+                            <img src="{% static "soccerlogo.png" %}" alt="logo" title="logo">
+                            <span style="font-family: Oswald">FOOT<em>TELLER</em></span>
+                        </a>
 
-                            <ul class="uk-navbar-nav uk-hidden-small">
-                                <li class="uk-parent"><a href="{% url "index" %}">Home</a>
-                                </li>
-                                <li data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}" aria-haspopup="true"
-                                    aria-expanded="false" class=""><a href="{% url "players" %}">Players</a></li>
-                                <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
-                                    aria-haspopup="true" aria-expanded="false"><a href="{% url "predict" %}">Predict</a>
-                                </li>
-                                {# TODO donate url #}
-                                <li><a href="{% url "team" %}">Team</a>
-                                </li>
-                                <!-- <li><a href="" style="color: #ffc722">Login</a></li> -->
-                                {% if request.user.is_authenticated %}
+                        <ul class="uk-navbar-nav uk-hidden-small">
+                            <li class="uk-parent"><a href="{% url "index" %}">Home</a>
+                            </li>
+                            <li data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}" aria-haspopup="true"
+                                aria-expanded="false" class=""><a href="{% url "players" %}">Players</a></li>
+                            <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
+                                aria-haspopup="true" aria-expanded="false"><a href="{% url "predict" %}">Predict</a>
+                            </li>
+                            {# TODO donate url #}
+                            <li><a href="{% url "team" %}">Team</a>
+                            </li>
+                            <!-- <li><a href="" style="color: #ffc722">Login</a></li> -->
+                            {% if request.user.is_authenticated %}
                                 <li><span style="color: #ffc722; height: auto; padding: 0 24px;
                                     height: auto;
                                     font-size: 15px;
                                     font-family: Oswald;
                                     text-transform: uppercase;
                                     line-height: 70px;
-                                   ">{{request.user}}</span></li>
+                                   ">{{ request.user }}</span></li>
                                 <li><a href="logout/" style="color: #ffc722">Logout</a></li>
-                                {% else %}
+                            {% else %}
                                 <li><a href="login/" style="color: #ffc722">Login</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
-        {% block body %}
-        {% endblock %}
     </div>
-    
+    {% block body %}
+    {% endblock %}
+</div>
+
 </body>
 
 </html>
