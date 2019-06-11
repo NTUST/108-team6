@@ -152,4 +152,32 @@ def edit_team(request):
 
 def create_player(request):
     title = "Create"
+
+    positions = ['LS', 'ST', 'RS', 'LW', 'LF', 'CF', 'RF', 'RW', 'LAM', 'CAM', 'RAM', 'LM', 'LCM', 'CM', 'RCM', 'RM',
+                 'LWB', 'LDM', 'CDM', 'RDM', 'RWB', 'LB', 'LCB', 'CB', 'RCB', 'RB']
+    rating = [
+        ['', 'LS', 'ST', 'RS', ''],
+        ['LW', 'LF', 'CF', 'RF', 'RW'],
+        ['', 'LAM', 'CAM', 'RAM', ''],
+        ['LM', 'LCM', 'CM', 'RCM', 'RM'],
+        ['LWB', 'LDM', 'CDM', 'RDM', 'RWB'],
+        ['LB', 'LCB', 'CB', 'RCB', 'RB']
+    ]
+
+    attributes = {
+        'Attacking': ['Crossing', 'Finishing', 'Heading Accuracy', 'Short Passing', 'Volleys'],
+        'Skill': ['Dribbling', 'Curve', 'FK Accuracy', 'Long Passing', 'Ball Control'],
+        'Movement': ['Acceleration', 'Sprint Speed', 'Agility', 'Reactions', 'Balance'],
+        'Power': ['Shot Power', 'Jumping', 'Stamina', 'Strength', 'Long Shots'],
+        'Mentality': ['Aggression', 'Interceptions', 'Positioning', 'Vision', 'Penalties', 'Composure'],
+        'Defending': ['Marking', 'Standing Tackle', 'Sliding Tackle'],
+        'Goalkeeping': ['GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes'],
+    }
+
+    preferred_foot = ['right', 'left']
+    range_5 = ['1', '2', '3', '4', '5']
+    work_rate = ['High/ High', 'High/ Low', 'High/ Medium', 'Low/ High', 'Low/ Low', 'Low/ Medium', 'Medium/ High',
+                 'Medium/ Low', 'Medium/ Medium']
+    body_type = ['C. Ronaldo', 'Courtois', 'Lean', 'Messi', 'Neymar', 'Normal', 'Stocky']
+
     return render(request, "create_player.html", locals())
