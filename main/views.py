@@ -1,8 +1,13 @@
 import threading
 
+from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import User
 from django.db.models import Case, When, Value, BooleanField
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
@@ -182,3 +187,32 @@ def create_player(request):
     body_type = ['C. Ronaldo', 'Courtois', 'Lean', 'Messi', 'Neymar', 'Normal', 'Stocky']
 
     return render(request, "create_player.html", locals())
+
+
+def register(request):
+    if request.method == "GET":
+        return render(request, "register.html")
+    user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+    if user:
+        return redirect('/login', locals())
+    else:
+        return render(request, "register.html")
+
+
+def login(request):
+    if request.user.is_authenticated:
+        return redirect(to='index')
+    if request.method == 'POST':
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            if user.is_active:
+                auth.login(request, user)
+                messages.add_message(request, messages.SUCCESS, '成功登入了')
+                return redirect(to="index")
+
+    return render(request, "login.html")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect(to='index')

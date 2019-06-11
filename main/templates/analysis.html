@@ -1,6 +1,7 @@
 {% extends "footteller_header_template.html" %}
 {% load static %}
     {% block content %}
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Latest compiled and minified CSS -->
@@ -120,7 +121,7 @@ $(document).ready(function(){
         transition: 800ms ease all;
     }
 </style>
-  <div style="font-size:13px;font-family: Oswald;  margin-left: 150px;margin-right: 150px;">
+  <div class="container" style="font-size:13px;font-family: Oswald;  margin-left: 300px;margin-right: 300px;">
   <div class="form-group">
         <div class="col-sm-3">
                 <div class="panel panel-primary" style="border-radius: 23px">
@@ -279,7 +280,7 @@ $(document).ready(function(){
 
 
 </div>
-<div class="form-group">
+<div class="row">
                 <div class="col-sm-3">
                         <div class="panel panel-primary" style="border-radius: 23px">
         
@@ -442,7 +443,7 @@ $(document).ready(function(){
 
                 
 <div class="panel-heading" align="center" style="border-top-left-radius: 23px;border-top-right-radius: 23px;ont-size:20px;background-color:#FFC722;">Prefer Position</div>  
-<div class="form-group" >
+<div class="row">
   <label class="col-sm-2 control-label">CAM</label>
   <div class="col-sm-1">
           <input class="form-control" type="checkbox" name="prefer" value="CAM">
@@ -465,7 +466,7 @@ $(document).ready(function(){
   </div>
 
 </div>
-<div class="form-group">
+<div class="row">
   <label class="col-sm-2 control-label">GK</label>
   <div class="col-sm-1">
           <input class="form-control" type="checkbox" name="prefer" value="GK">
@@ -488,7 +489,7 @@ $(document).ready(function(){
   </div>
 
 </div>
-<div class="form-group">
+<div class="row">
   <label class="col-sm-2 control-label">RM</label>
   <div class="col-sm-1">
           <input class="form-control" type="checkbox" name="prefer" value="RM">
@@ -514,7 +515,7 @@ $(document).ready(function(){
 <br><br>
 
 </div>
-<input align="center"  id="submit" onclick="showDiv()" type = 'button'  value = 'Submit'  style="border-radius: 23px ;margin-left: 200px;margin-right:0px;">
+<input align="center"  id="submit" onclick="showDiv()" type = 'button'  value = 'submit'  style="border-radius: 23px ;margin-left: 200px;margin-right:0px;">
 <br><br>
 
 </div>
@@ -523,6 +524,8 @@ $(document).ready(function(){
  
 </form>    
 </div>
+
+
 
     
     {% endblock %}

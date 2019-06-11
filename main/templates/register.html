@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        body {
+            height: 100%;
+        }
+
+        .form-signup {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            padding-top: 100px;
+            margin: auto;
+        }
+
+        .form-signup .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signup .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<header class="navbar fixed-top navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-warning text-white">
+    <a class="navbar-brand" href="">FOOTTELLER</a>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item"><a class="nav-link p-2" href="/login/" rel="noopener">Login</a></li>
+        <li class="nav-item"><a class="nav-link p-2" href="/" rel="noopener">Home</a></li>
+    </ul>
+</header>
+
+<body>
+<form action='../register_form/' class="form-signup" method="POST">
+    {% csrf_token %}
+    <h1 class="h3 mb-3 font-weight-normal text-center">Easy to Sign up and use</h1>
+    <h1 class="h3 mb-3 font-weight-normal text-center">Completely and Always free</h1>
+    <div class="form-group">
+        <label for="exampleInputUsername">Username</label>
+        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username"
+               placeholder="Enter username" required maxlength="80">
+        <small id="usernameHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+               placeholder="Enter email" name="email" required maxlength="80">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputNickname">Nickname</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your nickname"
+               required name="name" maxlength="8">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required
+               maxlength="80">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword2">Confirm Password</label>
+        <input type="password" class="form-control" id="password2" onChange="checkPasswordMatch();"
+               placeholder="Enter Password again" required maxlength="80">
+    </div>
+    <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
+
+    <button class="btn btn-lg btn-warning btn-block text-white"
+            onclick="if (checkPasswordMatch()) this.form.submit(); else return false;">Sign Up
+    </button>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; Mr. Zhao</p>
+</form>
+<script>
+    {% if error %}
+        alert("{{ error }}");
+    {% endif %}
+</script>
+<script type="text/javascript">
+    function checkPasswordMatch() {
+        var password = $("#password").val();
+        var confirmPassword = $("#password2").val();
+        if (password !== confirmPassword) {
+            $("#divCheckPasswordMatch").html("Passwords do not match!");
+            return false
+        } else {
+            $("#divCheckPasswordMatch").html("Passwords match.");
+            return true
+        }
+    }
+</script>
+<script>
+    {% if error %}
+        alert("{{ error }}");
+    {% endif %}
+</script>
+</body>

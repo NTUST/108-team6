@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 from analysis.views import predict, predict_result
-from main.views import index, players, refresh_data, player, edit_team, team, create_player
+from main.views import index, players, refresh_data, player, edit_team, team, create_player, login, register, logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,5 +14,8 @@ urlpatterns = [
     path('analysis_form/', predict_result),
     path('team/', team, name="team"),
     path('team/edit', edit_team, name="edit-team"),
+    path('register/', register, name="register"),
+    path('login/', login, name="login"),
+    path('logout/', logout, name="logout"),
     path('refresh_data', refresh_data, name="refresh_data"),
 ]
