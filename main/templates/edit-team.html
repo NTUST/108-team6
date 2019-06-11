@@ -68,6 +68,11 @@
             color: #ffc722;
         }
 
+        #b3:hover {
+            background: #f8bd0a;
+            color: #fff;
+        }
+
         button:before,
         button:after {
             content: '';
@@ -87,8 +92,10 @@
             bottom: 0;
         }
 
-        button:hover:before,
-        button:hover:after {
+        #b1:hover:before,
+        #b1:hover:after,
+        #b2:hover:before,
+        #b2:hover:after {
             width: 100%;
             transition: 800ms ease all;
         }
@@ -307,8 +314,8 @@
             </button>
         </div>
         <div style="text-align: center">
-            <button type="submit"
-                    style="margin-top: 20px;width: 100px;border-radius: 50px;background: #ffaa21;font-weight: bold;">
+            <button type="submit" id='b3'
+                    style="margin-top: 20px;width: 100px;border-radius: 50px;font-weight: bold;">
                 Submit
             </button>
         </div>
