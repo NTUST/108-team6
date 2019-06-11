@@ -187,6 +187,7 @@
                     }
                     document.getElementById('warning').style.display = "none";
                     document.getElementById('result_panel').style.display = "block";
+                    $('#result').html("Loading...");
                     inputs[arr_list[i]] = value;
                 }
                 let prefer_list = [];
@@ -201,6 +202,9 @@
                     data: inputs,
                     success: function (data) {
                         $('#result').html("€ " + data["value"]);
+                    },
+                    error:function () {
+                        $('#result').html("Error");
                     }
                 });
             });
