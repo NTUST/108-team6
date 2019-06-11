@@ -36,8 +36,9 @@
                             <li class="uk-parent" data-uk-dropdown="{&#39;preventflip&#39;:&#39;y&#39;}"
                                 aria-haspopup="true" aria-expanded="false"><a href="{% url "predict" %}">Predict</a>
                             </li>
-                            {# TODO donate url #}
                             <li><a href="{% url "team" %}">Team</a>
+                            </li>
+                            <li><a href="{% url "donate" %}">Donate</a>
                             </li>
                             <!-- <li><a href="" style="color: #ffc722">Login</a></li> -->
                             {% if request.user.is_authenticated %}
