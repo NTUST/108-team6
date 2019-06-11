@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Player(models.Model):
-    number = models.PositiveIntegerField(unique=True)
+    number = models.PositiveIntegerField(unique=True, null=True)
     name = models.CharField(max_length=1024)
     age = models.IntegerField()
     photo = models.URLField(null=True)
