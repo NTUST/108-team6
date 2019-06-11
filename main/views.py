@@ -3,10 +3,9 @@ import threading
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth.models import User
 from django.db.models import Case, When, Value, BooleanField
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -20,7 +19,7 @@ from main.utils import parse, parse_query_string
 def refresh_data(request):
     thread = threading.Thread(target=parse)
     thread.start()
-    return HttpResponse(status=200)
+    return redirect(to='index')
 
 
 @require_http_methods(["GET"])
@@ -110,6 +109,7 @@ def team(request):
     return render(request, "team.html", locals())
 
 
+@login_required
 def edit_team(request):
     def get_method(request):
         parameter = {}

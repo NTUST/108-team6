@@ -91,7 +91,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
-LOGIN_URL = "/admin/login/"
+LOGIN_URL = "/login/"
 
 try:
     from .local_settings import *
