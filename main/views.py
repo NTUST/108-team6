@@ -92,7 +92,9 @@ def team(request):
     title = "Team"
     clubs = CLUBS
     team_name = request.GET.get("team")
-    if not team_name or team_name == "MyTeam":
+    if not request.user.id:
+        player_list = []
+    elif not team_name or team_name == "MyTeam":
         player_list = Player.objects.filter(teamplayer__user_id=request.user.id)
     else:
         player_list = Player.objects.filter(club=team_name)
@@ -156,38 +158,42 @@ def edit_team(request):
         return get_method(request)
 
 
+@require_http_methods(["POST", "GET"])
 @login_required
 def create_player(request):
     title = "Create"
+    if request.method == "GET":
+        positions = ['LS', 'ST', 'RS', 'LW', 'LF', 'CF', 'RF', 'RW', 'LAM', 'CAM', 'RAM', 'LM', 'LCM', 'CM', 'RCM',
+                     'RM',
+                     'LWB', 'LDM', 'CDM', 'RDM', 'RWB', 'LB', 'LCB', 'CB', 'RCB', 'RB']
+        rating = [
+            ['', 'LS', 'ST', 'RS', ''],
+            ['LW', 'LF', 'CF', 'RF', 'RW'],
+            ['', 'LAM', 'CAM', 'RAM', ''],
+            ['LM', 'LCM', 'CM', 'RCM', 'RM'],
+            ['LWB', 'LDM', 'CDM', 'RDM', 'RWB'],
+            ['LB', 'LCB', 'CB', 'RCB', 'RB']
+        ]
 
-    positions = ['LS', 'ST', 'RS', 'LW', 'LF', 'CF', 'RF', 'RW', 'LAM', 'CAM', 'RAM', 'LM', 'LCM', 'CM', 'RCM', 'RM',
-                 'LWB', 'LDM', 'CDM', 'RDM', 'RWB', 'LB', 'LCB', 'CB', 'RCB', 'RB']
-    rating = [
-        ['', 'LS', 'ST', 'RS', ''],
-        ['LW', 'LF', 'CF', 'RF', 'RW'],
-        ['', 'LAM', 'CAM', 'RAM', ''],
-        ['LM', 'LCM', 'CM', 'RCM', 'RM'],
-        ['LWB', 'LDM', 'CDM', 'RDM', 'RWB'],
-        ['LB', 'LCB', 'CB', 'RCB', 'RB']
-    ]
+        attributes = {
+            'Attacking': ['Crossing', 'Finishing', 'Heading Accuracy', 'Short Passing', 'Volleys'],
+            'Skill': ['Dribbling', 'Curve', 'FK Accuracy', 'Long Passing', 'Ball Control'],
+            'Movement': ['Acceleration', 'Sprint Speed', 'Agility', 'Reactions', 'Balance'],
+            'Power': ['Shot Power', 'Jumping', 'Stamina', 'Strength', 'Long Shots'],
+            'Mentality': ['Aggression', 'Interceptions', 'Positioning', 'Vision', 'Penalties', 'Composure'],
+            'Defending': ['Marking', 'Standing Tackle', 'Sliding Tackle'],
+            'Goalkeeping': ['GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes'],
+        }
 
-    attributes = {
-        'Attacking': ['Crossing', 'Finishing', 'Heading Accuracy', 'Short Passing', 'Volleys'],
-        'Skill': ['Dribbling', 'Curve', 'FK Accuracy', 'Long Passing', 'Ball Control'],
-        'Movement': ['Acceleration', 'Sprint Speed', 'Agility', 'Reactions', 'Balance'],
-        'Power': ['Shot Power', 'Jumping', 'Stamina', 'Strength', 'Long Shots'],
-        'Mentality': ['Aggression', 'Interceptions', 'Positioning', 'Vision', 'Penalties', 'Composure'],
-        'Defending': ['Marking', 'Standing Tackle', 'Sliding Tackle'],
-        'Goalkeeping': ['GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes'],
-    }
+        preferred_foot = ['right', 'left']
+        range_5 = ['1', '2', '3', '4', '5']
+        work_rate = ['High/ High', 'High/ Low', 'High/ Medium', 'Low/ High', 'Low/ Low', 'Low/ Medium', 'Medium/ High',
+                     'Medium/ Low', 'Medium/ Medium']
+        body_type = ['C. Ronaldo', 'Courtois', 'Lean', 'Messi', 'Neymar', 'Normal', 'Stocky']
 
-    preferred_foot = ['right', 'left']
-    range_5 = ['1', '2', '3', '4', '5']
-    work_rate = ['High/ High', 'High/ Low', 'High/ Medium', 'Low/ High', 'Low/ Low', 'Low/ Medium', 'Medium/ High',
-                 'Medium/ Low', 'Medium/ Medium']
-    body_type = ['C. Ronaldo', 'Courtois', 'Lean', 'Messi', 'Neymar', 'Normal', 'Stocky']
-
-    return render(request, "create_player.html", locals())
+        return render(request, "create_player.html", locals())
+    else:
+        return
 
 
 @require_http_methods(["POST", "GET"])

@@ -15,8 +15,6 @@ jQuery(function($) {
         UIkit.$('[data-uk-slideset],[data-uk-slider]').attr('dir', 'ltr');  
     });
 
-    // Social buttons
-    $('article[data-permalink]').socialButtons(config);
     
    jQuery('.our-team-wrap .team-read-more').click(function(){
        jQuery(this).parent().parent().find('.additional').slideToggle();
