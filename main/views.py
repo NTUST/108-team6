@@ -151,9 +151,6 @@ def edit_team(request):
             TeamPlayer.objects.filter(user_id=request.user.id, player_id=player_id).delete()
         return JsonResponse(data={}, status=200)
 
-def login(request):
-    return render(request, "login.html")
-
 def register(request):
 	return render(request, "register.html")
 
@@ -161,10 +158,9 @@ def register_form(request):
 	username = request.POST['username']
 	email = request.POST['email']
 	password = request.POST['password']
-
 	user = User.objects.create_user(username,email,password)
 	if user:
-		return redirect('/',locals())
+		return redirect('/login',locals())
 	else:
 		return redirect('/signup',locals())
 
@@ -182,7 +178,7 @@ def login_form(request):
 				auth.login(request, user)
 				messages.add_message(request, messages.SUCCESS, '成功登入了')
 				# print('ya')
-				return redirect('../index/')
+				return redirect('../')
 			else:
 				messages.add_message(request, messages.WARNING, '帳號尚未啟用')
 		else:
@@ -190,9 +186,9 @@ def login_form(request):
 	else:
 		messages.add_message(request, messages.INFO,'請檢查輸入的欄位內容')
 
-	return render(request, "login.tml")
+	return render(request, "login.html")
 
 def logout(request):
     auth.logout(request)
     messages.add_message(request, messages.INFO, "成功登出了")
-    return redirect('index/')
+    return redirect('/')
