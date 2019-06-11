@@ -149,10 +149,14 @@ def edit_team(request):
     if request.method == "GET":
         return get_method(request)
     else:
-        add_ids = list(map(lambda x: int(x), request.POST.get("checked_ids").split(',')))
-        remove_ids = list(map(lambda x: int(x), request.POST.get("unchecked_ids").split(',')))
-        TeamPlayer.objects.filter(player_id__in=remove_ids, user_id=request.user.id).delete()
-        TeamPlayer.objects.bulk_create([
+        remove_ids = request.POST.get("unchecked_ids")
+        if remove_ids:
+            remove_ids = list(map(lambda x: int(x), remove_ids.split(',')))
+            TeamPlayer.objects.filter(player_id__in=remove_ids, user_id=request.user.id).delete()
+        add_ids = request.POST.get("checked_ids")
+        if add_ids:
+            add_ids = list(map(lambda x: int(x), add_ids.split(',')))
+            TeamPlayer.objects.bulk_create([
             TeamPlayer(user_id=request.user.id, player_id=i) for i in add_ids
         ])
         return get_method(request)
