@@ -1,15 +1,17 @@
 import threading
 
+from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.models import User
 from django.db.models import Case, When, Value, BooleanField
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
 from main.constants import CLUBS
-from django.contrib.auth import authenticate
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect
 from main.models import Player, TeamPlayer
 from main.utils import parse, parse_query_string
 
@@ -19,12 +21,6 @@ def refresh_data(request):
     thread = threading.Thread(target=parse)
     thread.start()
     return HttpResponse(status=200)
-
-
-from main.utils import parse
-from django.contrib import auth
-from django.contrib import messages
-from django.contrib.auth.models import User
 
 
 @require_http_methods(["GET"])
@@ -194,45 +190,29 @@ def create_player(request):
 
 
 def register(request):
-    return render(request, "register.html")
-
-
-def register_form(request):
-    username = request.POST['username']
-    email = request.POST['email']
-    password = request.POST['password']
-    user = User.objects.create_user(username, email, password)
+    if request.method == "GET":
+        return render(request, "register.html")
+    user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
     if user:
         return redirect('/login', locals())
     else:
-        return redirect('/signup', locals())
+        return render(request, "register.html")
 
 
-def login_form(request):
+def login(request):
     if request.user.is_authenticated:
-        return redirect('/')
+        return redirect(to='index')
     if request.method == 'POST':
-        login_name = request.POST['username'].strip()
-        login_password = request.POST['password']
-        print(login_name, login_password)
-        user = authenticate(username=login_name, password=login_password)
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             if user.is_active:
                 auth.login(request, user)
                 messages.add_message(request, messages.SUCCESS, '成功登入了')
-                # print('ya')
-                return redirect('../')
-            else:
-                messages.add_message(request, messages.WARNING, '帳號尚未啟用')
-        else:
-            messages.add_message(request, messages.WARNING, '登入失敗')
-    else:
-        messages.add_message(request, messages.INFO, '請檢查輸入的欄位內容')
+                return redirect(to="index")
 
     return render(request, "login.html")
 
 
 def logout(request):
     auth.logout(request)
-    messages.add_message(request, messages.INFO, "成功登出了")
-    return redirect('/')
+    return redirect(to='index')

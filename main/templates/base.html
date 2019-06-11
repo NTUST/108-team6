@@ -47,9 +47,9 @@
                                     text-transform: uppercase;
                                     line-height: 70px;
                                    ">{{ request.user }}</span></li>
-                                <li><a href="logout/" style="color: #ffc722">Logout</a></li>
+                                <li><a href="{% url 'logout' %}" style="color: #ffc722">Logout</a></li>
                             {% else %}
-                                <li><a href="login/" style="color: #ffc722">Login</a></li>
+                                <li><a href="{% url 'login' %}" style="color: #ffc722">Login</a></li>
                             {% endif %}
                         </ul>
                     </div>
