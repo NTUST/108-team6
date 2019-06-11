@@ -48,7 +48,7 @@
 </header>
 
 <body>
-<form action='{% url "register" %}' class="form-signup" method="POST">
+<form action='{% url "register" %}' class="form-signup" method="POST" onsubmit="return checkPasswordMatch()">
     {% csrf_token %}
     <h1 class="h3 mb-3 font-weight-normal text-center">Easy to Sign up and use</h1>
     <h1 class="h3 mb-3 font-weight-normal text-center">Completely and Always free</h1>
@@ -75,7 +75,7 @@
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required
-               maxlength="80">
+               maxlength="80" onChange="checkPasswordMatch();">
     </div>
 
     <div class="form-group">
@@ -85,8 +85,7 @@
     </div>
     <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
 
-    <button class="btn btn-lg btn-warning btn-block text-white"
-            onclick="if (checkPasswordMatch()) this.form.submit(); else return false;">Sign Up
+    <button class="btn btn-lg btn-warning btn-block text-white" type="submit">Sign Up
     </button>
     <p class="mt-5 mb-3 text-muted text-center">&copy; FIFA-NTUST</p>
 </form>
@@ -101,6 +100,7 @@
         var confirmPassword = $("#password2").val();
         if (password !== confirmPassword) {
             $("#divCheckPasswordMatch").html("Passwords do not match!");
+            alert("密碼不符!");
             return false
         } else {
             $("#divCheckPasswordMatch").html("Passwords match.");
