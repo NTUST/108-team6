@@ -24,8 +24,8 @@ class Player(models.Model):
     body_type = models.CharField(max_length=512)
     position = models.CharField(max_length=512)
     jersey_number = models.IntegerField()
-    height = models.IntegerField()
-    weight = models.IntegerField()
+    height = models.IntegerField(null=True)
+    weight = models.IntegerField(null=True)
     ls = models.IntegerField()
     st = models.IntegerField()
     rs = models.IntegerField()
@@ -87,6 +87,7 @@ class Player(models.Model):
     gk_positioning = models.IntegerField()
     gk_reflexes = models.IntegerField()
     release_clause = models.IntegerField()
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

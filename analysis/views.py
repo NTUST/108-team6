@@ -56,17 +56,16 @@ def predict_result(request):
             inputs.append(1)
         else:
             inputs.append(0)
-    # import os
-    save_model_path =os.path.dirname(os.path.abspath(__file__)) + '/model.h5'
-    inputs = np.array(inputs)
 
-    model =  Model(inputs.shape[0])
-    model.load_weights(save_model_path)
-    wage = int(model.predict(np.expand_dims(inputs, 0))[0][0])
-
+    wage = predict_wage(np.array(inputs))
 #     import psutil
 #     process = psutil.Process(os.getpid())
 #     print(process.memory_info().rss/786/1000000,' Mb')  # in bytes 
     return HttpResponse(json.dumps({'wage':wage,'title':'Analysis'}), content_type='application/json')
 
 
+def predict_wage(inputs):
+    save_model_path = os.path.dirname(os.path.abspath(__file__)) + '/model.h5'
+    model = Model(inputs.shape[0])
+    model.load_weights(save_model_path)
+    return int(model.predict(np.expand_dims(inputs, 0))[0][0])

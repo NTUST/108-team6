@@ -50,7 +50,7 @@
                                                     <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item tt_81747b4426a9882884c1f83eda78844f">
                                                         <div class="player-article">
                                                             <div class="wrapper">
-                                                                <a href="{% url "player" player_number=player.number %}">
+                                                                <a href="{% url "player" player_number=player.id %}">
                                                                     <div class="img-wrap">
                                                                         <div class="player-number">
                                                                             <span>{{ player.jersey_number }}</span>
@@ -67,7 +67,7 @@
                                                                 <div class="info">
                                                                     <div class="name">
                                                                         <h3>
-                                                                            <a href="{% url "player" player_number=player.number %}">{{ player.name }}</a>
+                                                                            <a href="{% url "player" player_number=player.id %}">{{ player.name }}</a>
                                                                         </h3>
                                                                     </div>
                                                                     <div class="position">{{ player.position }}</div>

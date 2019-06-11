@@ -1,5 +1,6 @@
 import threading
 
+import numpy
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import user_passes_test, login_required
@@ -9,6 +10,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
+from analysis.views import predict_wage
 from main.constants import CLUBS
 from main.models import Player, TeamPlayer
 from main.utils import parse, parse_query_string
@@ -58,7 +60,7 @@ def players(request):
 @require_http_methods(["GET"])
 def player(request, player_number):
     try:
-        player = Player.objects.get(number=player_number)
+        player = Player.objects.get(id=player_number)
     except Player.DoesNotExist:
         player = None
 
@@ -157,8 +159,8 @@ def edit_team(request):
         if add_ids:
             add_ids = list(map(lambda x: int(x), add_ids.split(',')))
             TeamPlayer.objects.bulk_create([
-            TeamPlayer(user_id=request.user.id, player_id=i) for i in add_ids
-        ])
+                TeamPlayer(user_id=request.user.id, player_id=i) for i in add_ids
+            ])
         return get_method(request)
 
 
@@ -197,7 +199,44 @@ def create_player(request):
 
         return render(request, "create_player.html", locals())
     else:
-        return
+        player = Player()
+        for i in request.POST:
+            key = i.lower().replace(" ", "_")
+            if hasattr(player, key):
+                setattr(player, key, request.POST[i])
+        player.overall = 80
+        player.potential = 80
+        player.special = 80
+        player.nationality = "Taiwan"
+        player.nationality_flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/188px-Flag_of_the_Republic_of_China.svg.png"
+        player.club = request.user.username
+        player.club_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/NTUST-Emblem.png/220px-NTUST-Emblem.png"
+        player.creator_id = request.user.id
+        arr_list = ['age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance',
+                    'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy',
+                    'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy',
+                    'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning',
+                    'Reactions', 'Short Passing', 'Shot Power', 'Sliding Tackle', 'Sprint Speed', 'Stamina',
+                    'Standing Tackle', 'Strength', 'Vision', 'Volleys']
+        prefer_list = ['CAM', 'CB', 'CDM', 'CF', 'CM', 'GK', 'LB', 'LM', 'LW', 'RB', 'RM', 'RW', 'RWB', 'ST', 'LWB']
+        inputs = []
+        for arr in arr_list:
+            if arr not in request.POST:
+                print(arr)
+                inputs.append(80)
+            else:
+                inputs.append(int(request.POST.get(arr)))
+
+        prefers = [] if request.POST.getlist('prefer[]') is None else request.POST.getlist('prefer[]')
+        for prefer in prefer_list:
+            if prefer in prefers:
+                inputs.append(1)
+            else:
+                inputs.append(0)
+        player.release_clause = player.wage = player.value = predict_wage(numpy.array(inputs)) / 1000
+        player.save()
+        TeamPlayer.objects.create(user_id=request.user.id, player_id=player.id)
+        return redirect(to="team")
 
 
 @require_http_methods(["POST", "GET"])
