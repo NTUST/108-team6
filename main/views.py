@@ -1,7 +1,6 @@
 import threading
 
 from django.contrib import auth
-from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth.models import User
@@ -109,6 +108,7 @@ def team(request):
     return render(request, "team.html", locals())
 
 
+@require_http_methods(["POST", "GET"])
 @login_required
 def edit_team(request):
     def get_method(request):
@@ -156,6 +156,7 @@ def edit_team(request):
         return get_method(request)
 
 
+@login_required
 def create_player(request):
     title = "Create"
 
@@ -189,6 +190,7 @@ def create_player(request):
     return render(request, "create_player.html", locals())
 
 
+@require_http_methods(["POST", "GET"])
 def register(request):
     if request.method == "GET":
         return render(request, "register.html")
@@ -199,20 +201,22 @@ def register(request):
         return render(request, "register.html")
 
 
+@require_http_methods(["POST", "GET"])
 def login(request):
     if request.user.is_authenticated:
         return redirect(to='index')
     if request.method == 'POST':
         user = authenticate(username=request.POST['username'], password=request.POST['password'])
-        if user is not None:
-            if user.is_active:
-                auth.login(request, user)
-                messages.add_message(request, messages.SUCCESS, '成功登入了')
-                return redirect(to="index")
-
+        if user is not None and user.is_active:
+            auth.login(request, user)
+            next_url = request.GET.get("next")
+            if next_url:
+                return redirect(next_url)
+            return redirect(to="index")
     return render(request, "login.html")
 
 
+@require_http_methods(["GET"])
 def logout(request):
     auth.logout(request)
     return redirect(to='index')
