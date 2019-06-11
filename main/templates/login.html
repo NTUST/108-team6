@@ -8,19 +8,19 @@
     <meta name="author" content="">
     <title>Sign in</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
 
 
     <style>
 
         body::after {
             content: "";
-  
+
             background-image: url('../static/main-slider-img1.jpg');
             background-size: 100% 110%;
             background-repeat: no-repeat;
@@ -80,11 +80,11 @@
 
 <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-warning text-white">
 
-    <a class="navbar-brand" href="">FOOTTELLER</a>
+    <a class="navbar-brand" href="{% url "index" %}">FOOTTELLER</a>
 
     <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
         <li class="nav-item">
-            <a class="nav-link p-2" href="" target="_blank" rel="noopener">
+            <a class="nav-link p-2" href="{% url "index" %}" target="_blank" rel="noopener">
                 Home
             </a>
         </li>
@@ -92,37 +92,37 @@
 </header>
 
 <body class="text-center">
-    <div class="container" style="color: black">
-        <div class="row"
-            style="margin-top:1.2cm; margin-bottom: 0.5cm; margin-right: 8cm; margin-left: 8cm;border-radius: 33px; padding-top: 0.5cm;border-color: white; border-style: solid; border-width: 2px">
-            <div class="col-10 offset-1">
-                <form action='' class="form-signin" method="POST">
-                    {% csrf_token %}
+<div class="container" style="color: black">
+    <div class="row"
+         style="margin-top:1.2cm; margin-bottom: 0.5cm; margin-right: 8cm; margin-left: 8cm;border-radius: 33px; padding-top: 0.5cm;border-color: white; border-style: solid; border-width: 2px">
+        <div class="col-10 offset-1">
+            <form action='' class="form-signin" method="POST">
+                {% csrf_token %}
 
-                    <h1 class="h1 mb-3 font-weight-normal" style="color: #fdbd00; padding-bottom: 10px">FOOTTELLER</h1>
-                    <label for="inputEmail" class="sr-only" style="margin-top: 10px">Email address</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Username"
-                        required autofocus>
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-                        required>
-                    <div class="checkbox mb-3 text-white">
-                        <label>
-                            <input type="checkbox" value="remember" checked> Remember me
-                        </label>
-                    </div>
-                    <button class="btn btn-lg btn-warning btn-block text-white" type="submit">Sign in</button>
-                </form>
-                <a class="sign up text-white" href="/register/">Sign up</a>
-                <p class="mt-5 mb-3 text-white">&copy; Mr. Zhao</p>
-            </div>
+                <h1 class="h1 mb-3 font-weight-normal" style="color: #fdbd00; padding-bottom: 10px">FOOTTELLER</h1>
+                <label for="inputEmail" class="sr-only" style="margin-top: 10px">Email address</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                       required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                       required>
+                <div class="checkbox mb-3 text-white">
+                    <label>
+                        <input type="checkbox" value="remember" checked> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-warning btn-block text-white" type="submit">Sign in</button>
+            </form>
+            <a class="sign up text-white" href="/register/">Sign up</a>
+            <p class="mt-5 mb-3 text-white">&copy; FIFA-NTUST</p>
         </div>
     </div>
-    <script>
-        {% if error %}
+</div>
+<script>
+    {% if error %}
         alert("{{ error }}");
-        {% endif %}
-    </script>
+    {% endif %}
+</script>
 </body>
 
 </html>

@@ -48,7 +48,7 @@
 </header>
 
 <body>
-<form action='../register_form/' class="form-signup" method="POST">
+<form action='{% url "register" %}' class="form-signup" method="POST">
     {% csrf_token %}
     <h1 class="h3 mb-3 font-weight-normal text-center">Easy to Sign up and use</h1>
     <h1 class="h3 mb-3 font-weight-normal text-center">Completely and Always free</h1>
@@ -88,7 +88,7 @@
     <button class="btn btn-lg btn-warning btn-block text-white"
             onclick="if (checkPasswordMatch()) this.form.submit(); else return false;">Sign Up
     </button>
-    <p class="mt-5 mb-3 text-muted text-center">&copy; Mr. Zhao</p>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; FIFA-NTUST</p>
 </form>
 <script>
     {% if error %}
