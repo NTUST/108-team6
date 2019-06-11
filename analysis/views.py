@@ -16,7 +16,8 @@ from keras.models import Sequential
 
 def Model(attribute_num):
     model = Sequential()
-    model.add(Dense(512,kernel_initializer='random_uniform', input_shape=(attribute_num,), activity_regularizer=regularizers.l2(0.001)))
+    model.add(Dense(512, kernel_initializer='random_uniform', input_shape=(attribute_num,),
+                    activity_regularizer=regularizers.l2(0.001)))
     model.add(BatchNormalization())
     # model.add(Activation('relu'))
     model.add(LeakyReLU(alpha=.001))
@@ -38,13 +39,40 @@ def Model(attribute_num):
                   loss=losses.mean_absolute_error)
     return model
 
+
 def predict(request):
-    return render(request, "analysis.html",{'title':'Analysis'})
+    title = 'Analysis'
+    attributes = {
+        'Attacking': ['Crossing', 'Finishing', 'Heading Accuracy', 'Short Passing', 'Volleys'],
+        'Skill': ['Dribbling', 'Curve', 'FK Accuracy', 'Long Passing', 'Ball Control'],
+        'Movement': ['Acceleration', 'Sprint Speed', 'Agility', 'Reactions', 'Balance'],
+        'Power': ['Shot Power', 'Jumping', 'Stamina', 'Strength', 'Long Shots'],
+        'Mentality': ['Aggression', 'Interceptions', 'Positioning', 'Vision', 'Penalties', 'Composure'],
+        'Defending': ['Marking', 'Standing Tackle', 'Sliding Tackle'],
+        'Goalkeeping': ['GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes'],
+        'Others': ['Overall', 'Potential', 'Age', 'Special', 'Free Kick Accuracy']
+    }
+    positions = [
+        ['', 'ST', ''],
+        ['LW', 'CF', 'RW'],
+        ['', 'CAM', ''],
+        ['LM', 'CM', 'RM'],
+        ['LWB', 'CDM', 'RWB'],
+        ['LB', 'CB', 'RB'],
+        ['', 'GK', '']
+    ]
+    return render(request, "analysis.html", locals())
+
 
 @csrf_exempt
 def predict_result(request):
-    arr_list = ['Age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance', 'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy', 'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy', 'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning', 'Reactions', 'Short Passing', 'Shot Power', 'Sliding Tackle', 'Sprint Speed', 'Stamina', 'Standing Tackle', 'Strength', 'Vision', 'Volleys']
-    prefer_list = ['CAM', 'CB',  'CDM',  'CF',  'CM',  'GK',  'LB',  'LM',  'LW',  'RB',  'RM',  'RW',  'RWB',  'ST','LWB']
+    arr_list = ['Age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance',
+                'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy',
+                'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy',
+                'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning',
+                'Reactions', 'Short Passing', 'Shot Power', 'Sliding Tackle', 'Sprint Speed', 'Stamina',
+                'Standing Tackle', 'Strength', 'Vision', 'Volleys']
+    prefer_list = ['CAM', 'CB', 'CDM', 'CF', 'CM', 'GK', 'LB', 'LM', 'LW', 'RB', 'RM', 'RW', 'RWB', 'ST', 'LWB']
 
     inputs = []
     for arr in arr_list:
@@ -58,10 +86,10 @@ def predict_result(request):
             inputs.append(0)
 
     wage = predict_wage(np.array(inputs))
-#     import psutil
-#     process = psutil.Process(os.getpid())
-#     print(process.memory_info().rss/786/1000000,' Mb')  # in bytes 
-    return HttpResponse(json.dumps({'wage':wage,'title':'Analysis'}), content_type='application/json')
+    #     import psutil
+    #     process = psutil.Process(os.getpid())
+    #     print(process.memory_info().rss/786/1000000,' Mb')  # in bytes
+    return HttpResponse(json.dumps({'wage': wage}), content_type='application/json')
 
 
 def predict_wage(inputs):
