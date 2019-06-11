@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.contrib.auth.models import User
-from django.db.models import Case, When, Value, BooleanField
+from django.db.models import Case, When, Value, BooleanField, Avg
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
@@ -95,11 +95,21 @@ def team(request):
     clubs = CLUBS
     team_name = request.GET.get("team")
     if not request.user.id:
+        rating = potential = value = wage = 0
         player_list = []
-    elif not team_name or team_name == "MyTeam":
-        player_list = Player.objects.filter(teamplayer__user_id=request.user.id)
     else:
-        player_list = Player.objects.filter(club=team_name)
+        if not team_name or team_name == "MyTeam":
+            player_list = Player.objects.filter(teamplayer__user_id=request.user.id)
+        else:
+            player_list = Player.objects.filter(club=team_name)
+        result = player_list.aggregate(rating=Avg("overall"), potential=Avg("potential"), wage=Avg("wage"),
+                                       value=Avg("value"))
+        rating = result["rating"]
+        potential = result["potential"]
+        value = result["value"]
+        wage = result["wage"]
+    value = "{:.2f}M".format(value/1000) if value > 1000 else f"{value}k"
+    wage = "{:.2f}M".format(wage/1000) if wage > 1000 else f"{wage}k"
     order = request.GET.get("order")
     order_by = request.GET.get("order_by")
     if order and order_by:

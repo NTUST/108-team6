@@ -80,19 +80,22 @@
                                                     <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item">
                                                         <div class="player-article">
                                                             <div class="wrapper">
-                                                                <div class="img-wrap">
-                                                                    <div class="player-number">
-                                                                        <span>???</span>
-                                                                    </div>
-                                                                    <div class="bio">
+                                                                <a href="{% url "edit-team" %}">
+                                                                    <div class="img-wrap">
+                                                                        <div class="player-number">
+                                                                            <span>???</span>
+                                                                        </div>
+                                                                        <div class="bio">
                                                                     <span>
-                                                                        <a href="{% url "edit-team" %}">Add</a>
+                                                                        Add
                                                                     </span>
+                                                                        </div>
+                                                                        <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
+                                                                             class="img-polaroid" alt="Benjamin Mendoza"
+                                                                             title="Benjamin Mendoza">
+
                                                                     </div>
-                                                                    <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
-                                                                         class="img-polaroid" alt="Benjamin Mendoza"
-                                                                         title="Benjamin Mendoza">
-                                                                </div>
+                                                                </a>
                                                                 <div class="info">
                                                                     <div class="name">
                                                                         <h3>
@@ -137,7 +140,7 @@
                                                         <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="number">35</div>
+                                                        <div class="number">{{ rating }}</div>
                                                         <div class="text">Rating</div>
                                                     </div>
                                                 </div>
@@ -148,7 +151,7 @@
                                                         <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="number">12</div>
+                                                        <div class="number">{{ potential }}</div>
                                                         <div class="text">Potential</div>
                                                     </div>
                                                 </div>
@@ -159,7 +162,9 @@
                                                         <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="number">13</div>
+                                                        <div class="number">
+                                                            € {{ value }}
+                                                        </div>
                                                         <div class="text">Value</div>
                                                     </div>
                                                 </div>
@@ -170,7 +175,7 @@
                                                         <img src="{% static "/images/stat-icon.png" %}" alt=""/>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="number">8</div>
+                                                        <div class="number">€ {{ wage }}</div>
                                                         <div class="text">Wage</div>
                                                     </div>
                                                 </div>
