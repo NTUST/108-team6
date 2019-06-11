@@ -20,132 +20,92 @@
                         <main id="tm-content" class="tm-content">
                             <div id="system-message-container"></div>
                             <section id="cobalt-section-1">
-                                <!-- --------------  Show category index ---------------------- -->
-                                <script>
-                                    jQuery(window).load(function () {
-                                        colWidth = jQuery('.grid').width();
-
-                                        $grid = jQuery('.grid');
-                                        $grid.isotope({
-                                            // options
-                                            itemSelector: '.player-item',
-                                            percentPosition: true,
-                                            layoutMode: 'masonry',
-                                            masonry: {
-                                                columnWidth: $grid.find('.player-item')[1]
-                                            }
-
-                                        });
-
-                                        jQuery('.filter-button-group').on('click', 'button', function () {
-                                            $grid.isotope({
-                                                // options
-                                                itemSelector: '.player-item',
-                                                percentPosition: true,
-                                                layoutMode: 'masonry',
-                                                masonry: {
-                                                    columnWidth: $grid.find('.player-item')[1]
-                                                }
-
-                                            });
-                                            var filterValue = jQuery(this).attr('data-filter');
-                                            jQuery(this).toggleClass('active').siblings().removeClass('active');
-                                            $grid.isotope({
-                                                filter: filterValue
-                                            });
-                                        });
-
-                                    });
-                                </script>
-                                <!-- START: Modules Anywhere -->
-                                <div class="uk-container uk-container-center tt-gallery-top">
-                                    <div class="uk-grid" data-uk-grid-match>
-                                        <div class="uk-width-medium-3-10 uk-width-small-1-1 title">123</div>
-                                        <div class="uk-width-medium-7-10 uk-width-small-1-1 text">456</div>
-                                    </div>
-                                </div>
-                                <!-- END: Modules Anywhere -->
                                 <div class="list-players-wrapper">
-                                    <div class="button-group filter-button-group"
+                                    <div class="button-group filter-button-group" style="padding: 10px"
                                          data-uk-sticky="{top:70, boundary: true}">
                                         <div class="uk-container uk-container-center">
-                                            <form action="">
-                                                <select class="label-menu" name="team" onchange="this.form.submit()">
+                                            <form action="" style="display: inline;">
+                                                <select style="text-transform: none" class="label-menu" name="team"
+                                                        onchange="this.form.submit()">
                                                     {% for club in clubs %}
-                                                    <option value="{{ club }}" {% if club == team_name %} selected {% endif %}>
-                                                        {{ club }}</option>
+                                                        <option style="text-transform: none" value="{{ club }}"
+                                                                {% if club == team_name %}
+                                                                selected {% endif %}>
+                                                            {{ club }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </form>
+                                            <div style="text-align: right;float: right;">
+                                                <button onclick="window.location.href='{% url 'edit-team' %}'"
+                                                        style="padding: 5px 20px 5px 20px;text-transform: none;background: #ffc722;color: black;border-radius: 20px;font-size: 15px;cursor: pointer">
+                                                    Edit MyTeam
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="list-players-wrap" id='boundary'>
-                                        <div class="left-player">
-                                            <img src="{% static "/images/left-player-bg.png" %}" alt=""/>
-                                        </div>
-                                        <div class="right-player">
-                                            <img src="{% static "/images/right-player-bg.png" %}" alt=""/>
-                                        </div>
                                         <div class="uk-container uk-container-center alt">
                                             <div class="uk-grid grid players-list">
                                                 {% for player in player_list %}
-                                                <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item tt_81747b4426a9882884c1f83eda78844f">
-                                                    <div class="player-article">
-                                                        <div class="wrapper">
-                                                            <div class="img-wrap">
-                                                                <div class="player-number">
-                                                                    <span>{{ player.jersey_number }}</span>
+                                                    <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item tt_81747b4426a9882884c1f83eda78844f">
+                                                        <div class="player-article">
+                                                            <div class="wrapper">
+                                                                <a href="{% url "player" player_number=player.number %}">
+                                                                    <div class="img-wrap">
+                                                                        <div class="player-number">
+                                                                            <span>{{ player.jersey_number }}</span>
+                                                                        </div>
+                                                                        <div class="bio">
+                                                                            <span>{{ player.overall }}</span>
+                                                                        </div>
+
+                                                                        <img src="{{ player.photo }}"
+                                                                             class="img-polaroid photo" alt="photo"
+                                                                             onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                                                                    </div>
+                                                                </a>
+                                                                <div class="info">
+                                                                    <div class="name">
+                                                                        <h3>
+                                                                            <a href="{% url "player" player_number=player.number %}">{{ player.name }}</a>
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="position">{{ player.position }}</div>
                                                                 </div>
-                                                                <div class="bio">
-                                                                    <span>
-                                                                        <a href="{% url "player" player_name=player.number %}">{{ player.overall }}</a>
-                                                                    </span>
-                                                                </div>
-                                                                <img src="{{ player.photo }}"
-                                                                     class="img-polaroid photo" alt="photo"
-                                                                     onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="name">
-                                                                    <h3>
-                                                                        <a href="{% url "player" player_name=player.number %}">{{ player.name }}</a>
-                                                                    </h3>
-                                                                </div>
-                                                                <div class="position">{{ player.position }}</div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 {% endfor %}
-                                            {% if not team_name or team_name == "MyTeam" %}
-                                                <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item">
-                                                    <div class="player-article">
-                                                        <div class="wrapper">
-                                                            <div class="img-wrap">
-                                                                <div class="player-number">
-                                                                    <span>???</span>
-                                                                </div>
-                                                                <div class="bio">
+                                                {% if not team_name or team_name == "MyTeam" %}
+                                                    <div class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 player-item">
+                                                        <div class="player-article">
+                                                            <div class="wrapper">
+                                                                <div class="img-wrap">
+                                                                    <div class="player-number">
+                                                                        <span>???</span>
+                                                                    </div>
+                                                                    <div class="bio">
                                                                     <span>
                                                                         <a href="{% url "edit-team" %}">Add</a>
                                                                     </span>
+                                                                    </div>
+                                                                    <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
+                                                                         class="img-polaroid" alt="Benjamin Mendoza"
+                                                                         title="Benjamin Mendoza">
                                                                 </div>
-                                                                <img src="https://cdn.sofifa.org/players/10/notfound_0@3x.png"
-                                                                     class="img-polaroid" alt="Benjamin Mendoza"
-                                                                     title="Benjamin Mendoza">
-                                                            </div>
-                                                            <div class="info">
-                                                                <div class="name">
-                                                                    <h3>
-                                                                        <a href="{% url "edit-team" %}">Add New Player</a>
-                                                                    </h3>
-                                                                    <div class="position">???</div>
+                                                                <div class="info">
+                                                                    <div class="name">
+                                                                        <h3>
+                                                                            <a href="{% url "edit-team" %}">Add New
+                                                                                Player</a>
+                                                                        </h3>
+                                                                        <div class="position">???</div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            {% endif %}
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

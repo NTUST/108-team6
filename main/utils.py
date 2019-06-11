@@ -15,3 +15,8 @@ def parse(filename="pre.csv"):
         for i in data.values:
             cursor.execute(
                 prefix.format(str(list(map(to_string, i.tolist())))[1:-1].replace('"', "'")))
+
+
+def parse_query_string(parameter):
+    query_string = "&".join([f"{i}={v}" for i, v in parameter.items()])
+    return f"?{query_string}&"

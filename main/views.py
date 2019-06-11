@@ -2,14 +2,23 @@ import threading
 
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Case, When, Value, BooleanField
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
+from main.constants import CLUBS
 from main.models import Player, TeamPlayer
-from main.utils import parse
+from main.utils import parse, parse_query_string
 
 
+@user_passes_test(lambda u: u.is_superuser)
+def refresh_data(request):
+    thread = threading.Thread(target=parse)
+    thread.start()
+    return HttpResponse(status=200)
+
+
+@require_http_methods(["GET"])
 def index(request):
     return render(request, "index.html")
 
@@ -43,21 +52,10 @@ def players(request):
     return render(request, "players.html", locals())
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def refresh_data(request):
-    thread = threading.Thread(target=parse)
-    thread.start()
-    return HttpResponse(status=200)
-
-
-def parse_query_string(parameter):
-    query_string = "&".join([f"{i}={v}" for i, v in parameter.items()])
-    return f"?{query_string}&"
-
-
-def get_player(request, player_name):
+@require_http_methods(["GET"])
+def player(request, player_number):
     try:
-        player = Player.objects.get(number=player_name)
+        player = Player.objects.get(number=player_number)
     except Player.DoesNotExist:
         player = None
 
@@ -86,10 +84,10 @@ def get_player(request, player_name):
     return render(request, "player.html", locals())
 
 
-def get_team(request):
+@require_http_methods(["GET"])
+def team(request):
     title = "Team"
-    clubs = ["MyTeam"]
-    clubs.extend(list(Player.objects.values_list("club", flat=True).order_by("club").distinct()))
+    clubs = CLUBS
     team_name = request.GET.get("team")
     if not team_name or team_name == "MyTeam":
         player_list = Player.objects.filter(teamplayer__user_id=request.user.id)
@@ -108,7 +106,7 @@ def get_team(request):
 
 
 def edit_team(request):
-    if request.method == "GET":
+    def get_method(request):
         parameter = {}
         page = int(request.GET.get('page', 1))
         page = page if page > 1 else 1
@@ -136,18 +134,21 @@ def edit_team(request):
                 default=Value(True),
                 output_field=BooleanField(),
             )
-        )
+        ).order_by("-is_chosen")
         player_list = player_list.all()[start:start + limit]
         query_string = parse_query_string(parameter=parameter)
         return render(request, "edit-team.html", locals())
+
+    if request.method == "GET":
+        return get_method(request)
     else:
-        player_id = request.data["id"]
-        action = request.data["action"]
-        if action == "add":
-            TeamPlayer.objects.create(user_id=request.user.id, player_id=player_id)
-        else:
-            TeamPlayer.objects.filter(user_id=request.user.id, player_id=player_id).delete()
-        return JsonResponse(data={}, status=200)
+        add_ids = list(map(lambda x: int(x), request.POST.get("checked_ids").split(',')))
+        remove_ids = list(map(lambda x: int(x), request.POST.get("unchecked_ids").split(',')))
+        TeamPlayer.objects.filter(player_id__in=remove_ids, user_id=request.user.id).delete()
+        TeamPlayer.objects.bulk_create([
+            TeamPlayer(user_id=request.user.id, player_id=i) for i in add_ids
+        ])
+        return get_method(request)
 
 
 def create_player(request):

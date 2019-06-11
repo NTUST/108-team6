@@ -194,8 +194,11 @@
             </div>
         </div>
     </div>
-    <!-- main player table -->
-    <table class="table table-striped table-hover table-dark text-nowrap" style="width: 80%;
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="checked_ids" id="checked_ids">
+        <input type="hidden" name="unchecked_ids" id="unchecked_ids">
+        <table class="table table-striped table-hover table-dark text-nowrap" style="width: 80%;
             margin: auto;
             text-overflow: ellipsis;
             table-layout: fixed;
@@ -203,108 +206,144 @@
             border-top-right-radius: 23px;
             margin-top: 1.5rem;
             ">
-        <thead>
-        <tr style="color:rgba(255, 199, 34, 1.0);">
-            <th scope="col" style="width: 5%;text-align: center; border-top-color: white; color: white">Add</th>
-            <th scope="col" style="width: 5%;text-align: center; border-top-color: white"></th>
-            <th scope="col" style="width: 15%;text-align: center; border-top-color: white">
-                {% if order_by == "name" and order == "asc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=name">Name</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=name">Name</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 15%;text-align: center; border-top-color: white">
-                {% if order_by == "club" and order == "asc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=club">Team</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=club">Team</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
-                {% if order_by == "age" and order == "asc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=age">Age</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=age">Age</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
-                {% if order_by == "overall" and order == "desc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=overall">Rating</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=overall">Rating</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
-                {% if order_by == "potential" and order == "desc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=potential">Potential</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=potential">Potential</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
-                {% if order_by == "value" and order == "desc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=value">Value</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=value">Value</a>
-                {% endif %}
-            </th>
-            <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
-                {% if order_by == "wage" and order == "desc" %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=wage">Wage</a>
-                {% else %}
-                    <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=wage">Wage</a>
-                {% endif %}
+            <thead>
+            <tr style="color:rgba(255, 199, 34, 1.0);">
+                <th scope="col" style="width: 5%;text-align: center; border-top-color: white; color: white">Add</th>
+                <th scope="col" style="width: 5%;text-align: center; border-top-color: white"></th>
+                <th scope="col" style="width: 15%;text-align: center; border-top-color: white">
+                    {% if order_by == "name" and order == "asc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=name">Name</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=name">Name</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 15%;text-align: center; border-top-color: white">
+                    {% if order_by == "club" and order == "asc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=club">Team</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=club">Team</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
+                    {% if order_by == "age" and order == "asc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=age">Age</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=age">Age</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
+                    {% if order_by == "overall" and order == "desc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=overall">Rating</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=overall">Rating</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
+                    {% if order_by == "potential" and order == "desc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=potential">Potential</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=potential">Potential</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
+                    {% if order_by == "value" and order == "desc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=value">Value</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=value">Value</a>
+                    {% endif %}
+                </th>
+                <th scope="col" style="width: 10%;text-align: center; border-top-color: white">
+                    {% if order_by == "wage" and order == "desc" %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=asc&order_by=wage">Wage</a>
+                    {% else %}
+                        <a href="{% url "edit-team" %}{{ query_string }}order=desc&order_by=wage">Wage</a>
+                    {% endif %}
 
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for player in player_list %}
-            <tr>
-                <td scope="row" style="text-align:center;"><input type="checkbox" name="{{ player.name }}"></td>
-                <td style="padding-bottom: 5px">
-                    <img src="{{ player.photo }}" width="33px" height="33px"
-                         onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
-                </td>
-                <td><a href="{% url "player" player_name=player.number %}">{{ player.name }}</a></td>
-                <td>{{ player.club }}</td>
-                <td>{{ player.age }}</td>
-                <td>{{ player.overall }}</td>
-                <td>{{ player.potential }}</td>
-                <td>€
-                    {% if player.value > 1000 %}
-                        {{ player.value|div:1000 }}M
-                    {% else %}
-                        {{ player.value }}K
-                    {% endif %}
-                </td>
-                <td>€
-                    {% if player.wage > 1000 %}
-                        {{ player.wage|div:1000 }}M
-                    {% else %}
-                        {{ player.wage }}K
-                    {% endif %}
-                </td>
+                </th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for player in player_list %}
+                <tr>
+                    <td scope="row" style="text-align:center;">
+                        <input type="checkbox" name="player_id" id="player_id"
+                               value={{ player.id }} {% if player.is_chosen %}checked{% endif %}>
+                    </td>
+                    <td style="padding-bottom: 5px">
+                        <img src="{{ player.photo }}" width="33px" height="33px"
+                             onerror="this.src='https://cdn.sofifa.org/players/10/notfound_0@3x.png'">
+                    </td>
+                    <td><a href="{% url "player" player_number=player.number %}">{{ player.name }}</a></td>
+                    <td>{{ player.club }}</td>
+                    <td>{{ player.age }}</td>
+                    <td>{{ player.overall }}</td>
+                    <td>{{ player.potential }}</td>
+                    <td>€
+                        {% if player.value > 1000 %}
+                            {{ player.value|div:1000 }}M
+                        {% else %}
+                            {{ player.value }}K
+                        {% endif %}
+                    </td>
+                    <td>€
+                        {% if player.wage > 1000 %}
+                            {{ player.wage|div:1000 }}M
+                        {% else %}
+                            {{ player.wage }}K
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <div id="wrapper">
-        <button type="button" id="b1"
-                onclick="window.location.href='{% url "edit-team" %}{{ query_string }}page={{ page|add:-1 }}'">Last
-            Page
-        </button>
-        <button type="button" id="b2"
-                onclick="window.location.href='{% url "edit-team" %}{{ query_string }}page={{ page|add:1 }}'">Next
-            Page
-        </button>
-    </div>
-
+        <div id="wrapper">
+            <button type="button" id="b1"
+                    onclick="window.location.href='{% url "edit-team" %}{{ query_string }}page={{ page|add:-1 }}'">Last
+                Page
+            </button>
+            <button type="button" id="b2"
+                    onclick="window.location.href='{% url "edit-team" %}{{ query_string }}page={{ page|add:1 }}'">Next
+                Page
+            </button>
+        </div>
+        <div style="text-align: center">
+            <button type="submit"
+                    style="margin-top: 20px;width: 100px;border-radius: 50px;background: #ffaa21;font-weight: bold;">
+                Submit
+            </button>
+        </div>
+    </form>
     <!-- page number -->
     <div style="text-align:right">
         <span class="dot">{{ page }}</span>
     </div>
+    <script>
+        var checked = new Set(), unchecked = new Set(), change_list = new Set();
+        $('input:checkbox').change(
+            function () {
+                var value = parseInt(this.value);
+                if ($(this).is(':checked')) {
+                    if (change_list.has(value)) {
+                        unchecked.delete(value);
+                        change_list.delete(value)
+                    } else {
+                        checked.add(value);
+                        change_list.add(value)
+                    }
+                } else {
+                    if (change_list.has(value)) {
+                        checked.delete(value);
+                        change_list.delete(value)
+                    } else {
+                        unchecked.add(value);
+                        change_list.add(value)
+                    }
+                }
+                document.getElementById("checked_ids").value = Array.from(checked);
+                document.getElementById("unchecked_ids").value = Array.from(unchecked);
+            });
+
+    </script>
 {% endblock %}
 

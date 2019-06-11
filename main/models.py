@@ -11,7 +11,7 @@ class Player(models.Model):
     nationality_flag = models.URLField(null=True)
     overall = models.IntegerField()
     potential = models.IntegerField()
-    club = models.CharField(max_length=512)
+    club = models.CharField(max_length=512, db_index=True)
     club_logo = models.URLField(null=True)
     value = models.IntegerField()
     wage = models.IntegerField()
