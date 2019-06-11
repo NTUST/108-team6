@@ -55,15 +55,11 @@ strong {
   color: #dd0055;
   white-space: nowrap;
 }
-/*
- * Emphasize
- */
+
 em {
   color: #dd0055;
 }
-/*
- * Insert
- */
+
 ins {
   background: #ffffaa;
   color: #363533;
@@ -74,9 +70,7 @@ mark {
   background: #ffffaa;
   color: #363533;
 }
-/*
- * Quote
- */
+
 q {
   font-style: italic;
 }
@@ -116,9 +110,7 @@ video {
   /* 2 */
   box-sizing: border-box;
 }
-/*
- * Preserve original dimensions
- */
+
 .uk-img-preserve,
 .uk-img-preserve audio,
 .uk-img-preserve canvas,
@@ -127,30 +119,22 @@ video {
 .uk-img-preserve video {
   max-width: none;
 }
-/*
- * Remove border when inside `a` element in IE 8/9/10.
- */
+
 img {
   border: 0;
 }
-/*
- * Correct overflow not hidden in IE 9/10/11.
- */
+
 svg:not(:root) {
   overflow: hidden;
 }
 /* Block elements
  ========================================================================== */
-/*
- * Reset margin
- */
+
 blockquote,
 figure {
   margin: 0;
 }
-/*
- * Margins
- */
+
 p,
 ul,
 ol,
@@ -208,9 +192,7 @@ h6 {
   color: #363533;
   text-transform: none;
 }
-/*
- * Margins
- */
+
 * + h1,
 * + h2,
 * + h3,
@@ -219,9 +201,7 @@ h6 {
 * + h6 {
   margin-top: 25px;
 }
-/*
- * Sizes
- */
+
 h1,
 .uk-h1 {
   font-size: 40px;
@@ -258,9 +238,7 @@ ul,
 ol {
   padding-left: 30px;
 }
-/*
- * Reset margin for nested lists
- */
+
 ul > li > ul,
 ul > li > ol,
 ol > li > ol,
@@ -306,9 +284,7 @@ blockquote {
 }
 /* Preformatted text
  ========================================================================== */
-/*
- * 1. Contain overflow in all browsers.
- */
+
 pre {
   padding: 10px;
   background: #f5f5f5;
@@ -351,15 +327,11 @@ section,
 summary {
   display: block;
 }
-/*
- * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
- */
+
 progress {
   vertical-align: baseline;
 }
-/*
- * Prevent displaying `audio` without controls in Chrome, Safari and Opera
- */
+
 audio:not([controls]) {
   display: none;
 }
@@ -386,9 +358,7 @@ iframe {
 /* ========================================================================
    Component: Grid
  ========================================================================== */
-/*
- * 1. Makes grid more robust so that it can be used with other block elements like lists
- */
+
 .uk-grid {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -431,17 +401,13 @@ iframe {
   /* 3 */
   float: left;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-grid > * > :last-child {
   margin-bottom: 0;
 }
 /* Grid gutter
  ========================================================================== */
-/*
- * Default gutter
- */
+
 /* Horizontal */
 .uk-grid {
   margin-left: -25px;
@@ -471,9 +437,7 @@ iframe {
     margin-top: 35px;
   }
 }
-/*
- * Collapse gutter
- */
+
 /* Horizontal */
 .uk-grid-collapse {
   margin-left: 0;
@@ -487,9 +451,7 @@ iframe {
 .uk-grid-collapse > * > .uk-panel + .uk-panel {
   margin-top: 0;
 }
-/*
- * Small gutter
- */
+
 /* Horizontal */
 .uk-grid-small {
   margin-left: -10px;
@@ -503,9 +465,7 @@ iframe {
 .uk-grid-small > * > .uk-panel + .uk-panel {
   margin-top: 10px;
 }
-/*
- * Medium gutter
- */
+
 /* Horizontal */
 .uk-grid-medium {
   margin-left: -25px;
@@ -519,9 +479,7 @@ iframe {
 .uk-grid-medium > * > .uk-panel + .uk-panel {
   margin-top: 25px;
 }
-/*
- * Large gutter
- */
+
 /* Large screen and bigger */
 @media (min-width: 960px) {
   /* Horizontal */
@@ -594,9 +552,7 @@ iframe {
 }
 /* Large screen and bigger */
 @media (min-width: 1220px) {
-  /*
-     * Large gutter
-     */
+  
   .uk-grid-divider:not(:empty) {
     margin-left: -35px;
     margin-right: -35px;
@@ -610,9 +566,7 @@ iframe {
     margin-bottom: 35px;
   }
 }
-/*
- * Vertical divider
- */
+
 .uk-grid-divider:empty {
   margin-top: 25px;
   margin-bottom: 25px;
@@ -620,9 +574,7 @@ iframe {
 }
 /* Match panels in grids
  ========================================================================== */
-/*
- * 1. Behave like a block element
- */
+
 .uk-grid-match > * {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -769,9 +721,7 @@ iframe {
   box-sizing: border-box;
   width: 100%;
 }
-/*
- * Widths
- */
+
 /* Whole */
 .uk-width-1-1 {
   width: 100%;
@@ -1116,9 +1066,7 @@ iframe {
   [class*='uk-pull-'] {
     position: relative;
   }
-  /*
-     * Push
-     */
+  
   /* Halves */
   .uk-push-1-2,
   .uk-push-2-4,
@@ -1179,9 +1127,7 @@ iframe {
   .uk-push-9-10 {
     left: 90%;
   }
-  /*
-     * Pull
-     */
+  
   /* Halves */
   .uk-pull-1-2,
   .uk-pull-2-4,
@@ -1361,16 +1307,12 @@ iframe {
   /* 2 */
   position: relative;
 }
-/*
- * Allow panels to be anchors
- */
+
 .uk-panel,
 .uk-panel:hover {
   text-decoration: none;
 }
-/*
- * Micro clearfix to make panels more robust
- */
+
 .uk-panel:before,
 .uk-panel:after {
   content: "";
@@ -1379,9 +1321,7 @@ iframe {
 .uk-panel:after {
   clear: both;
 }
-/*
- * Remove margin from the last-child if not `uk-widget-title`
- */
+
 .uk-panel > :not(.uk-panel-title):last-child {
   margin-bottom: 0;
 }
@@ -1436,15 +1376,11 @@ iframe {
   margin-left: -20px;
   margin-right: -20px;
 }
-/*
- * Nav in panel
- */
+
 .uk-panel-box > .uk-nav-side {
   margin: 0 -20px;
 }
-/*
- * Sub-modifier: `uk-panel-box-primary`
- */
+
 .uk-panel-box-primary {
   background-color: #eefaff;
   color: #699eb3;
@@ -1455,9 +1391,7 @@ iframe {
 .uk-panel-box-primary .uk-panel-title {
   color: #3484a4;
 }
-/*
- * Sub-modifier: `uk-panel-box-secondary`
- */
+
 .uk-panel-box-secondary {
   background-color: #eeeeee;
   color: #444444;
@@ -1542,9 +1476,7 @@ iframe {
     padding-bottom: 50px;
   }
 }
-/*
- * Micro clearfix to make blocks more robust
- */
+
 .uk-block:before,
 .uk-block:after {
   content: "";
@@ -1553,17 +1485,13 @@ iframe {
 .uk-block:after {
   clear: both;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-block > :last-child {
   margin-bottom: 0;
 }
 /* Padding Modifier
  ========================================================================== */
-/*
- * Large padding
- */
+
 .uk-block-large {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -1584,27 +1512,19 @@ iframe {
 }
 /* Color Modifier
  ========================================================================== */
-/*
- * Default
- */
+
 .uk-block-default {
   background: #ffffff;
 }
-/*
- * Muted
- */
+
 .uk-block-muted {
   background: #f9f9f9;
 }
-/*
- * Primary
- */
+
 .uk-block-primary {
   background: #00a8e6;
 }
-/*
- * Secondary
- */
+
 .uk-block-secondary {
   background: #222222;
 }
@@ -1617,9 +1537,7 @@ iframe {
 /* ========================================================================
    Component: Article
  ========================================================================== */
-/*
- * Micro clearfix to make articles more robust
- */
+
 .uk-article:before,
 .uk-article:after {
   content: "";
@@ -1628,15 +1546,11 @@ iframe {
 .uk-article:after {
   clear: both;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-article > :last-child {
   margin-bottom: 0;
 }
-/*
- * Vertical gutter for articles
- */
+
 .uk-article + .uk-article {
   margin-top: 25px;
 }
@@ -1684,9 +1598,7 @@ iframe {
 .uk-comment-header {
   margin-bottom: 20px;
 }
-/*
- * Micro clearfix
- */
+
 .uk-comment-header:before,
 .uk-comment-header:after {
   content: "";
@@ -1718,9 +1630,7 @@ iframe {
 }
 /* Sub-object `uk-comment-body`
  ========================================================================== */
-/*
- * Remove margin from the last-child
- */
+
 .uk-comment-body > :last-child {
   margin-bottom: 0;
 }
@@ -1749,9 +1659,7 @@ iframe {
 /* ========================================================================
    Component: Cover
  ========================================================================== */
-/*
- * Background image always covers and centers its element
- */
+
 .uk-cover-background {
   background-position: 50% 50%;
   background-size: cover;
@@ -1783,9 +1691,7 @@ iframe {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/*
- * To center iframes use `data-uk-cover` JavaScript
- */
+
 [data-uk-cover] {
   position: relative;
   left: 50%;
@@ -1802,9 +1708,7 @@ iframe {
   padding: 0;
   list-style: none;
 }
-/*
- * Items
- */
+
 .uk-nav li > a {
   display: block;
   text-decoration: none;
@@ -1812,18 +1716,14 @@ iframe {
 .uk-nav > li > a {
   padding: 5px 20px;
 }
-/*
- * Nested items
- */
+
 .uk-nav ul {
   padding-left: 15px;
 }
 .uk-nav ul a {
   padding: 2px 0;
 }
-/*
- * Item subtitle
- */
+
 .uk-nav li > a > div {
   font-size: 12px;
   line-height: 18px;
@@ -1846,9 +1746,7 @@ iframe {
 }
 /* Sub-object: `uk-nav-sub`
  ========================================================================== */
-/*
- * `ul` needed for higher specificity to override padding
- */
+
 ul.uk-nav-sub {
   padding: 5px 0 5px 20px;
 }
@@ -1867,9 +1765,7 @@ ul.uk-nav-sub {
 }
 /* Modifier `uk-nav-side`
  ========================================================================== */
-/*
- * Items
- */
+
 .uk-nav-side > li > a {
   color: #363533;
 }
@@ -1890,21 +1786,15 @@ ul.uk-nav-sub {
   background: #00a8e6;
   color: #ffc722;
 }
-/*
- * Sub-object: `uk-nav-header`
- */
+
 .uk-nav-side .uk-nav-header {
   color: #363533;
 }
-/*
- * Sub-object: `uk-nav-divider`
- */
+
 .uk-nav-side .uk-nav-divider {
   border-top: 1px solid #dddddd;
 }
-/*
- * Nested items
- */
+
 .uk-nav-side ul a {
   color: #363533;
 }
@@ -1913,9 +1803,7 @@ ul.uk-nav-sub {
 }
 /* Modifier `uk-nav-dropdown`
  ========================================================================== */
-/*
- * Items
- */
+
 .uk-nav-dropdown > li > a {
   color: #363533;
 }
@@ -1931,21 +1819,15 @@ ul.uk-nav-sub {
   /* 2 */
   outline: none;
 }
-/*
- * Sub-object: `uk-nav-header`
- */
+
 .uk-nav-dropdown .uk-nav-header {
   color: #999999;
 }
-/*
- * Sub-object: `uk-nav-divider`
- */
+
 .uk-nav-dropdown .uk-nav-divider {
   border-top: 1px solid #dddddd;
 }
-/*
- * Nested items
- */
+
 .uk-nav-dropdown ul a {
   color: #363533;
 }
@@ -1954,9 +1836,7 @@ ul.uk-nav-sub {
 }
 /* Modifier `uk-nav-navbar`
  ========================================================================== */
-/*
- * Items
- */
+
 .uk-nav-navbar > li > a {
   color: #363533;
 }
@@ -1972,21 +1852,15 @@ ul.uk-nav-sub {
   /* 2 */
   outline: none;
 }
-/*
- * Sub-object: `uk-nav-header`
- */
+
 .uk-nav-navbar .uk-nav-header {
   color: #999999;
 }
-/*
- * Sub-object: `uk-nav-divider`
- */
+
 .uk-nav-navbar .uk-nav-divider {
   border-top: 1px solid #dddddd;
 }
-/*
- * Nested items
- */
+
 .uk-nav-navbar ul a {
   color: #363533;
 }
@@ -1995,9 +1869,7 @@ ul.uk-nav-sub {
 }
 /* Modifier `uk-nav-offcanvas`
  ========================================================================== */
-/*
- * Items
- */
+
 .uk-nav-offcanvas > li > a {
   color: #cccccc;
   padding: 10px 15px;
@@ -2024,15 +1896,11 @@ html .uk-nav.uk-nav-offcanvas > li.uk-active > a {
   background: #1a1a1a;
   color: #ffffff;
 }
-/*
- * Sub-object: `uk-nav-header`
- */
+
 .uk-nav-offcanvas .uk-nav-header {
   color: #777777;
 }
-/*
- * Sub-object: `uk-nav-divider`
- */
+
 .uk-nav-offcanvas .uk-nav-divider {
   border-top: 1px solid #1a1a1a;
 }
@@ -2053,9 +1921,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background: rgba(255, 255, 255, 0);
   color: #363533;
 }
-/*
- * Micro clearfix
- */
+
 .uk-navbar:before,
 .uk-navbar:after {
   content: "";
@@ -2072,9 +1938,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   list-style: none;
   float: left;
 }
-/*
- * 1. Create position context for dropdowns
- */
+
 .uk-navbar-nav > li {
   float: left;
   /* 1 */
@@ -2138,9 +2002,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 }
 /* Sub-objects: `uk-navbar-content`, `uk-navbar-brand`, `uk-navbar-toggle`
  ========================================================================== */
-/*
- * Imitate navbar items
- */
+
 .uk-navbar-content,
 .uk-navbar-brand,
 .uk-navbar-toggle {
@@ -2150,9 +2012,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding: 0 15px;
   float: left;
 }
-/*
- * Helper to center all child elements vertically
- */
+
 .uk-navbar-content:before,
 .uk-navbar-brand:before,
 .uk-navbar-toggle:before {
@@ -2163,15 +2023,11 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 }
 /* Sub-objects: `uk-navbar-content`
  ========================================================================== */
-/*
- * Better sibling spacing
- */
+
 .uk-navbar-content + .uk-navbar-content:not(.uk-navbar-center) {
   padding-left: 0;
 }
-/*
- * Link colors
- */
+
 .uk-navbar-content > a:not([class]) {
   color: #363533;
 }
@@ -2214,9 +2070,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   outline: none;
 }
-/*
- * 1. Center icon vertically
- */
+
 .uk-navbar-toggle:after {
   content: "\f0c9";
   font-family: FontAwesome;
@@ -2282,9 +2136,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 3 */
   position: relative;
 }
-/*
- * DEPRECATED IE9 Support
- */
+
 .uk-subnav:before,
 .uk-subnav:after {
   content: "";
@@ -2312,9 +2164,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   color: #363533;
   text-decoration: none;
 }
-/*
- * Active
- */
+
 .uk-subnav > .uk-active > * {
   color: #363533;
 }
@@ -2380,9 +2230,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 }
 /* Items
  ========================================================================== */
-/*
- * Reset whitespace hack
- */
+
 .uk-breadcrumb > li {
   font-size: 1rem;
   vertical-align: top;
@@ -2397,9 +2245,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   display: inline-block;
   margin: 0 8px;
 }
-/*
- * Disabled
- */
+
 .uk-breadcrumb > li:not(.uk-active) > span {
   color: #999999;
 }
@@ -2464,9 +2310,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   text-align: center;
 }
-/*
- * Links
- */
+
 .uk-pagination > li > a {
   background: #eeeeee;
   color: #363533;
@@ -2488,16 +2332,12 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background-color: #dddddd;
   color: #363533;
 }
-/*
- * Active
- */
+
 .uk-pagination > .uk-active > span {
   background: #00a8e6;
   color: #ffc722;
 }
-/*
- * Disabled
- */
+
 .uk-pagination > .uk-disabled > span {
   background-color: #f5f5f5;
   color: #999999;
@@ -2527,9 +2367,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   list-style: none;
   border-bottom: 1px solid #dddddd;
 }
-/*
- * Micro clearfix on the deepest container
- */
+
 .uk-tab:before,
 .uk-tab:after {
   content: "";
@@ -2613,9 +2451,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   margin-left: 0;
   margin-right: 0;
 }
-/*
- * Icon
- */
+
 .uk-tab-responsive > a:before {
   content: "\f0c9\00a0";
   font-family: FontAwesome;
@@ -2637,9 +2473,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-tab-center:after {
   clear: both;
 }
-/*
- * 1. Using `right` to prevent vertical scrollbar caused by centering if to many tabs
- */
+
 .uk-tab-center .uk-tab {
   position: relative;
   right: 50%;
@@ -2683,9 +2517,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 }
 /* Modifier: 'tab-grid'
  ========================================================================== */
-/*
- * 1. Create position context to prevent hidden border because of negative `z-index`
- */
+
 .uk-tab-grid {
   margin-left: -5px;
   border-bottom: none;
@@ -2709,9 +2541,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-tab-grid > li > a {
   text-align: center;
 }
-/*
- * If `uk-tab-bottom`
- */
+
 .uk-tab-grid.uk-tab-bottom {
   border-top: none;
 }
@@ -2746,9 +2576,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   .uk-tab-right > li.uk-active > a {
     border-color: #dddddd;
   }
-  /*
-     * Modifier: 'tab-left'
-     */
+  
   .uk-tab-left {
     border-right: 1px solid #dddddd;
   }
@@ -2769,9 +2597,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   .uk-tab-left > li.uk-active > a {
     border-right-color: transparent;
   }
-  /*
-     * Modifier: 'tab-right'
-     */
+  
   .uk-tab-right {
     border-left: 1px solid #dddddd;
   }
@@ -2827,9 +2653,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding-left: 10px;
   margin-top: 10px;
 }
-/*
- * DEPRECATED IE9 Support
- */
+
 .uk-thumbnav:before,
 .uk-thumbnav:after {
   content: "";
@@ -2853,16 +2677,12 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
-/*
- * Hover
- */
+
 .uk-thumbnav > * > :hover > img,
 .uk-thumbnav > * > :focus > img {
   opacity: 1;
 }
-/*
- * Active
- */
+
 .uk-thumbnav > .uk-active > * > img {
   opacity: 1;
 }
@@ -2873,9 +2693,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   padding: 0;
   list-style: none;
 }
-/*
- * Micro clearfix to make list more robust
- */
+
 .uk-list > li:before,
 .uk-list > li:after {
   content: "";
@@ -2884,15 +2702,11 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-list > li:after {
   clear: both;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-list > li > :last-child {
   margin-bottom: 0;
 }
-/*
- * Nested lists
- */
+
 .uk-list ul {
   margin: 0;
   padding-left: 20px;
@@ -2970,9 +2784,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 3 */
   margin-bottom: 20px;
 }
-/*
- * Add margin if adjacent element
- */
+
 * + .uk-table {
   margin-top: 20px;
 }
@@ -2980,9 +2792,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-table td {
   padding: 8px 8px;
 }
-/*
- * Set alignment
- */
+
 .uk-table th {
   text-align: left;
 }
@@ -2992,9 +2802,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-table thead th {
   vertical-align: bottom;
 }
-/*
- * Caption and footer
- */
+
 .uk-table caption,
 .uk-table tfoot {
   font-size: 12px;
@@ -3004,9 +2812,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   text-align: left;
   color: #999999;
 }
-/*
- * Active State
- */
+
 .uk-table tbody tr.uk-active {
   background: #eeeeee;
 }
@@ -3057,9 +2863,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   font: inherit;
   color: inherit;
 }
-/*
- * Address inconsistent `text-transform` inheritance which is only inherit in Firefox
- */
+
 .uk-form select {
   text-transform: none;
 }
@@ -3074,30 +2878,22 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   font-weight: bold;
 }
-/*
- * Removes inner padding and border in Firefox 4+.
- */
+
 .uk-form input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-/*
- * Removes excess padding in IE 8/9/10.
- */
+
 .uk-form input[type="checkbox"],
 .uk-form input[type="radio"] {
   padding: 0;
 }
-/*
- * Improves consistency of cursor style for clickable elements
- */
+
 .uk-form input[type="checkbox"]:not(:disabled),
 .uk-form input[type="radio"]:not(:disabled) {
   cursor: pointer;
 }
-/*
- * Remove default style in iOS.
- */
+
 .uk-form textarea,
 .uk-form input:not([type]),
 .uk-form input[type="text"],
@@ -3110,9 +2906,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form input[type="datetime"] {
   -webkit-appearance: none;
 }
-/*
- * Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
- */
+
 .uk-form input[type="search"]::-webkit-search-cancel-button,
 .uk-form input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -3126,9 +2920,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-/*
- * Define consistent border, margin, and padding.
- */
+
 .uk-form fieldset {
   border: none;
   margin: 0;
@@ -3144,30 +2936,22 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   /* 2 */
   vertical-align: top;
 }
-/*
- * Removes placeholder transparency in Firefox.
- */
+
 .uk-form ::-moz-placeholder {
   opacity: 1;
 }
-/*
- * Removes `box-shadow` for invalid controls in Firefox.
- */
+
 .uk-form :invalid {
   box-shadow: none;
 }
-/*
- * Vertical alignment
- */
+
 .uk-form input:not([type="radio"]):not([type="checkbox"]),
 .uk-form select {
   vertical-align: middle;
 }
 /* Style
  ========================================================================== */
-/*
- * Remove margin from the last-child
- */
+
 .uk-form > :last-child {
   margin-bottom: 0;
 }
@@ -3252,9 +3036,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   background-color: #f5f5f5;
   color: #999999;
 }
-/*
- * Placeholder
- */
+
 .uk-form :-ms-input-placeholder {
   color: #999999 !important;
 }
@@ -3295,9 +3077,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   font-size: 18px;
   line-height: 30px;
 }
-/*
- * 1. Fixes IE9
- */
+
 .uk-form legend:after {
   content: "";
   display: block;
@@ -3335,17 +3115,13 @@ input:not([type]).uk-form-large {
 /* Validation states
  * Using !important to keep the selector simple
  ========================================================================== */
-/*
- * Error state
- */
+
 .uk-form-danger {
   border-color: #dc8d99 !important;
   background: #fff7f8 !important;
   color: #d85030 !important;
 }
-/*
- * Success state
- */
+
 .uk-form-success {
   border-color: #8ec73b !important;
   background: #fafff2 !important;
@@ -3354,9 +3130,7 @@ input:not([type]).uk-form-large {
 /* Style modifiers
  * Using !important to keep the selector simple
  ========================================================================== */
-/*
- * Blank form
- */
+
 .uk-form-blank {
   border-color: transparent !important;
   border-style: dashed !important;
@@ -3401,9 +3175,7 @@ select.uk-form-width-mini {
 .uk-form-row:after {
   clear: both;
 }
-/*
- * Vertical gutter
- */
+
 .uk-form-row + .uk-form-row {
   margin-top: 20px;
 }
@@ -3420,18 +3192,14 @@ select.uk-form-width-mini {
 /* Controls content
  * Sub-object: `uk-form-controls`, `uk-form-controls-condensed`
  ========================================================================== */
-/*
- * Remove margins
- */
+
 .uk-form-controls > :first-child {
   margin-top: 0;
 }
 .uk-form-controls > :last-child {
   margin-bottom: 0;
 }
-/*
- * Group controls and text into blocks with a small spacing between blocks
- */
+
 .uk-form-controls-condensed {
   margin: 5px 0;
 }
@@ -3485,9 +3253,7 @@ select.uk-form-width-mini {
   /* 3 */
   max-width: 100%;
 }
-/*
- * 1. Make form element clickable through icon
- */
+
 .uk-form-icon > [class*='uk-icon-'] {
   position: absolute;
   top: 50%;
@@ -3502,9 +3268,7 @@ select.uk-form-width-mini {
 .uk-form-icon:not(.uk-form-icon-flip) > input {
   padding-left: 30px !important;
 }
-/*
- * Sub-modifier: `uk-form-icon-flip`
- */
+
 .uk-form-icon-flip > [class*='uk-icon-'] {
   right: 0;
 }
@@ -3514,9 +3278,7 @@ select.uk-form-width-mini {
 /* ========================================================================
    Component: Button
  ========================================================================== */
-/*
- * Removes inner padding and border in Firefox 4+.
- */
+
 .uk-button::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -3590,9 +3352,7 @@ select.uk-form-width-mini {
 }
 /* Color modifiers
  ========================================================================== */
-/*
- * Modifier: `uk-button-primary`
- */
+
 .uk-button-primary {
   background-color: #00a8e6;
   color: #ffc722;
@@ -3609,9 +3369,7 @@ select.uk-form-width-mini {
   background-color: #359ac4;
   color: #ffc722;
 }
-/*
- * Modifier: `uk-button-success`
- */
+
 .uk-button-success {
   background-color: #8cc14c;
   color: #ffc722;
@@ -3628,9 +3386,7 @@ select.uk-form-width-mini {
   background-color: #72ae41;
   color: #ffc722;
 }
-/*
- * Modifier: `uk-button-danger`
- */
+
 .uk-button-danger {
   background-color: #da314b;
   color: #ffc722;
@@ -3812,9 +3568,7 @@ select.uk-form-width-mini {
 .uk-icon-hover {
   color: #999999;
 }
-/*
- * Hover
- */
+
 .uk-icon-hover:hover {
   color: #363533;
 }
@@ -5756,9 +5510,7 @@ select.uk-form-width-mini {
 /* ========================================================================
    Component: Close
  ========================================================================== */
-/*
- * Removes inner padding and border in Firefox 4+.
- */
+
 .uk-close::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -5857,9 +5609,7 @@ select.uk-form-width-mini {
   vertical-align: middle;
   text-transform: none;
 }
-/*
- * Keep color when badge is a link
- */
+
 a.uk-badge:hover {
   color: #ffc722;
 }
@@ -5874,21 +5624,15 @@ a.uk-badge:hover {
 }
 /* Color modifier
  ========================================================================== */
-/*
- * Modifier: `uk-badge-success`
- */
+
 .uk-badge-success {
   background-color: #8cc14c;
 }
-/*
- * Modifier: `uk-badge-warning`
- */
+
 .uk-badge-warning {
   background-color: #faa732;
 }
-/*
- * Modifier: `uk-badge-danger`
- */
+
 .uk-badge-danger {
   background-color: #da314b;
 }
@@ -5901,21 +5645,15 @@ a.uk-badge:hover {
   background: #ebf7fd;
   color: #2d7091;
 }
-/*
- * Add margin if adjacent element
- */
+
 * + .uk-alert {
   margin-top: 20px;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-alert > :last-child {
   margin-bottom: 0;
 }
-/*
- * Keep color for headings if the default heading color is changed
- */
+
 .uk-alert h1,
 .uk-alert h2,
 .uk-alert h3,
@@ -5929,9 +5667,7 @@ a.uk-badge:hover {
 .uk-alert > .uk-close:first-child {
   float: right;
 }
-/*
- * Remove margin from adjacent element
- */
+
 .uk-alert > .uk-close:first-child + * {
   margin-top: 0;
 }
@@ -6057,9 +5793,7 @@ a.uk-thumbnail:focus {
 .uk-overlay.uk-border-circle {
   -webkit-mask-image: -webkit-radial-gradient(circle, #ffffff 100%, #000000 100%);
 }
-/*
- * Remove margin from content
- */
+
 .uk-overlay > :first-child {
   margin-bottom: 0;
 }
@@ -6080,16 +5814,12 @@ a.uk-thumbnail:focus {
   padding: 20px;
   color: #ffc722;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-overlay-panel > :last-child,
 .uk-overlay-panel.uk-flex > * > :last-child {
   margin-bottom: 0;
 }
-/*
- * Keep color for headings if the default heading color is changed
- */
+
 .uk-overlay-panel h1,
 .uk-overlay-panel h2,
 .uk-overlay-panel h3,
@@ -6120,9 +5850,7 @@ a.uk-thumbnail:focus {
 }
 /* Modifier `uk-overlay-image`
  ========================================================================== */
-/*
- * Reset panel
- */
+
 .uk-overlay-image {
   padding: 0;
 }
@@ -6175,9 +5903,7 @@ a.uk-thumbnail:focus {
 .uk-overlay-active [class*='uk-overlay-slide'] {
   transition-duration: 0.8s;
 }
-/*
- * Fade
- */
+
 .uk-overlay-fade {
   opacity: 0.7;
 }
@@ -6186,9 +5912,7 @@ a.uk-thumbnail:focus {
 .uk-overlay-active .uk-active > .uk-overlay-fade {
   opacity: 1;
 }
-/*
- * Scale
- */
+
 .uk-overlay-scale {
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -6199,9 +5923,7 @@ a.uk-thumbnail:focus {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-/*
- * Spin
- */
+
 .uk-overlay-spin {
   -webkit-transform: scale(1) rotate(0deg);
   transform: scale(1) rotate(0deg);
@@ -6212,9 +5934,7 @@ a.uk-thumbnail:focus {
   -webkit-transform: scale(1.1) rotate(3deg);
   transform: scale(1.1) rotate(3deg);
 }
-/*
- * Grayscale
- */
+
 .uk-overlay-grayscale {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -6225,9 +5945,7 @@ a.uk-thumbnail:focus {
   -webkit-filter: grayscale(0%);
   filter: grayscale(0%);
 }
-/*
- * Slide
- */
+
 [class*='uk-overlay-slide'] {
   opacity: 0;
 }
@@ -6293,9 +6011,7 @@ a.uk-thumbnail:focus {
 .uk-overlay-toggle.uk-hover .uk-overlay-area {
   opacity: 1;
 }
-/*
- * Icon
- */
+
 .uk-overlay-area:empty:before {
   content: "\f002";
   position: absolute;
@@ -6321,9 +6037,7 @@ a.uk-thumbnail:focus {
 .uk-overlay-area:not(:empty) {
   font-size: 0.001px;
 }
-/*
- * 1. Needed for vertical alignment
- */
+
 .uk-overlay-area:not(:empty):before {
   content: '';
   display: inline-block;
@@ -6350,15 +6064,11 @@ a.uk-thumbnail:focus {
   padding: 0 15px;
   color: #ffffff;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-overlay-area-content > :last-child {
   margin-bottom: 0;
 }
-/*
- * Links in overlay area
- */
+
 .uk-overlay-area-content a:not([class]),
 .uk-overlay-area-content a:not([class]):hover {
   color: inherit;
@@ -6574,9 +6284,7 @@ a.uk-thumbnail:focus {
   -webkit-animation-timing-function: linear !important;
   animation-timing-function: linear !important;
 }
-/*
- * Fade with scale
- */
+
 .uk-animation-scale-up {
   -webkit-animation-name: uk-fade-scale-02;
   animation-name: uk-fade-scale-02;
@@ -6585,9 +6293,7 @@ a.uk-thumbnail:focus {
   -webkit-animation-name: uk-fade-scale-18;
   animation-name: uk-fade-scale-18;
 }
-/*
- * Fade with slide
- */
+
 .uk-animation-slide-top {
   -webkit-animation-name: uk-fade-top;
   animation-name: uk-fade-top;
@@ -6604,16 +6310,12 @@ a.uk-thumbnail:focus {
   -webkit-animation-name: uk-fade-right;
   animation-name: uk-fade-right;
 }
-/*
- * Scale
- */
+
 .uk-animation-scale {
   -webkit-animation-name: uk-scale-12;
   animation-name: uk-scale-12;
 }
-/*
- * Shake
- */
+
 .uk-animation-shake {
   -webkit-animation-name: uk-shake;
   animation-name: uk-shake;
@@ -6700,9 +6402,7 @@ a.uk-thumbnail:focus {
 }
 /* Keyframes: Fade with slide
  ========================================================================== */
-/*
- * Top
- */
+
 @-webkit-keyframes uk-fade-top {
   0% {
     opacity: 0;
@@ -6723,9 +6423,7 @@ a.uk-thumbnail:focus {
     transform: translateY(0);
   }
 }
-/*
- * Bottom
- */
+
 @-webkit-keyframes uk-fade-bottom {
   0% {
     opacity: 0;
@@ -6746,9 +6444,7 @@ a.uk-thumbnail:focus {
     transform: translateY(0);
   }
 }
-/*
- * Left
- */
+
 @-webkit-keyframes uk-fade-left {
   0% {
     opacity: 0;
@@ -6769,9 +6465,7 @@ a.uk-thumbnail:focus {
     transform: translateX(0);
   }
 }
-/*
- * Right
- */
+
 @-webkit-keyframes uk-fade-right {
   0% {
     opacity: 0;
@@ -6794,9 +6488,7 @@ a.uk-thumbnail:focus {
 }
 /* Keyframes: Fade with scale
  ========================================================================== */
-/*
- * Scale by 0.2
- */
+
 @-webkit-keyframes uk-fade-scale-02 {
   0% {
     opacity: 0;
@@ -6841,9 +6533,7 @@ a.uk-thumbnail:focus {
     transform: scale(1);
   }
 }
-/*
- * Scale by 1.8
- */
+
 @-webkit-keyframes uk-fade-scale-18 {
   0% {
     opacity: 0;
@@ -6867,9 +6557,7 @@ a.uk-thumbnail:focus {
 /* Keyframes: Slide
  * Used by slideshow component
  ========================================================================== */
-/*
- * Left
- */
+
 @-webkit-keyframes uk-slide-left {
   0% {
     -webkit-transform: translateX(-100%);
@@ -6886,9 +6574,7 @@ a.uk-thumbnail:focus {
     transform: translateX(0);
   }
 }
-/*
- * Right
- */
+
 @-webkit-keyframes uk-slide-right {
   0% {
     -webkit-transform: translateX(100%);
@@ -6905,9 +6591,7 @@ a.uk-thumbnail:focus {
     transform: translateX(0);
   }
 }
-/*
- * Left third
- */
+
 @-webkit-keyframes uk-slide-left-33 {
   0% {
     -webkit-transform: translateX(33%);
@@ -6924,9 +6608,7 @@ a.uk-thumbnail:focus {
     transform: translateX(0);
   }
 }
-/*
- * Right third
- */
+
 @-webkit-keyframes uk-slide-right-33 {
   0% {
     -webkit-transform: translateX(-33%);
@@ -7051,9 +6733,7 @@ a.uk-thumbnail:focus {
 /* Keyframes: Fade with slide fixed
  * Used by dropdown and search component
  ========================================================================== */
-/*
- * Top fixed
- */
+
 @-webkit-keyframes uk-slide-top-fixed {
   0% {
     opacity: 0;
@@ -7074,9 +6754,7 @@ a.uk-thumbnail:focus {
     transform: translateY(0);
   }
 }
-/*
- * Bottom fixed
- */
+
 @-webkit-keyframes uk-slide-bottom-fixed {
   0% {
     opacity: 0;
@@ -7148,9 +6826,7 @@ a.uk-thumbnail:focus {
 }
 /* Alignment modifiers
  ========================================================================== */
-/*
- * Modifier
- */
+
 .uk-dropdown-top {
   margin-top: -5px;
 }
@@ -7186,9 +6862,7 @@ a.uk-thumbnail:focus {
 }
 /* Tablet and bigger */
 @media (min-width: 880px) {
-  /*
-     * Horizontal gutter
-     */
+  
   .uk-dropdown:not(.uk-dropdown-stack) > .uk-dropdown-grid {
     margin-left: -15px;
     margin-right: -15px;
@@ -7197,15 +6871,11 @@ a.uk-thumbnail:focus {
     padding-left: 15px;
     padding-right: 15px;
   }
-  /*
-     * Column divider
-     */
+  
   .uk-dropdown:not(.uk-dropdown-stack) > .uk-dropdown-grid > [class*='uk-width-']:nth-child(n+2) {
     border-left: 1px solid #dddddd;
   }
-  /*
-     * Width multiplier for dropdown columns
-     */
+  
   .uk-dropdown-width-2:not(.uk-dropdown-stack) {
     width: 440px;
   }
@@ -7221,15 +6891,11 @@ a.uk-thumbnail:focus {
 }
 /* Phone landscape and smaller */
 @media (max-width: 879px) {
-  /*
-     * Stack columns and take full width
-     */
+  
   .uk-dropdown-grid > [class*='uk-width-'] {
     width: 100%;
   }
-  /*
-     * Vertical gutter
-     */
+  
   .uk-dropdown-grid > [class*='uk-width-']:nth-child(n+2) {
     margin-top: 15px;
   }
@@ -7245,18 +6911,14 @@ a.uk-thumbnail:focus {
 }
 /* Modifier `uk-dropdown-small`
  ========================================================================== */
-/*
- * Set min-width and text expands dropdown if needed
- */
+
 .uk-dropdown-small {
   min-width: 150px;
   width: auto;
   padding: 5px;
   white-space: nowrap;
 }
-/*
- * Nav in dropdown
- */
+
 .uk-dropdown-small .uk-nav {
   margin: 0 -5px;
 }
@@ -7273,9 +6935,7 @@ a.uk-thumbnail:focus {
 }
 /* Modifier `uk-dropdown-scrollable`
  ========================================================================== */
-/*
- * Usefull for long lists
- */
+
 .uk-dropdown-scrollable {
   overflow-y: auto;
   max-height: 200px;
@@ -7320,15 +6980,11 @@ a.uk-thumbnail:focus {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
-/*
- * Open state
- */
+
 .uk-modal.uk-open {
   opacity: 1;
 }
-/*
- * Prevents duplicated scrollbar caused by 4.
- */
+
 .uk-modal-page,
 .uk-modal-page body {
   overflow: hidden;
@@ -7362,26 +7018,20 @@ a.uk-thumbnail:focus {
 }
 /* Phone landscape and smaller */
 @media (max-width: 879px) {
-  /*
-     * Fit in small screen
-     */
+  
   .uk-modal-dialog {
     width: auto;
     margin: 10px auto;
   }
 }
-/*
- * Open state
- */
+
 .uk-open .uk-modal-dialog {
   /* 4 */
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-modal-dialog > :not([class*='uk-modal-']):last-child {
   margin-bottom: 0;
 }
@@ -7391,9 +7041,7 @@ a.uk-thumbnail:focus {
   margin: -10px -10px 0 0;
   float: right;
 }
-/*
- * Remove margin from adjacent element
- */
+
 .uk-modal-dialog > .uk-close:first-child + :not([class*='uk-modal-']) {
   margin-top: 0;
 }
@@ -7406,9 +7054,7 @@ a.uk-thumbnail:focus {
   max-width: calc(100% - 30px);
   min-height: 50px;
 }
-/*
- * Close button
- */
+
 .uk-modal-dialog-lightbox > .uk-close:first-child {
   position: absolute;
   top: -12px;
@@ -7466,9 +7112,7 @@ a.uk-thumbnail:focus {
 .uk-modal-footer {
   margin-top: 20px;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-modal-header > :last-child,
 .uk-modal-footer > :last-child {
   margin-bottom: 0;
@@ -7609,9 +7253,7 @@ a.uk-thumbnail:focus {
 /* ========================================================================
    Component: Switcher
  ========================================================================== */
-/*
- * 1. Deactivate browser history navigation in IE11
- */
+
 .uk-switcher {
   margin: 0;
   padding: 0;
@@ -7619,9 +7261,7 @@ a.uk-thumbnail:focus {
   /* 1 */
   touch-action: cross-slide-y pinch-zoom double-tap-zoom;
 }
-/*
- * Items
- */
+
 .uk-switcher > :not(.uk-active) {
   display: none;
 }
@@ -7707,23 +7347,17 @@ a.uk-thumbnail:focus {
 }
 /* Wrap modifiers
  ========================================================================== */
-/*
- * Prevent text from wrapping onto multiple lines
- */
+
 .uk-text-nowrap {
   white-space: nowrap;
 }
-/*
- * Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
- */
+
 .uk-text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/*
- * Break strings if their length exceeds the width of their container
- */
+
 .uk-text-break {
   word-wrap: break-word;
   -webkit-hyphens: auto;
@@ -7748,9 +7382,7 @@ a.uk-thumbnail:focus {
     padding: 0 35px;
   }
 }
-/*
- * Micro clearfix
- */
+
 .uk-container:before,
 .uk-container:after {
   content: "";
@@ -7759,9 +7391,7 @@ a.uk-thumbnail:focus {
 .uk-container:after {
   clear: both;
 }
-/*
- * Center container
- */
+
 .uk-container-center {
   margin-left: auto;
   margin-right: auto;
@@ -7783,9 +7413,7 @@ a.uk-thumbnail:focus {
   display: table;
   clear: both;
 }
-/*
- *  Create a new block formatting context
- */
+
 .uk-nbfc {
   overflow: hidden;
 }
@@ -7811,9 +7439,7 @@ a.uk-thumbnail:focus {
 }
 /* Alignment of images and objects
  ========================================================================== */
-/*
- * Alignment
- */
+
 [class*='uk-align-'] {
   display: block;
   margin-bottom: 20px;
@@ -7843,15 +7469,11 @@ a.uk-thumbnail:focus {
 }
 /* Vertical alignment
  ========================================================================== */
-/*
- * Remove whitespace between child elements when using `inline-block`
- */
+
 .uk-vertical-align {
   font-size: 0.001px;
 }
-/*
- *  The `uk-vertical-align` container needs a specific height
- */
+
 .uk-vertical-align:before {
   content: '';
   display: inline-block;
@@ -7877,21 +7499,15 @@ a.uk-thumbnail:focus {
 }
 /* Height
  ========================================================================== */
-/*
- * More robust if padding and border are used
- */
+
 [class*='uk-height'] {
   box-sizing: border-box;
 }
-/*
- * Useful to extend the `html` and `body` element to the full height of the page.
- */
+
 .uk-height-1-1 {
   height: 100%;
 }
-/*
- * Useful to create image teasers
- */
+
 .uk-height-viewport {
   height: 100vh;
   min-height: 600px;
@@ -7899,9 +7515,7 @@ a.uk-thumbnail:focus {
 /* Responsive objects
  * Note: Images are already responsive by default, see Base component
  ========================================================================== */
-/*
- * 1. Corrects `max-width` and `max-height` behavior if padding and border are used
- */
+
 .uk-responsive-width,
 .uk-responsive-height {
   box-sizing: border-box;
@@ -7946,9 +7560,7 @@ a.uk-thumbnail:focus {
 .uk-margin-right {
   margin-right: 20px !important;
 }
-/*
- * Larger margins
- */
+
 .uk-margin-large {
   margin-bottom: 50px;
 }
@@ -7967,9 +7579,7 @@ a.uk-thumbnail:focus {
 .uk-margin-large-right {
   margin-right: 50px !important;
 }
-/*
- * Smaller margins
- */
+
 .uk-margin-small {
   margin-bottom: 5px;
 }
@@ -7988,9 +7598,7 @@ a.uk-thumbnail:focus {
 .uk-margin-small-right {
   margin-right: 5px !important;
 }
-/*
- * Remove margins
- */
+
 .uk-margin-remove {
   margin: 0 !important;
 }
@@ -8038,9 +7646,7 @@ a.uk-thumbnail:focus {
 }
 /* Link
  ========================================================================== */
-/*
- * Let links appear in default text color
- */
+
 .uk-link-muted,
 .uk-link-muted a {
   color: #363533;
@@ -8049,9 +7655,7 @@ a.uk-thumbnail:focus {
 .uk-link-muted a:hover {
   color: #363533;
 }
-/*
- * Reset link style
- */
+
 .uk-link-reset,
 .uk-link-reset a,
 .uk-link-reset:hover,
@@ -8063,18 +7667,14 @@ a.uk-thumbnail:focus {
 }
 /* Scrollable
  ========================================================================== */
-/*
- * Enable scrolling for preformatted text
- */
+
 .uk-scrollable-text {
   height: 300px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   resize: both;
 }
-/*
- * Box with scrolling enabled
- */
+
 .uk-scrollable-box {
   box-sizing: border-box;
   height: 170px;
@@ -8092,9 +7692,7 @@ a.uk-thumbnail:focus {
 .uk-overflow-hidden {
   overflow: hidden;
 }
-/*
- * Enable scrollbars if content is clipped
- */
+
 .uk-overflow-container {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -8136,9 +7734,7 @@ a.uk-thumbnail:focus {
   bottom: 0;
   right: 0;
 }
-/*
- * Cover
- */
+
 .uk-position-cover {
   position: absolute;
   top: 0;
@@ -8146,15 +7742,11 @@ a.uk-thumbnail:focus {
   left: 0;
   right: 0;
 }
-/*
- * Relative
- */
+
 .uk-position-relative {
   position: relative !important;
 }
-/*
- * Z-index
- */
+
 .uk-position-z-index {
   z-index: 1;
 }
@@ -8253,9 +7845,7 @@ a.uk-thumbnail:focus {
   display: -webkit-inline-flex;
   display: inline-flex;
 }
-/*
- * Fixes initial flex-shrink value in IE10
- */
+
 .uk-flex > *,
 .uk-flex-inline > * {
   -ms-flex-negative: 1;
@@ -8370,9 +7960,7 @@ a.uk-thumbnail:focus {
 }
 /* Item ordering
  ========================================================================== */
-/*
- * Default is 0
- */
+
 .uk-flex-order-first {
   -ms-flex-order: -1;
   -webkit-order: -1;
@@ -8774,9 +8362,7 @@ a.uk-thumbnail:focus {
   padding-left: 15px;
   margin-top: 15px;
 }
-/*
- * DEPRECATED IE9 Support
- */
+
 .uk-dotnav:before,
 .uk-dotnav:after {
   content: "";
@@ -8849,17 +8435,13 @@ a.uk-thumbnail:focus {
 }
 /* Modifier: 'uk-dotnav-vertical'
  ========================================================================== */
-/*
- * DEPRECATED
- */
+
 .uk-dotnav-vertical {
   -ms-flex-direction: column;
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/*
- * DEPRECATED IE9 Support
- */
+
 .uk-dotnav-vertical > * {
   float: none;
 }
@@ -8905,9 +8487,7 @@ a.uk-thumbnail:focus {
 .uk-slidenav:active {
   color: rgba(50, 50, 50, 0.9);
 }
-/*
- * Icons
- */
+
 .uk-slidenav-previous:before {
   content: "\f104";
   font-family: FontAwesome;
@@ -8918,15 +8498,11 @@ a.uk-thumbnail:focus {
 }
 /* Sub-object: `uk-slidenav-position`
  ========================================================================== */
-/*
- * Create position context
- */
+
 .uk-slidenav-position {
   position: relative;
 }
-/*
- * Center vertically
- */
+
 .uk-slidenav-position .uk-slidenav {
   display: none;
   position: absolute;
@@ -8977,9 +8553,7 @@ a.uk-thumbnail:focus {
   /* 2 */
   line-height: 20px;
 }
-/*
- * Add margin if adjacent element
- */
+
 * + .uk-progress {
   margin-top: 20px;
 }
@@ -9030,9 +8604,7 @@ a.uk-thumbnail:focus {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 30px 30px;
 }
-/*
- * Animation
- */
+
 .uk-progress-striped.uk-active .uk-progress-bar {
   -webkit-animation: uk-progress-bar-stripes 2s linear infinite;
   animation: uk-progress-bar-stripes 2s linear infinite;
@@ -9072,9 +8644,7 @@ a.uk-thumbnail:focus {
 .uk-accordion-content {
   padding: 0 20px 20px 20px;
 }
-/*
- * Micro clearfix to make panels more robust
- */
+
 .uk-accordion-content:before,
 .uk-accordion-content:after {
   content: "";
@@ -9083,9 +8653,7 @@ a.uk-thumbnail:focus {
 .uk-accordion-content:after {
   clear: both;
 }
-/*
- * Remove margin from the last-child
- */
+
 .uk-accordion-content > :last-child {
   margin-bottom: 0;
 }
@@ -9105,9 +8673,7 @@ a.uk-thumbnail:focus {
   /* 3 */
   touch-action: pan-y;
 }
-/*
- * 1. Reset list style without interfering with grid
- */
+
 .uk-slider:not(.uk-grid) {
   /* 1 */
   margin: 0;
@@ -9124,22 +8690,16 @@ a.uk-thumbnail:focus {
   top: 0;
   left: 0;
 }
-/*
- * Clip child elements
- */
+
 .uk-slider-container {
   overflow: hidden;
 }
-/*
- * Dragged
- */
+
 .uk-slider:not(.uk-drag) {
   -webkit-transition: -webkit-transform 200ms linear;
   transition: transform 200ms linear;
 }
-/*
- * 1. Makes text unselectable
- */
+
 .uk-slider.uk-drag {
   cursor: col-resize;
   /* 1 */
@@ -9161,9 +8721,7 @@ a.uk-thumbnail:focus {
   /* 2 */
   -webkit-touch-callout: none;
 }
-/*
- * 1. Prevents images and links from being dragged in Firefox
- */
+
 .uk-slider img {
   pointer-events: none;
 }
@@ -9227,15 +8785,11 @@ a.uk-thumbnail:focus {
   /* 2 */
   opacity: 1;
 }
-/*
- * Hide default images which is only relevant to keep existing proportions
- */
+
 .uk-slideshow > li > img {
   visibility: hidden;
 }
-/*
- * Pointer for controls
- */
+
 [data-uk-slideshow-slide] {
   cursor: pointer;
 }
@@ -9247,9 +8801,7 @@ a.uk-thumbnail:focus {
 }
 /* Animations
  ========================================================================== */
-/*
- * Fade
- */
+
 .uk-slideshow-fade-in {
   -webkit-animation: uk-fade 0.5s linear;
   animation: uk-fade 0.5s linear;
@@ -9258,9 +8810,7 @@ a.uk-thumbnail:focus {
   -webkit-animation: uk-fade 0.5s linear reverse;
   animation: uk-fade 0.5s linear reverse;
 }
-/*
- * Scroll
- */
+
 .uk-slideshow-scroll-forward-in {
   -webkit-animation: uk-slide-right 0.5s ease-in-out;
   animation: uk-slide-right 0.5s ease-in-out;
@@ -9277,16 +8827,12 @@ a.uk-thumbnail:focus {
   -webkit-animation: uk-slide-right 0.5s ease-in-out reverse;
   animation: uk-slide-right 0.5s ease-in-out reverse;
 }
-/*
- * Scale
- */
+
 .uk-slideshow-scale-out {
   -webkit-animation: uk-fade-scale-15 0.5s ease-in-out reverse;
   animation: uk-fade-scale-15 0.5s ease-in-out reverse;
 }
-/*
- * Swipe
- */
+
 .uk-slideshow-swipe-forward-in {
   -webkit-animation: uk-slide-left-33 0.5s ease-in-out;
   animation: uk-slide-left-33 0.5s ease-in-out;
@@ -9330,9 +8876,7 @@ a.uk-thumbnail:focus {
   /* 2 */
   margin: 0;
 }
-/*
- * Icon
- */
+
 .uk-search:before {
   content: "\f002";
   position: absolute;
@@ -9347,29 +8891,21 @@ a.uk-thumbnail:focus {
 }
 /* Sub-object `uk-search-field`
  ========================================================================== */
-/*
- * Removes inner padding and border in Firefox 4+.
- */
+
 .uk-search-field::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-/*
- * Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
- */
+
 .uk-search-field::-webkit-search-cancel-button,
 .uk-search-field::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-/*
- * Removes cancel button in IE10
- */
+
 .uk-search-field::-ms-clear {
   display: none;
 }
-/*
- * Removes placeholder transparency in Firefox.
- */
+
 .uk-search-field::-moz-placeholder {
   opacity: 1;
 }
@@ -9434,18 +8970,14 @@ a.uk-thumbnail:focus {
   -webkit-animation: uk-slide-top-fixed 0.2s ease-in-out;
   animation: uk-slide-top-fixed 0.2s ease-in-out;
 }
-/*
- * Dependency `uk-navbar-flip`
- */
+
 .uk-navbar-flip .uk-dropdown-search {
   margin-top: 5px;
   margin-right: -15px;
 }
 /* Nav modifier `uk-nav-search`
  ========================================================================== */
-/*
- * Items
- */
+
 .uk-nav-search > li > a {
   color: #363533;
 }
@@ -9459,21 +8991,15 @@ a.uk-thumbnail:focus {
   /* 1 */
   outline: none;
 }
-/*
- * Sub-object: `uk-nav-header`
- */
+
 .uk-nav-search .uk-nav-header {
   color: #999999;
 }
-/*
- * Sub-object: `uk-nav-divider`
- */
+
 .uk-nav-search .uk-nav-divider {
   border-top: 1px solid #dddddd;
 }
-/*
- * Nested items
- */
+
 .uk-nav-search ul a {
   color: #363533;
 }
@@ -9531,9 +9057,7 @@ a.uk-thumbnail:focus {
 }
 /* Triangle
  ========================================================================== */
-/*
- * 1. Dashed is less antialised than solid
- */
+
 .uk-tooltip:after {
   content: "";
   display: block;
@@ -9545,9 +9069,7 @@ a.uk-thumbnail:focus {
 }
 /* Direction modifiers
  ========================================================================== */
-/*
- * Top
- */
+
 .uk-tooltip-top:after,
 .uk-tooltip-top-left:after,
 .uk-tooltip-top-right:after {
@@ -9558,9 +9080,7 @@ a.uk-thumbnail:focus {
   border-right-color: transparent;
   border-top-color: #333333;
 }
-/*
- * Bottom
- */
+
 .uk-tooltip-bottom:after,
 .uk-tooltip-bottom-left:after,
 .uk-tooltip-bottom-right:after {
@@ -9571,31 +9091,23 @@ a.uk-thumbnail:focus {
   border-right-color: transparent;
   border-bottom-color: #333333;
 }
-/*
- * Top/Bottom center
- */
+
 .uk-tooltip-top:after,
 .uk-tooltip-bottom:after {
   left: 50%;
   margin-left: -5px;
 }
-/*
- * Top/Bottom left
- */
+
 .uk-tooltip-top-left:after,
 .uk-tooltip-bottom-left:after {
   left: 10px;
 }
-/*
- * Top/Bottom right
- */
+
 .uk-tooltip-top-right:after,
 .uk-tooltip-bottom-right:after {
   right: 10px;
 }
-/*
- * Left
- */
+
 .uk-tooltip-left:after {
   right: -5px;
   top: 50%;
@@ -9606,9 +9118,7 @@ a.uk-thumbnail:focus {
   border-bottom-color: transparent;
   border-left-color: #333333;
 }
-/*
- * Right
- */
+
 .uk-tooltip-right:after {
   left: -5px;
   top: 50%;
@@ -9619,14 +9129,7 @@ a.uk-thumbnail:focus {
   border-bottom-color: transparent;
   border-right-color: #333333;
 }
-/* ========================================================================
-   Warp theme
- ========================================================================== */
-/* Layout
- ========================================================================== */
-/*
- * Blocks
- */
+
 .tm-toolbar,
 .tm-headerbar,
 .tm-navbar,
@@ -9656,16 +9159,11 @@ a.uk-thumbnail:focus {
     border-radius: 0;
   }
 }
-/*
- * Logo small
- * Remove whitespace caused by vertical centering to prevent logo wrapping into the next line
- */
+
 .tm-logo-small {
   letter-spacing: -0.31em;
 }
-/*
- * Toolbar
- */
+
 .tm-toolbar .uk-float-left .uk-panel {
   margin: 0 25px 0 0;
   float: left;
@@ -9674,9 +9172,7 @@ a.uk-thumbnail:focus {
   margin: 0 0 0 25px;
   float: right;
 }
-/*
- * Headerbar
- */
+
 .tm-headerbar .tm-logo {
   float: left;
 }
@@ -9685,18 +9181,14 @@ a.uk-thumbnail:focus {
   margin-right: 0;
   float: right;
 }
-/*
- * Middle
- */
+
 .tm-main > :nth-child(n+2) {
   margin-top: 25px;
 }
 .tm-content > :last-child {
   margin-bottom: 0;
 }
-/*
- * Footer
- */
+
 .tm-footer {
   position: relative;
   text-align: center;
@@ -9704,9 +9196,7 @@ a.uk-thumbnail:focus {
 .tm-footer .uk-panel + .uk-panel {
   margin-top: 25px;
 }
-/*
- * To-top scroller
- */
+
 .tm-totop-scroller {
   display: block;
   position: absolute;
@@ -9726,11 +9216,7 @@ a.uk-thumbnail:focus {
   content: "\f077";
   font-family: "FontAwesome";
 }
-/*
- * Hover
- * 1. Apply hover style also to focus state
- * 2. Remove default focus style
- */
+
 .tm-totop-scroller:hover,
 .tm-totop-scroller:focus {
   /* 1 */
@@ -9745,40 +9231,23 @@ a.uk-thumbnail:focus {
   color: #020201;
   font-size: 11px;
 }
-/* Blog
- ========================================================================== */
-/*
- * Leading article
- * Joomla only
- */
+
 .tm-leading-article .uk-article:last-child {
   padding-bottom: 25px;
   border-bottom: 1px solid #dddddd;
 }
-/* Error
- ========================================================================== */
+
 .tm-error-icon {
   font-size: 250px;
 }
 .tm-error-headline {
   font-size: 100px;
 }
-/* Offline
- ========================================================================== */
+
 .tm-offline {
   width: 300px;
 }
-/* Socialbuttons
- ========================================================================== */
-.tm-socialbuttons {
-  line-height: 1;
-}
-.tm-socialbuttons > div {
-  margin-right: 10px;
-  float: left;
-}
-/* WordPress only
- ========================================================================== */
+
 .alignleft {
   display: block;
   margin-right: 20px;
@@ -10009,52 +9478,7 @@ q {
   margin: 0;
   height: 30px;
 }
-.tm-toolbar .social-top > a {
-  margin: 0 10px;
-  text-align: center;
-  position: relative;
-  background: none;
-  width: 24px;
-  display: inline-block;
-  line-height: 30px;
-  transition: background 200ms;
-  -webkit-transition: background 200ms;
-}
-.tm-toolbar .social-top > a:before {
-  content: '';
-  z-index: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #ffc722;
-  transform: skewX(-33deg);
-  -webkit-transform: skewX(-33deg);
-  transition: all 400ms;
-  -webkit-transition: all 400ms;
-}
-.tm-toolbar .social-top > a .uk-icon-small {
-  font-size: 93%;
-  color: #fff;
-  opacity: 0.5;
-  position: relative;
-}
-.tm-toolbar .social-top > a:hover .uk-icon-small {
-  color: #000;
-  opacity: 1;
-}
-.tm-toolbar .social-top > a .uk-icon-small:hover {
-  color: #000;
-  opacity: 1;
-}
-.tm-toolbar .social-top > a:hover:before {
-  opacity: 1;
-  right: -10px;
-  left: -10px;
-}
-/********LOGO********/
+
 .tm-logo {
   padding-right: 80px;
   position: relative;
@@ -11548,20 +10972,6 @@ q {
   font-size: 14px;
   font-family: 'Work Sans';
   color: #787878;
-}
-.footer-socials {
-  float: right;
-}
-.footer-socials a {
-  margin-left: 33px;
-}
-.footer-socials a span {
-  font-size: 15px;
-  transition: 400ms all;
-  -webkit-transition: 400ms all;
-}
-.footer-socials a:hover span {
-  color: #ffc722;
 }
 .match-list-item.foot .wrapper {
   text-align: left;
@@ -13351,41 +12761,6 @@ q {
 .player-top .wrap {
   font-size: 0;
 }
-.player-top .wrap .socials {
-  padding: 0 0 0 20px;
-  display: inline-block;
-  vertical-align: bottom;
-  list-style: none;
-}
-.player-top .wrap .socials li {
-  padding: 0 0 0 10px;
-  display: inline-block;
-}
-.player-top .wrap .socials li a {
-  display: block;
-  width: 36px;
-  height: 36px;
-  transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-  -webkit-transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-}
-.player-top .wrap .socials li a:hover {
-  opacity: 0.7;
-}
-.player-top .wrap .socials .twitter a {
-  background: url("../images/socials-twitter.jpg");
-}
-.player-top .wrap .socials .facebook a {
-  background: url("../images/socials-facebook.jpg");
-}
-.player-top .wrap .socials .google-plus a {
-  background: url("../images/socials-google-plus.jpg");
-}
-.player-top .wrap .socials .pinterest a {
-  background: url("../images/socials-pinterest.jpg");
-}
-.player-top .wrap .socials .linkedin a {
-  background: url("../images/socials-linkedin.jpg");
-}
 .player-top {
   padding-bottom: 29px;
   position: relative;
@@ -13593,59 +12968,6 @@ q {
   font-size: 16px;
   color: #919191;
   text-transform: uppercase;
-}
-.player-article .img-wrap .socials {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  position: absolute;
-  top: -20%;
-  text-align: center;
-  list-style: none;
-  transform: translateY(-50%);
-  transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-  -webkit-transition: cubic-bezier(0.22, 0.61, 0.36, 1) all 600ms;
-  z-index: 1;
-}
-.player-article .img-wrap .socials li {
-  padding: 0 10px;
-  display: inline-block;
-}
-.player-article .img-wrap .socials li a {
-  width: 20px;
-  display: inline-block;
-  position: relative;
-}
-.player-article .img-wrap .socials li a:before {
-  font-size: 20px;
-  color: #fff;
-  position: absolute;
-  font-family: FontAwesome;
-  display: block;
-}
-.player-article .img-wrap .socials li a:hover:before {
-  color: #ffc722;
-}
-.player-article .img-wrap .socials .twitter a:before {
-  content: '\f099';
-}
-.player-article .img-wrap .socials .facebook a:before {
-  content: '\f09a';
-}
-.player-article .img-wrap .socials .google-plus a:before {
-  content: '\f0d5';
-}
-.player-article .img-wrap .socials .pinterest a:before {
-  content: '\f0d2';
-}
-.player-article .img-wrap .socials .linkedin a:before {
-  content: '\f0e1';
-}
-.player-article:hover .socials {
-  top: 50%;
-}
-.player-slider {
-  padding-top: 50px;
 }
 .player-slider .player-slider-btn {
   display: block;
@@ -14024,22 +13346,6 @@ q {
   font-size: 15px;
   color: #a6a6a6;
   font-family: 'Work Sans';
-}
-.contact-socials {
-  padding: 52px 0 2px 0;
-  width: 100%;
-  text-align: center;
-}
-.contact-socials li {
-  display: inline-block;
-}
-.contact-socials li a {
-  padding: 0 35px;
-  color: #a6a6a6;
-  font-size: 25px;
-}
-.contact-socials li a:hover {
-  color: #ffc722;
 }
 .contact-enquiries {
   margin-bottom: 90px !important;
@@ -15390,15 +14696,6 @@ ul.uk-switcher {
   display: inline-block;
   vertical-align: top;
 }
-.offline-socials {
-  color: #fff;
-  font-size: 38px;
-  text-transform: uppercase;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-}
 .search-page .tm-content {
   padding-bottom: 40px;
 }
@@ -15746,9 +15043,6 @@ ul.uk-switcher {
   .donate-wrap .intro-text {
     padding: 0px 10px 0px 35px;
   }
-  .contact-socials li a {
-    padding: 0 20px;
-  }
 }
 @media (max-width: 680px) {
   .match-list-wrap .match-list-item {
@@ -15781,9 +15075,6 @@ ul.uk-switcher {
     top: 0;
     right: 0;
     padding: 0;
-  }
-  .contact-socials li a {
-    padding: 0 10px;
   }
 }
 @media (max-width: 480px) {
@@ -15830,10 +15121,6 @@ ul.uk-switcher {
   }
   .acymailing_module_form .acymailing_introtext {
     width: 100%;
-  }
-  .footer-socials {
-    float: left;
-    padding-top: 20px;
   }
   .copyrights {
     width: 100%;
