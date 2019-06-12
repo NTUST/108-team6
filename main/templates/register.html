@@ -102,7 +102,6 @@
         var confirmPassword = $("#password2").val();
         if (password !== confirmPassword) {
             $("#divCheckPasswordMatch").html("Passwords do not match!");
-            alert("密碼不符!");
             return false
         } else {
             $("#divCheckPasswordMatch").html("Passwords match.");
