@@ -278,3 +278,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect(to='index')
+
+def donate(request):
+    title = 'Donate'
+    return render(request, "donate.html", locals())
