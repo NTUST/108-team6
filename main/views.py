@@ -104,12 +104,12 @@ def team(request):
             player_list = Player.objects.filter(club=team_name)
         result = player_list.aggregate(rating=Avg("overall"), potential=Avg("potential"), wage=Avg("wage"),
                                        value=Avg("value"))
-        rating = result["rating"]
-        potential = result["potential"]
-        value = result["value"]
-        wage = result["wage"]
-    value = "{:.2f}M".format(value/1000) if value > 1000 else f"{value}k"
-    wage = "{:.2f}M".format(wage/1000) if wage > 1000 else f"{wage}k"
+        rating = result["rating"] if result["rating"] is not None else 0
+        potential = result["potential"] if result["potential"] is not None else 0
+        value = result["value"] if result["value"] is not None else 0
+        wage = result["wage"] if result["wage"] is not None else 0
+    value = "{:.2f}M".format(value / 1000) if value > 1000 else f"{value}k"
+    wage = "{:.2f}M".format(wage / 1000) if wage > 1000 else f"{wage}k"
     order = request.GET.get("order")
     order_by = request.GET.get("order_by")
     if order and order_by:
