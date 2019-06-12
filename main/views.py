@@ -126,6 +126,7 @@ def team(request):
 @login_required
 def edit_team(request):
     def get_method(request):
+        title = "Edit Team"
         parameter = {}
         page = int(request.GET.get('page', 1))
         page = page if page > 1 else 1
@@ -140,20 +141,20 @@ def edit_team(request):
         if search_name:
             parameter["search"] = search_name
             player_list = player_list.filter(name__contains=search_name)
+        order_column = '-value'
         if order and order_by:
             order_column = order_by
             if order not in ["asc", "desc"]:
                 order = "asc"
             if order == "desc":
                 order_column = f"-{order_column}"
-            player_list = player_list.order_by(order_column)
         player_list = player_list.annotate(
             is_chosen=Case(
                 When(teamplayer__isnull=True, then=False),
                 default=Value(True),
                 output_field=BooleanField(),
             )
-        ).order_by("-is_chosen")
+        ).order_by("-is_chosen", order_column, )
         player_list = player_list.all()[start:start + limit]
         query_string = parse_query_string(parameter=parameter)
         return render(request, "edit-team.html", locals())
@@ -278,6 +279,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect(to='index')
+
 
 def donate(request):
     title = 'Donate'
