@@ -104,8 +104,8 @@ def team(request):
             player_list = Player.objects.filter(club=team_name)
         result = player_list.aggregate(rating=Avg("overall"), potential=Avg("potential"), wage=Avg("wage"),
                                        value=Avg("value"))
-        rating = result["rating"] if result["rating"] is not None else 0
-        potential = result["potential"] if result["potential"] is not None else 0
+        rating = int(result["rating"] if result["rating"] is not None else 0)
+        potential = int(result["potential"] if result["potential"] is not None else 0)
         value = result["value"] if result["value"] is not None else 0
         wage = result["wage"] if result["wage"] is not None else 0
     value = "{:.2f}M".format(value / 1000) if value > 1000 else f"{value}k"
