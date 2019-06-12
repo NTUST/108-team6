@@ -108,8 +108,8 @@ def team(request):
         potential = int(result["potential"] if result["potential"] is not None else 0)
         value = result["value"] if result["value"] is not None else 0
         wage = result["wage"] if result["wage"] is not None else 0
-    value = "{:.2f}M".format(value / 1000) if value > 1000 else f"{value}k"
-    wage = "{:.2f}M".format(wage / 1000) if wage > 1000 else f"{wage}k"
+    value = "{:.2f}M".format(value / 1000) if value > 1000 else "{:.2f}K".format(value)
+    wage = "{:.2f}M".format(wage / 1000) if wage > 1000 else "{:.2f}K".format(wage)
     order = request.GET.get("order")
     order_by = request.GET.get("order_by")
     if order and order_by:
