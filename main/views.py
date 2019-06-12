@@ -214,15 +214,14 @@ def create_player(request):
             key = i.lower().replace(" ", "_")
             if hasattr(player, key):
                 setattr(player, key, request.POST[i])
-        player.overall = 80
-        player.potential = 80
-        player.special = 80
+        player.overall = request.POST.get("rating")
+        player.special = 1625
         player.nationality = "Taiwan"
         player.nationality_flag = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/188px-Flag_of_the_Republic_of_China.svg.png"
         player.club = request.user.username
         player.club_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/NTUST-Emblem.png/220px-NTUST-Emblem.png"
         player.creator_id = request.user.id
-        arr_list = ['age', 'Overall', 'Potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance',
+        arr_list = ['age', 'rating', 'potential', 'Special', 'Acceleration', 'Aggression', 'Agility', 'Balance',
                     'Ball Control', 'Composure', 'Crossing', 'Curve', 'Dribbling', 'Finishing', 'Free Kick Accuracy',
                     'GK Diving', 'GK Handling', 'GK Kicking', 'GK Positioning', 'GK Reflexes', 'Heading Accuracy',
                     'Interceptions', 'Jumping', 'Long Passing', 'Long Shots', 'Marking', 'Penalties', 'Positioning',
